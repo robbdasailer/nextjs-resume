@@ -29,11 +29,18 @@ export default function Home() {
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Header />
-        <Grid item xs={6} md={4}>
-          <Item>xs=6 md=4</Item>
+        <Grid container spacing={2} xs={12} md={4}>
+        <Grid item xs={12}>
+          <Item>Sidebar for Education/Certs (Align Left)</Item>
         </Grid>
-        <Grid item xs={6} md={8}>
-          <Item>xs=6 md=8</Item>
+        <Grid item xs={12}>
+          <Item>Sidebar for Skills (Align Left)</Item>
+        </Grid>
+        </Grid>
+        <Grid container spacing ={2} xs={12} md={8}>
+        <Grid item xs={12} md={8}>
+          <Item>Work History Graph Here (Centered)</Item>
+        </Grid>
         </Grid>
       </Grid>
     </Box>

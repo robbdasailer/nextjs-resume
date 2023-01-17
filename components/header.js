@@ -15,11 +15,13 @@ const Item = styled(Paper)(({ theme }) => ({
 const Header = () => {
     return (
         <>
-        <Grid item xs={4} md={2}>
-          <Item>xs=4 md=2</Item>
+        <Grid item xs={6} md={2}>
+          <Item>
+            <Image src="/assets/resumeProfile.jpeg" height={125} width={125}/>
+          </Item>
         </Grid>
-        <Grid item xs={8} md={10}>
-          <Item>xs=8 md=10</Item>
+        <Grid item xs={6} md={10}>
+          <Item>Contact Info Here (Align right)</Item>
         </Grid>
         </>
     );
