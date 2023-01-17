@@ -38,7 +38,7 @@ export default function Home() {
         </Grid>
         </Grid>
         <Grid container spacing ={2} xs={12} md={8}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12}>
           <Item>Work History Graph Here (Centered)</Item>
         </Grid>
         </Grid>
