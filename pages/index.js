@@ -8,6 +8,8 @@ import { styled } from '@mui/material/styles';
 
 import Header from '../components/header';
 
+import data from '../pages/api/data';
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -15,6 +17,8 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+
+console.log(data);
 
 export default function Home() {
   return (
@@ -27,8 +31,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
       <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Header />
+      <Grid container spacing={0}>
+        <Header contactInfo={data.contact} />
         <Grid container spacing={2} xs={12} md={4}>
         <Grid item xs={12}>
           <Item>Sidebar for Education/Certs (Align Left)</Item>
