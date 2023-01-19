@@ -24,31 +24,24 @@ let data =
             },
             {
                 id: 2,
-                title: "Microsoft Certified: Azure Developer Associate",
-                link: "https://www.credly.com/badges/544dfa34-53fd-4550-bb77-b0192b008d07",
-                complete: true,
-                expires: "22 Jan 2023"
-            },
-            {
-                id: 3,
                 title: "CompTIA Security+ CE",
                 link: "https://www.credly.com/badges/44be2b36-0ba3-4427-b960-6be43e31924b",
                 complete: true,
                 expires: "15 Oct 2024"
             },
             {
-                id: 4,
+                id: 3,
                 title: "CKA: Certified Kubernetes Administrator",
                 link: "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/",
-                complete: false,
-                projectedCompletion: "May 2022"
+                complete: true,
+                expires: "1 August 2022"
             },
             {
-                id: 5,
+                id: 4,
                 title: "eCornell: Python for Data Science",
                 link: "https://ecornell.cornell.edu/certificates/data-science/python-for-data-science/",
-                complete: false,
-                projectedCompletion: "Septemeber 2022"
+                complete: true,
+                expires: ""
             }
         ],
         hobbies: [
