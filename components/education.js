@@ -9,16 +9,24 @@ import SchoolIcon from '@mui/icons-material/School';
 
 const Education = (props) => {
 
-    const {school, schoolUrl, degree, graduationYear} = props.education
+    const degrees = props.education;
     const certs = props.certs;
 
     return (
         <>
-        <Avatar><a href={schoolUrl}><SchoolIcon /></a></Avatar>
-        <h4>{school}</h4>
-        <p>{degree}</p>
-        <p>Graduation Year: {graduationYear}</p>
-        <List sx={{ bgcolor: 'background.paper' }} subheader={<ListSubheader>Certifications</ListSubheader>}>
+        <List dense sx={{ bgcolor: 'background.paper' }} subheader={<ListSubheader sx={{fontWeight: 600, fontSize: '1.1rem'}}>Education</ListSubheader>}>
+            {degrees.map(degree => (
+                <ListItem key={degree.id}>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <a href={degree.schoolUrl}><SchoolIcon /></a>
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={degree.school} secondary={`${degree.degree}: ${degree.graduationYear}`} />
+                </ListItem>
+            ))}
+        </List>
+        <List dense sx={{ bgcolor: 'background.paper' }} subheader={<ListSubheader sx={{fontWeight: 600, fontSize: '1.1rem'}}>Certifications</ListSubheader>}>
             {certs.map(cert => (
                 <ListItem key={cert.id}>
                     <ListItemAvatar>
@@ -26,7 +34,7 @@ const Education = (props) => {
                             <a href={cert.link}><GppGoodIcon /></a>
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={cert.title} secondary={cert.expires} />
+                    <ListItemText primary={cert.title} secondary={`Date Achieved: ${cert.dateAchieved}`} />
                 </ListItem>
             ))}
         </List>

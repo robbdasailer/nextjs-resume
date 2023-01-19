@@ -33,7 +33,7 @@ export default function Home() {
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Header contactInfo={data.contact} />
-        <Grid item container xs={12} md={4}>
+        <Grid item container xs={12} md={3}>
           <Grid item xs={12}>
             <Item><Education education={data.education} certs={data.certifications}/></Item>
           </Grid>
@@ -41,7 +41,7 @@ export default function Home() {
             <Item>Sidebar for skills</Item>
           </Grid>
         </Grid>
-        <Grid item container xs={12} md={8}>
+        <Grid item container xs={12} md={9}>
           <Grid item xs={12}>
             <Item>Work History Graph Here (Center me!)</Item>
           </Grid>
