@@ -85,79 +85,79 @@ let data =
                 id: 1,
                 skillName: "Kubernetes",
                 blurb: "This site you're on is actually hosted on my local Kubernetes cluster.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 2,
                 skillName: "Docker",
                 blurb: "Troubleshooting, creating new, converting non containerized image to container.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 3,
                 skillName: "Terraform",
                 blurb: "Can easily update existing templates, would need to reference documentation for creation of certain templates.",
-                rating: 5
+                rating: 50
             },
             {
                 id: 4,
                 skillName: "Azure DevOps/Gitlab",
                 blurb: "Very well versed in both in regards to creating CI/CD pipelines and troubleshooting them.",
-                rating: 7
+                rating: 70
             },
             {
                 id: 5,
                 skillName: "ReactJS",
                 blurb: "Self taught using Udemy and YouTube.  Still learning and improving.",
-                rating: 3
+                rating: 30
             },
             {
                 id: 6,
                 skillName: "Python",
                 blurb: "Can create new scripts/applications/bots with relative ease.",
-                rating: 8
+                rating: 80
             },
             {
                 id: 7,
                 skillName: "C#/Java",
                 blurb: "Can easily create new or debug existing, but may need a little more time when working with more advanced implementations.",
-                rating: 7
+                rating: 70
             },
             {
                 id: 8,
                 skillName: "Git",
                 blurb: "Very well versed in most aspects.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 9,
                 skillName: "PowerShell/Bash",
                 blurb: "Created very robust scripts in each language from scratch.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 10,
                 skillName: "MS SQL Server",
                 blurb: "Well versed with data normalization and have architected data layer in many situations in the past.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 11,
                 skillName: "MongoDB/NoSQL",
                 blurb: "Expert in querying and architecting data types optimally in a NoSQL environment.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 12,
                 skillName: "Azure",
                 blurb: "Very comfortable in Azure and have certifications to prove it.",
-                rating: 9
+                rating: 90
             },
             {
                 id: 13,
                 skillName: "AWS",
                 blurb: "It may take a bit longer for me to figure out the same thing in AWS when compared to Azure.",
-                rating: 6
+                rating: 60
             }
         ],
         workHistory: [
