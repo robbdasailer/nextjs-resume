@@ -11,6 +11,7 @@ import Education from '../components/education';
 import Skills from '../components/skills';
 import Hobbies from '../components/hobbies';
 import WorkHistory from '../components/workHistory';
+import WorkHistoryMobile from '../components/workHistoryMobile';
 
 import data from '../pages/api/data';
 
@@ -58,7 +59,7 @@ export default function Home() {
 						<Grid item container xs={12} md={9}>
 							<Grid item xs={12}>
 								<Item>
-									<WorkHistory />
+									<WorkHistory jobs={data.workHistory} />
 								</Item>
 							</Grid>
 						</Grid>
