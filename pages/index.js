@@ -10,6 +10,7 @@ import Header from '../components/header';
 import Education from '../components/education';
 import Skills from '../components/skills';
 import Hobbies from '../components/hobbies';
+import WorkHistory from '../components/workHistory';
 
 import data from '../pages/api/data';
 
@@ -56,7 +57,9 @@ export default function Home() {
 						</Grid>
 						<Grid item container xs={12} md={9}>
 							<Grid item xs={12}>
-								<Item>Work History Graph Here (Center me!)</Item>
+								<Item>
+									<WorkHistory />
+								</Item>
 							</Grid>
 						</Grid>
 					</Grid>
