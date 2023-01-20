@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Header from '../components/header';
 import Education from '../components/education';
 import Skills from '../components/skills';
+import Hobbies from '../components/hobbies';
 
 import data from '../pages/api/data';
 
@@ -45,6 +46,11 @@ export default function Home() {
 							<Grid item xs={12}>
 								<Item>
 									<Skills skills={data.skills} />
+								</Item>
+							</Grid>
+							<Grid item xs={12}>
+								<Item>
+									<Hobbies hobbies={data.hobbies} />
 								</Item>
 							</Grid>
 						</Grid>

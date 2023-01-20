@@ -66,18 +66,22 @@ let data =
             {
                 id: 1,
                 title: "BBQ",
+                icon: "bbq"
             },
             {
                 id: 2,
-                title: "Craft Beer"
+                title: "Craft Beer",
+                icon: "beer"
             },
             {
                 id: 3,
-                title: "Camping & Outdoors"
+                title: "Camping & Outdoors",
+                icon: "outdoor"
             },
             {
                 id: 4,
-                title: "Spending Time with Family"
+                title: "Spending Time with Family",
+                icon: "family"
             }
         ],
         skills: [
