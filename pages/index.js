@@ -1,3 +1,4 @@
+import { useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 
@@ -24,6 +25,34 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Home() {
+	const useMediaQuery = (width) => {
+		const [targetReached, setTargetReached] = useState(false);
+
+		const updateTarget = useCallback((e) => {
+			if (e.matches) {
+				setTargetReached(true);
+			} else {
+				setTargetReached(false);
+			}
+		}, []);
+
+		useEffect(() => {
+			const media = window.matchMedia(`(max-width: ${width}px)`);
+			media.addEventListener('change', updateTarget);
+
+			// Check on mount (callback is not called until a change occurs)
+			if (media.matches) {
+				setTargetReached(true);
+			}
+
+			return () => media.removeEventListener('change', updateTarget);
+		}, []);
+
+		return targetReached;
+	};
+
+	const isBreakpoint = useMediaQuery(768);
+
 	return (
 		<>
 			<Head>
@@ -59,7 +88,11 @@ export default function Home() {
 						<Grid item container xs={12} md={9}>
 							<Grid item xs={12}>
 								<Item>
-									<WorkHistory jobs={data.workHistory} />
+									{isBreakpoint ? (
+										<WorkHistoryMobile jobs={data.workHistory} />
+									) : (
+										<WorkHistory jobs={data.workHistory} />
+									)}
 								</Item>
 							</Grid>
 						</Grid>
