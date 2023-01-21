@@ -56,6 +56,24 @@ const WorkHistoryMobile = (props) => {
 						</StepLabel>
 						<StepContent>
 							<Typography>{job.jobDescription}</Typography>
+							<Box sx={{ mb: 2 }}>
+								<div>
+									<Button
+										variant='contained'
+										onClick={handleNext}
+										sx={{ mt: 1, mr: 1 }}
+									>
+										{index === jobs.length - 1 ? 'Finish' : 'View Next'}
+									</Button>
+									<Button
+										disabled={index === 0}
+										onClick={handleBack}
+										sx={{ mt: 1, mr: 1 }}
+									>
+										View Previous
+									</Button>
+								</div>
+							</Box>
 						</StepContent>
 					</Step>
 				))}
@@ -64,7 +82,7 @@ const WorkHistoryMobile = (props) => {
 				<Paper square elevation={0} sx={{ p: 3 }}>
 					<Typography>All steps completed - you&apos;re finished</Typography>
 					<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-						Reset
+						View Current Position
 					</Button>
 				</Paper>
 			)}

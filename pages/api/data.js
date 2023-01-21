@@ -25,12 +25,6 @@ let data = {
 	],
 	certifications: [
 		{
-			id: 1,
-			title: 'MCSA: Office 365',
-			link: 'https://www.credly.com/badges/4f987cee-b9e5-465f-a242-0e9b0082400a',
-			dateAchieved: '28 December 2015',
-		},
-		{
 			id: 2,
 			title: 'Architecting Microsoft Azure Solutions',
 			link: 'https://www.credly.com/badges/e6e474b4-cdc0-451e-8805-ded4a1536ea5',
@@ -96,20 +90,20 @@ let data = {
 			skillName: 'CI/CD',
 			blurb:
 				'Can easily update existing templates, would need to reference documentation for creation of certain templates.',
-			rating: 50,
+			rating: 85,
 		},
 		{
 			id: 3,
 			skillName: 'ReactJS/NextJS',
 			blurb:
 				'Self taught using Udemy and YouTube.  Still learning and improving.',
-			rating: 30,
+			rating: 40,
 		},
 		{
 			id: 4,
 			skillName: 'Python',
 			blurb: 'Can create new scripts/applications/bots with relative ease.',
-			rating: 80,
+			rating: 85,
 		},
 		{
 			id: 5,
@@ -122,20 +116,20 @@ let data = {
 			id: 6,
 			skillName: 'Scripting',
 			blurb: 'Created very robust scripts in each language from scratch.',
-			rating: 90,
+			rating: 95,
 		},
 		{
 			id: 7,
 			skillName: 'Database (NoSQL & RDBMS)',
 			blurb:
 				'Well versed with data normalization and have architected data layer in many situations in the past.',
-			rating: 90,
+			rating: 95,
 		},
 		{
 			id: 8,
 			skillName: 'Cloud',
 			blurb: 'Very comfortable in Azure and have certifications to prove it.',
-			rating: 90,
+			rating: 95,
 		},
 	],
 	workHistory: [

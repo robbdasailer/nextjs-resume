@@ -51,7 +51,7 @@ export default function Home() {
 		return targetReached;
 	};
 
-	const isBreakpoint = useMediaQuery(768);
+	const isBreakpoint = useMediaQuery(1200);
 
 	return (
 		<>
@@ -91,7 +91,10 @@ export default function Home() {
 									{isBreakpoint ? (
 										<WorkHistoryMobile jobs={data.workHistory} />
 									) : (
-										<WorkHistory jobs={data.workHistory} contact={data.contact}/>
+										<WorkHistory
+											jobs={data.workHistory}
+											contact={data.contact}
+										/>
 									)}
 								</Item>
 							</Grid>
