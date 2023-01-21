@@ -27,7 +27,7 @@ const Skills = (props) => {
 
 	return (
 		<>
-			<h3>Skills & Competencies</h3>
+			<Typography variant='h6' sx={{ml: 1.75}}>Skills & Competencies</Typography>
 			{skills.map((skill) => (
 				<Box key={skill.id} sx={{ width: '90%', m: 2 }}>
 					<Typography
@@ -35,8 +35,9 @@ const Skills = (props) => {
 						aria-haspopup='true'
 						onMouseEnter={() => handlePopoverOpen(event, skill.blurb)}
 						onMouseLeave={handlePopoverClose}
+                        component='span'
 					>
-						{skill.skillName}
+						{skill.skillName}<InfoIcon sx={{ml: 1, height: '1rem', width: '1rem'}} />
 					</Typography>
 					<Popover
 						id='mouse-over-popover'
@@ -54,6 +55,7 @@ const Skills = (props) => {
 							horizontal: 'left',
 						}}
 						onClose={handlePopoverClose}
+                        disableRestoreFocus
 					>
 						<Typography sx={{ p: 1 }}>{blurb}</Typography>
 					</Popover>

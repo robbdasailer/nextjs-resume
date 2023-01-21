@@ -8,6 +8,10 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import WorkIcon from '@mui/icons-material/Work';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 
 const WorkHistoryMobile = (props) => {
 	const [activeStep, setActiveStep] = useState(0);
@@ -24,68 +28,39 @@ const WorkHistoryMobile = (props) => {
 		setActiveStep(0);
 	};
 
-	const steps = [
-		{
-			label: 'Select campaign settings',
-			description: `For each ad campaign that you create, you can control how much
-                    you're willing to spend on clicks and conversions, which networks
-                    and geographical locations you want your ads to show on, and more.`,
-		},
-		{
-			label: 'Create an ad group',
-			description:
-				'An ad group contains one or more ads which target a shared set of keywords.',
-		},
-		{
-			label: 'Create an ad',
-			description: `Try out different ad text to see what brings in the most customers,
-                    and learn how to enhance your ads using features like ad extensions.
-                    If you run into any problems with your ads, find out how to tell if
-                    they're running and how to resolve approval issues.`,
-		},
-	];
+	const renderIcon = (endDate) => {
+		return endDate ? <WorkHistoryIcon /> : <WorkIcon />;
+	};
 
 	const jobs = props.jobs;
 
 	return (
 		<Box sx={{ maxWidth: 1500 }}>
 			<Stepper activeStep={activeStep} orientation='vertical'>
-				{steps.map((step, index) => (
-					<Step key={step.label}>
+				{jobs.map((job, index) => (
+					<Step key={job.id}>
 						<StepLabel
 							optional={
-								index === 2 ? (
+								job.id === 3 ? (
 									<Typography variant='caption'>Last step</Typography>
 								) : null
 							}
+							StepIconComponent={() => renderIcon(job.endDate)}
 						>
-							{step.label}
+							<Typography variant='h6' component='span'>
+								<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
+							</Typography>
+							<Typography>
+								{job.startDate} - {job.endDate || 'Present'}
+							</Typography>
 						</StepLabel>
 						<StepContent>
-							<Typography>{step.description}</Typography>
-							<Box sx={{ mb: 2 }}>
-								<div>
-									<Button
-										variant='contained'
-										onClick={handleNext}
-										sx={{ mt: 1, mr: 1 }}
-									>
-										{index === steps.length - 1 ? 'Finish' : 'Continue'}
-									</Button>
-									<Button
-										disabled={index === 0}
-										onClick={handleBack}
-										sx={{ mt: 1, mr: 1 }}
-									>
-										Back
-									</Button>
-								</div>
-							</Box>
+							<Typography>{job.jobDescription}</Typography>
 						</StepContent>
 					</Step>
 				))}
 			</Stepper>
-			{activeStep === steps.length && (
+			{activeStep === jobs.length && (
 				<Paper square elevation={0} sx={{ p: 3 }}>
 					<Typography>All steps completed - you&apos;re finished</Typography>
 					<Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>

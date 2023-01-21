@@ -47,6 +47,8 @@ const WorkHistory = (props) => {
 										cursor: 'pointer',
 										color: '#1D4CB0',
 										marginLeft: '.5rem',
+										width: '1.25rem',
+										height: '1.25rem',
 									}}
 								/>
 							)}
