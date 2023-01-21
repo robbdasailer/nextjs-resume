@@ -22,6 +22,7 @@ const Skills = (props) => {
 	};
 
 	const handlePopoverClose = () => {
+		setOpen((previousOpen) => !previousOpen);
 		setBlurb(null);
 		setAnchorEl(null);
 	};
@@ -33,7 +34,13 @@ const Skills = (props) => {
 			</Typography>
 			{skills.map((skill) => (
 				<Box key={skill.id} sx={{ width: '90%', m: 2 }}>
-					<Typography component='span'>
+					<Typography
+						component='span'
+						aria-owns={open ? 'mouse-over-popover' : undefined}
+						aria-haspopup='true'
+						onMouseEnter={() => handlePopoverOpen(event, skill.blurb)}
+						onMouseLeave={handlePopoverClose}
+					>
 						{skill.skillName}
 						<InfoIcon
 							sx={{ ml: 1, height: '1rem', width: '1rem' }}
@@ -63,7 +70,7 @@ const Skills = (props) => {
 						transition
 					>
 						{({ TransitionProps }) => (
-							<Fade {...TransitionProps} timeout={350}>
+							<Fade {...TransitionProps} timeout={0}>
 								<Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
 									<Typography sx={{ p: 1 }}>{blurb}</Typography>
 								</Box>
