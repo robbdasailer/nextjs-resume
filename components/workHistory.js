@@ -5,7 +5,6 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
 import AchievementIcon from '@mui/icons-material/WorkspacePremium';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
@@ -14,6 +13,7 @@ import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 
 const WorkHistory = (props) => {
 	const jobs = props.jobs;
+    const { linkedInUrl } = props.contact;
 
 	return (
 		<Timeline position='alternate'>
@@ -61,15 +61,15 @@ const WorkHistory = (props) => {
 				<TimelineSeparator>
 					<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 					<TimelineDot color='secondary'>
-						<RepeatIcon />
+						<a href={linkedInUrl}><ReadMoreIcon /></a>
 					</TimelineDot>
 					<TimelineConnector />
 				</TimelineSeparator>
 				<TimelineContent sx={{ py: '12px', px: 2 }}>
 					<Typography variant='h6' component='span'>
-						Repeat
+						Want to know more?
 					</Typography>
-					<Typography>Because this is the life you love!</Typography>
+					<Typography>Check out my full history on LinkedIn!</Typography>
 				</TimelineContent>
 			</TimelineItem>
 		</Timeline>

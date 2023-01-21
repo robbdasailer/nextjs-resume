@@ -91,7 +91,7 @@ export default function Home() {
 									{isBreakpoint ? (
 										<WorkHistoryMobile jobs={data.workHistory} />
 									) : (
-										<WorkHistory jobs={data.workHistory} />
+										<WorkHistory jobs={data.workHistory} contact={data.contact}/>
 									)}
 								</Item>
 							</Grid>
