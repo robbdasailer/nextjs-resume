@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -6,62 +8,64 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
-import AchievementIcon from '@mui/icons-material/WorkspacePremium';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import WorkIcon from '@mui/icons-material/Work';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import Button from '@mui/material/Button';
+
+import WorkAdditionalInfo from './workAdditional';
 
 const WorkHistory = (props) => {
-	const jobs = props.jobs;
-    const { linkedInUrl } = props.contact;
+	const [open, setOpen] = useState(false);
+	const [currentJob, setCurrentJob] = useState("");
+
+    const jobs = props.jobs;
+	const { linkedInUrl } = props.contact;
+
+	const handleOpen = (jobId) => {
+		console.log({ jobId });
+		setCurrentJob(jobs.find(job => {return jobId === job.id}));
+		setOpen(true);
+	};
 
 	return (
 		<Timeline position='alternate'>
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
-					<TimelineOppositeContent
-						color='white'
-						variant='body2'
-						sx={{ margin: 'auto 0' }}
-					>
+					<TimelineOppositeContent variant='h6' sx={{ margin: 'auto 0' }}>
 						{job.startDate} - {job.endDate || 'Present'}
 					</TimelineOppositeContent>
 					<TimelineSeparator>
-						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+						<TimelineConnector />
 						<TimelineDot color='secondary'>
-							{job.endDate ? (
-								<WorkHistoryIcon sx={{ color: '#2DA2EC' }} />
-							) : (
-								<WorkIcon sx={{ color: '#1D4CB0' }} />
-							)}
+							{job.endDate ? <WorkHistoryIcon /> : <WorkIcon />}
 						</TimelineDot>
 						<TimelineConnector />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
 						<Typography variant='h6' component='span'>
 							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
+						</Typography>
+						<Typography>
+							{job.jobDescription}{' '}
 							{job.additionalInfo && (
-								<AchievementIcon
-									onClick={() => handleOpen(job)}
-									sx={{
-										cursor: 'pointer',
-										color: '#1D4CB0',
-										marginLeft: '.5rem',
-										width: '1.25rem',
-										height: '1.25rem',
-									}}
-								/>
+								<>
+									<Button variant='contained' onClick={() => handleOpen(job.id)}>
+										...Click to see more!
+									</Button>
+									<WorkAdditionalInfo open={open} job={currentJob} setOpen={setOpen} />
+								</>
 							)}
 						</Typography>
-						<Typography>{job.jobDescription}</Typography>
 					</TimelineContent>
 				</TimelineItem>
 			))}
 			<TimelineItem>
+				<TimelineOppositeContent></TimelineOppositeContent>
 				<TimelineSeparator>
-					<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+					<TimelineConnector />
 					<TimelineDot color='secondary'>
-						<a href={linkedInUrl}><ReadMoreIcon /></a>
+						<ReadMoreIcon />
 					</TimelineDot>
 					<TimelineConnector />
 				</TimelineSeparator>
@@ -69,7 +73,9 @@ const WorkHistory = (props) => {
 					<Typography variant='h6' component='span'>
 						Want to know more?
 					</Typography>
-					<Typography>Check out my full history on LinkedIn!</Typography>
+					<Typography>
+						Check out my full history on <a href={linkedInUrl}>LinkedIn!</a>
+					</Typography>
 				</TimelineContent>
 			</TimelineItem>
 		</Timeline>
