@@ -22,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 	padding: theme.spacing(1),
 	textAlign: 'left',
 	color: theme.palette.text.secondary,
+	marginBottom: '0rem',
 }));
 
 export default function Home() {
@@ -51,7 +52,7 @@ export default function Home() {
 		return targetReached;
 	};
 
-	const isBreakpoint = useMediaQuery(1200);
+	const isBreakpoint = useMediaQuery(1536);
 
 	return (
 		<>
@@ -66,7 +67,7 @@ export default function Home() {
 					<Grid container spacing={2}>
 						<Header contactInfo={data.contact} />
 						<Grid item container xs={12} md={3}>
-							<Grid item xs={12}>
+							<Grid item xs={12} sx={{ marginBottom: { xl: -18, xs: 2 } }}>
 								<Item>
 									<Education
 										education={data.education}
@@ -74,7 +75,7 @@ export default function Home() {
 									/>
 								</Item>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid item xs={12} sx={{ marginBottom: { xl: -18, xs: 2 } }}>
 								<Item>
 									<Skills skills={data.skills} />
 								</Item>
