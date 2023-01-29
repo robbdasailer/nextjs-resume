@@ -17,8 +17,8 @@ import WorkAdditionalInfo from './workAdditional';
 
 const WorkHistoryMobile = (props) => {
 	const [activeStep, setActiveStep] = useState(0);
-    const [open, setOpen] = useState(false);
-    const [currentJob, setCurrentJob] = useState("");
+	const [open, setOpen] = useState(false);
+	const [currentJob, setCurrentJob] = useState('');
 
 	const jobs = props.jobs;
 
@@ -26,7 +26,7 @@ const WorkHistoryMobile = (props) => {
 		setActiveStep(0);
 	};
 
-    const handleBack = () => {
+	const handleBack = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep - 1);
 	};
 
@@ -40,9 +40,13 @@ const WorkHistoryMobile = (props) => {
 		}
 	};
 
-    const handleOpen = (jobId) => {
+	const handleOpen = (jobId) => {
 		console.log({ jobId });
-		setCurrentJob(jobs.find(job => {return jobId === job.id}));
+		setCurrentJob(
+			jobs.find((job) => {
+				return jobId === job.id;
+			})
+		);
 		setOpen(true);
 	};
 
@@ -83,14 +87,23 @@ const WorkHistoryMobile = (props) => {
 									>
 										View Previous
 									</Button>
-                                    {job.additionalInfo && (
-								<>
-									<Button variant='contained' sx={{ mt: 1, mr: 1 }} onClick={() => handleOpen(job.id)}>
-										...Click to see more!
-									</Button>
-									<WorkAdditionalInfo open={open} job={currentJob} setOpen={setOpen} />
-								</>
-							)}
+									{job.additionalInfo && (
+										<>
+											<Button
+												variant='contained'
+												sx={{ mt: 1, mr: 1 }}
+												onClick={() => handleOpen(job.id)}
+											>
+												...Click to see more!
+											</Button>
+											<WorkAdditionalInfo
+												open={open}
+												job={currentJob}
+												setOpen={setOpen}
+												transition={props.transition}
+											/>
+										</>
+									)}
 								</div>
 							</Box>
 						</StepContent>

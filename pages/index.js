@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
@@ -6,6 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Slide from '@mui/material/Slide';
 
 import Header from '../components/header';
 import Education from '../components/education';
@@ -26,6 +28,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Home() {
+	const dialogTransition = React.forwardRef(function Transition(props, ref) {
+		return <Slide direction='up' ref={ref} {...props} />;
+	});
+
 	const useMediaQuery = (width) => {
 		const [targetReached, setTargetReached] = useState(false);
 
@@ -90,11 +96,15 @@ export default function Home() {
 							<Grid item xs={12}>
 								<Item>
 									{isBreakpoint ? (
-										<WorkHistoryMobile jobs={data.workHistory} />
+										<WorkHistoryMobile
+											jobs={data.workHistory}
+											transition={dialogTransition}
+										/>
 									) : (
 										<WorkHistory
 											jobs={data.workHistory}
 											contact={data.contact}
+											transition={dialogTransition}
 										/>
 									)}
 								</Item>

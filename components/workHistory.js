@@ -17,14 +17,18 @@ import WorkAdditionalInfo from './workAdditional';
 
 const WorkHistory = (props) => {
 	const [open, setOpen] = useState(false);
-	const [currentJob, setCurrentJob] = useState("");
+	const [currentJob, setCurrentJob] = useState('');
 
-    const jobs = props.jobs;
+	const jobs = props.jobs;
 	const { linkedInUrl } = props.contact;
 
 	const handleOpen = (jobId) => {
 		console.log({ jobId });
-		setCurrentJob(jobs.find(job => {return jobId === job.id}));
+		setCurrentJob(
+			jobs.find((job) => {
+				return jobId === job.id;
+			})
+		);
 		setOpen(true);
 	};
 
@@ -50,10 +54,18 @@ const WorkHistory = (props) => {
 							{job.jobDescription}{' '}
 							{job.additionalInfo && (
 								<>
-									<Button variant='contained' onClick={() => handleOpen(job.id)}>
+									<Button
+										variant='contained'
+										onClick={() => handleOpen(job.id)}
+									>
 										...Click to see more!
 									</Button>
-									<WorkAdditionalInfo open={open} job={currentJob} setOpen={setOpen} />
+									<WorkAdditionalInfo
+										open={open}
+										job={currentJob}
+										setOpen={setOpen}
+										transition={props.transition}
+									/>
 								</>
 							)}
 						</Typography>

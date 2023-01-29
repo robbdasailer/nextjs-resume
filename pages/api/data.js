@@ -151,7 +151,7 @@ let data = {
 			jobTitle: 'Principal Cloud Operations Engineer',
 			jobDescription:
 				'Works in Azure DevOps to create build and release pipelines to automatically create new builds when development is complete and deploy to Kubernetes, Azure App Service Plans, and virtual machines.  Develops utilities using .Net Core and PowerShell to allow for better monitoring of the environment and create more robust troubleshooting tools.  Deploys external monitoring solutions to Azure Kubernetes Services to allow scaling pods on additional metrics and creates new clusters when needed. Troubleshoots software issues and performs research with 3rd party integrations to ensure it is being used optimally. Works closely with development team to help diagnose performance issues with the environment and to assist in the creation and troubleshooting of dockerfiles.',
-			additionalInfo: 'I did something pretty cool doing this',
+			additionalInfo: 'Led effort to re-architect event capturing system into a polymorphic pattern design in NoSQL.',
 		},
 		{
 			id: 3,
