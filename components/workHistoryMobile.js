@@ -6,10 +6,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
-import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import WorkIcon from '@mui/icons-material/Work';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 
@@ -60,7 +57,7 @@ const WorkHistoryMobile = (props) => {
 				{jobs.map((job, index) => (
 					<Step key={job.id}>
 						<StepLabel StepIconComponent={() => renderIcon(job.endDate)}>
-							<Typography variant='h6' component='span'>
+							<Typography variant='h5' component='span'>
 								<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 							</Typography>
 							<Typography>

@@ -42,7 +42,7 @@ const Education = (props) => {
 				dense
 				sx={{ bgcolor: 'background.paper' }}
 				subheader={
-					<ListSubheader sx={{ fontWeight: 600, fontSize: '1.1rem' }}>
+					<ListSubheader  sx={{ fontWeight: 600, fontSize: '1.1rem' }}>
 						Certifications
 					</ListSubheader>
 				}

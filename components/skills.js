@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Slide from '@mui/material/Slide';
 import InfoIcon from '@mui/icons-material/Info';
-import CallToActionIcon from '@mui/icons-material/CallToAction';
 import { Typography } from '@mui/material';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
@@ -15,13 +14,13 @@ const Skills = (props) => {
 	const [open, setOpen] = useState(false);
 	const [blurb, setBlurb] = useState(null);
 
-	const handlePopoverOpen = (event, blurb) => {
+	const handlePopperOpen = (event, blurb) => {
 		setBlurb(blurb);
 		setOpen((previousOpen) => !previousOpen);
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handlePopoverClose = () => {
+	const handlePopperClose = () => {
 		setOpen((previousOpen) => !previousOpen);
 		setBlurb(null);
 		setAnchorEl(null);
@@ -29,24 +28,18 @@ const Skills = (props) => {
 
 	return (
 		<>
-			<Typography variant='h6' sx={{ ml: 1.75 }}>
+			<Typography variant='h5' sx={{ ml: 1.75 }}>
 				Skills & Competencies
 			</Typography>
 			{skills.map((skill) => (
 				<Box key={skill.id} sx={{ width: '90%', m: 2 }}>
-					<Typography
-						component='span'
-						aria-owns={open ? 'mouse-over-popover' : undefined}
-						aria-haspopup='true'
-						onMouseEnter={() => handlePopoverOpen(event, skill.blurb)}
-						onMouseLeave={handlePopoverClose}
-					>
+					<Typography component='span'>
 						{skill.skillName}
 						<InfoIcon
 							sx={{ ml: 1, height: '1rem', width: '1rem' }}
-							aria-owns={open ? 'mouse-over-popover' : undefined}
+							aria-owns={open ? 'info-click-popper' : undefined}
 							aria-haspopup='true'
-							onClick={() => handlePopoverOpen(event, skill.blurb)}
+							onClick={() => handlePopperOpen(event, skill.blurb)}
 						/>
 					</Typography>
 					<Popper

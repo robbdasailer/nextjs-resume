@@ -36,7 +36,7 @@ const WorkHistory = (props) => {
 		<Timeline position='alternate'>
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
-					<TimelineOppositeContent variant='h6' sx={{ margin: 'auto 0' }}>
+					<TimelineOppositeContent variant='h5' sx={{ margin: 'auto 0' }}>
 						{job.startDate} - {job.endDate || 'Present'}
 					</TimelineOppositeContent>
 					<TimelineSeparator>
@@ -47,7 +47,7 @@ const WorkHistory = (props) => {
 						<TimelineConnector />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
-						<Typography variant='h6' component='span'>
+						<Typography variant='h5' component='span'>
 							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 						</Typography>
 						<Typography>
@@ -76,13 +76,13 @@ const WorkHistory = (props) => {
 				<TimelineOppositeContent></TimelineOppositeContent>
 				<TimelineSeparator>
 					<TimelineConnector />
-					<TimelineDot color='secondary'>
+					<TimelineDot color='primary'>
 						<ReadMoreIcon />
 					</TimelineDot>
 					<TimelineConnector />
 				</TimelineSeparator>
 				<TimelineContent sx={{ py: '12px', px: 2 }}>
-					<Typography variant='h6' component='span'>
+					<Typography variant='h5' component='span'>
 						Want to know more?
 					</Typography>
 					<Typography>

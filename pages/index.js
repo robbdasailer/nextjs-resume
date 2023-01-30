@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Slide from '@mui/material/Slide';
+import "typeface-oswald";
 
 import Header from '../components/header';
 import Education from '../components/education';
@@ -72,8 +73,8 @@ export default function Home() {
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={2}>
 						<Header contactInfo={data.contact} />
-						<Grid item container xs={12} md={3}>
-							<Grid item xs={12} sx={{ marginBottom: { xl: -18, xs: 2 } }}>
+						<Grid item container xs={12} md={3} spacing={2}>
+							<Grid item xs={12} >
 								<Item>
 									<Education
 										education={data.education}
@@ -81,7 +82,7 @@ export default function Home() {
 									/>
 								</Item>
 							</Grid>
-							<Grid item xs={12} sx={{ marginBottom: { xl: -18, xs: 2 } }}>
+							<Grid item xs={12} >
 								<Item>
 									<Skills skills={data.skills} />
 								</Item>

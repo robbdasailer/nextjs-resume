@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -35,8 +36,8 @@ const Header = (props) => {
 			</Grid>
 			<Grid item xs={6} md={10}>
 				<Item sx={{ textAlign: 'right' }}>
-					<h2>{name}</h2>
-					{phone && <h3>{phone}</h3>}
+					<Typography variant='h1'>{name}</Typography>
+					{phone && <Typography variant='h3'>{phone}</Typography>}
 					{email && (
 						<a href={`mailto:${email}`}>
 							<EmailIcon />
