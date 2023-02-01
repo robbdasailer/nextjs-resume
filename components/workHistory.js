@@ -50,25 +50,20 @@ const WorkHistory = (props) => {
 						<Typography variant='h5' component='span'>
 							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 						</Typography>
-						<Typography>
-							{job.jobDescription}{' '}
-							{job.additionalInfo && (
-								<>
-									<Button
-										variant='contained'
-										onClick={() => handleOpen(job.id)}
-									>
-										...Click to see more!
-									</Button>
-									<WorkAdditionalInfo
-										open={open}
-										job={currentJob}
-										setOpen={setOpen}
-										transition={props.transition}
-									/>
-								</>
-							)}
-						</Typography>
+						<Typography>{job.jobDescription}</Typography>
+						{job.additionalInfo && (
+							<>
+								<Button variant='contained' onClick={() => handleOpen(job.id)}>
+									View Accomplishments
+								</Button>
+								<WorkAdditionalInfo
+									open={open}
+									job={currentJob}
+									setOpen={setOpen}
+									transition={props.transition}
+								/>
+							</>
+						)}
 					</TimelineContent>
 				</TimelineItem>
 			))}
