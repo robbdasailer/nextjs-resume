@@ -6,7 +6,6 @@ import styles from '@/styles/Home.module.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import Slide from '@mui/material/Slide';
 import 'typeface-oswald';
 import 'typeface-raleway';
@@ -21,16 +20,10 @@ import WorkHistoryMobile from '../components/workHistoryMobile';
 
 import data from '../pages/api/data';
 
-const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: 'left',
-	color: theme.palette.text.secondary,
-	marginBottom: '0rem',
-}));
-
 export default function Home() {
+
+	const mediaBreakPoint = 1536
+
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;
 	});
@@ -61,7 +54,7 @@ export default function Home() {
 		return targetReached;
 	};
 
-	const isBreakpoint = useMediaQuery(1536);
+	const isBreakpoint = useMediaQuery(mediaBreakPoint);
 
 	return (
 		<>
@@ -75,29 +68,29 @@ export default function Home() {
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={2}>
 						<Header contactInfo={data.contact} />
-						<Grid item container xs={12} md={3} spacing={2}>
-							<Grid item xs={12} sx={{ xl: { mb: '1rem' } }}>
-								<Item>
+						<Grid item container xs={12} md={3}>
+							<Grid item xs={12}>
+								<Paper>
 									<Education
 										education={data.education}
 										certs={data.certifications}
 									/>
-								</Item>
+								</Paper>
 							</Grid>
 							<Grid item xs={12}>
-								<Item>
+								<Paper>
 									<Skills skills={data.skills} />
-								</Item>
+								</Paper>
 							</Grid>
 							<Grid item xs={12}>
-								<Item>
+								<Paper>
 									<Hobbies hobbies={data.hobbies} />
-								</Item>
+								</Paper>
 							</Grid>
 						</Grid>
 						<Grid item container xs={12} md={9}>
 							<Grid item xs={12}>
-								<Item>
+								<Paper>
 									{isBreakpoint ? (
 										<WorkHistoryMobile
 											jobs={data.workHistory}
@@ -110,7 +103,7 @@ export default function Home() {
 											transition={dialogTransition}
 										/>
 									)}
-								</Item>
+								</Paper>
 							</Grid>
 						</Grid>
 					</Grid>

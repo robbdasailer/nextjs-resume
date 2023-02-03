@@ -3,6 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
+import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import SportsBarIcon from '@mui/icons-material/SportsBar';
@@ -36,8 +37,8 @@ const Hobbies = (props) => {
 				dense
 				sx={{ bgcolor: 'background.paper' }}
 				subheader={
-					<ListSubheader sx={{ fontWeight: 600, fontSize: '1.1rem' }}>
-						Hobbies & Interests
+					<ListSubheader>
+						<Typography variant='h5'>Hobbies & Interests</Typography>
 					</ListSubheader>
 				}
 			>

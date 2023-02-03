@@ -32,6 +32,14 @@ const theme = createTheme({
 			fontSize: '1rem',
 			fontWeight: 500,
 		},
+		body1: {
+			fontSize: '1rem',
+			fontWeight: 400
+		},
+		body2: {
+			fontSize: '.875rem',
+			fontWeight: 400
+		},		
 	},
 	palette: {
 		primary: {
@@ -44,5 +52,15 @@ const theme = createTheme({
 			main: red.A400,
 		},
 	},
+	spacing: 6,
+	components: {
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					padding: '.375rem'
+				}
+			}
+		}
+	}
 });
 export default theme;

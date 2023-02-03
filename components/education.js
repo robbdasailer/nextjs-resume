@@ -3,6 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
+import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import SchoolIcon from '@mui/icons-material/School';
@@ -17,8 +18,8 @@ const Education = (props) => {
 				dense
 				sx={{ bgcolor: 'background.paper' }}
 				subheader={
-					<ListSubheader sx={{ fontWeight: 600, fontSize: '1.1rem' }}>
-						Education
+					<ListSubheader>
+						<Typography variant='h5'>Education</Typography>
 					</ListSubheader>
 				}
 			>
@@ -42,8 +43,8 @@ const Education = (props) => {
 				dense
 				sx={{ bgcolor: 'background.paper' }}
 				subheader={
-					<ListSubheader  sx={{ fontWeight: 600, fontSize: '1.1rem' }}>
-						Certifications
+					<ListSubheader>
+						<Typography variant='h5'>Certifications</Typography>
 					</ListSubheader>
 				}
 			>
