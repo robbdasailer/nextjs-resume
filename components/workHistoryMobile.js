@@ -69,9 +69,7 @@ const WorkHistoryMobile = (props) => {
 							<Box sx={{ mb: 2 }}>
 								<div>
 									<Button
-										variant='contained'
 										onClick={handleNext}
-										sx={{ mt: 1, mr: 1 }}
 									>
 										{index === jobs.length - 1
 											? 'Return to Current Position'
@@ -80,14 +78,12 @@ const WorkHistoryMobile = (props) => {
 									<Button
 										disabled={index === 0}
 										onClick={handleBack}
-										sx={{ mt: 1, mr: 1 }}
 									>
 										View Previous
 									</Button>
 									{job.additionalInfo && (
 										<>
 											<Button
-												variant='contained'
 												onClick={() => handleOpen(job.id)}
 											>
 												...Click to see more!

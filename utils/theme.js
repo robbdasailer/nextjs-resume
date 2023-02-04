@@ -15,7 +15,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: ['Oswald', 'Serif'].join(','),
+		fontFamily: ['Raleway', 'Serif'].join(','),
 		h1: {
 			fontSize: '1.5rem',
 			fontWeight: 900,
@@ -57,8 +57,9 @@ const theme = createTheme({
 					`linear-gradient(to bottom, transparent, ${grey[50]}) ${grey[500]}`,
 				},
 				main: {
-					padding: '1.5rem',
+					padding: '1rem',
 					minHeight: '100vh',
+					display: 'flex',
 					a: {
 						color: grey[900],
 					},
@@ -78,6 +79,12 @@ const theme = createTheme({
 		MuiButton: {
 			defaultProps: {
 				variant: 'contained'
+			},
+			styleOverrides: {
+				root: {
+					marginTop: 2,
+					marginRight: 1
+				}
 			}
 		},
 		MuiList: {

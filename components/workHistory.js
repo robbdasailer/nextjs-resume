@@ -53,7 +53,7 @@ const WorkHistory = (props) => {
 						<Typography>{job.jobDescription}</Typography>
 						{job.additionalInfo && (
 							<>
-								<Button variant='contained' onClick={() => handleOpen(job.id)}>
+								<Button onClick={() => handleOpen(job.id)}>
 									View Accomplishments
 								</Button>
 								<WorkAdditionalInfo

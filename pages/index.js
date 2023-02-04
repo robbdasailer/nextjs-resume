@@ -64,9 +64,9 @@ export default function Home() {
 			</Head>
 			<main>
 				<Box sx={{ flexGrow: 1 }}>
-					<Grid container spacing={2}>
+					<Grid container spacing={2} sx={{ alignItems: 'flex-start' }}>
 						<Header contactInfo={data.contact} />
-						<Grid item container xs={12} md={3}>
+						<Grid item container xs={12} md={3} spacing={2}>
 							<Grid item xs={12}>
 								<Paper>
 									<Education

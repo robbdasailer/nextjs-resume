@@ -5,7 +5,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import GppGoodIcon from '@mui/icons-material/GppGood';
 import SportsBarIcon from '@mui/icons-material/SportsBar';
 import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
