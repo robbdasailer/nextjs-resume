@@ -88,7 +88,6 @@ const WorkHistoryMobile = (props) => {
 										<>
 											<Button
 												variant='contained'
-												sx={{ mt: 1, mr: 1 }}
 												onClick={() => handleOpen(job.id)}
 											>
 												...Click to see more!

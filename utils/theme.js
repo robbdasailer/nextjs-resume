@@ -1,9 +1,19 @@
 import { createTheme } from '@mui/material/styles';
 import { grey, blue } from '@mui/material/colors';
 
-
 // Create a theme instance.
 const theme = createTheme({
+	palette: {
+		primary: {
+			main: blue[700],
+		},
+		secondary: {
+			main: grey[500],
+		},
+		action: {
+			main: grey[900],
+		},
+	},
 	typography: {
 		fontFamily: ['Oswald', 'Serif'].join(','),
 		h1: {
@@ -39,19 +49,42 @@ const theme = createTheme({
 			fontWeight: 400,
 		},
 	},
-	palette: {
-		primary: {
-			main: blue[700],
-		},
-		secondary: {
-			main: grey[500],
-		},
-		action: {
-			main: grey[900],
-		},
-	},
-	spacing: 6,
 	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				body: {
+					background:
+					`linear-gradient(to bottom, transparent, ${grey[50]}) ${grey[500]}`,
+				},
+				main: {
+					padding: '1.5rem',
+					minHeight: '100vh',
+					a: {
+						color: grey[900],
+					},
+					img: {
+						borderRadius: '50%',
+					},
+				},
+			},
+		},
+		MuiAvatar: {
+			styleOverrides: {
+				root: {
+					backgroundColor: grey[500],
+				},
+			},
+		},
+		MuiButton: {
+			defaultProps: {
+				variant: 'contained'
+			}
+		},
+		MuiList: {
+			defaultProps: {
+				dense: true,
+			},
+		},
 		MuiPaper: {
 			styleOverrides: {
 				root: {
@@ -60,18 +93,7 @@ const theme = createTheme({
 				},
 			},
 		},
-		MuiList: {
-			defaultProps: {
-				dense: true,
-			},
-		},
-		MuiAvatar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: grey[500]
-				}
-			}
-		}
 	},
+	spacing: 6,
 });
 export default theme;

@@ -34,8 +34,6 @@ const Hobbies = (props) => {
     return (
         <>
 			<List
-				dense
-				sx={{ bgcolor: 'background.paper' }}
 				subheader={
 					<ListSubheader>
 						<Typography variant='h5'>Hobbies & Interests</Typography>

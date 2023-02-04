@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -21,8 +20,7 @@ import WorkHistoryMobile from '../components/workHistoryMobile';
 import data from '../pages/api/data';
 
 export default function Home() {
-
-	const mediaBreakPoint = 1536
+	const mediaBreakPoint = 1536;
 
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;
@@ -64,7 +62,7 @@ export default function Home() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className={styles.main}>
+			<main>
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={2}>
 						<Header contactInfo={data.contact} />
