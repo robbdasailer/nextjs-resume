@@ -19,15 +19,15 @@ const Hobbies = (props) => {
     const renderIcon = (icon) => {
 		switch(icon) {
             case 'bbq':
-                return <OutdoorGrillIcon />
+                return <OutdoorGrillIcon color="action" />
             case 'beer':
-                return <SportsBarIcon />
+                return <SportsBarIcon color="action" />
             case 'outdoor':
-                return <NaturePeopleIcon />
+                return <NaturePeopleIcon color="action" />
             case 'family':
-                return <Diversity1Icon />
+                return <Diversity1Icon color="action" />
             default:
-                return <InterestsIcon />
+                return <InterestsIcon color="action" />
         }
 	};
 

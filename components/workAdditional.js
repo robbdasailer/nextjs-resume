@@ -21,13 +21,13 @@ const WorkAdditionalInfo = (props) => {
 				{jobTitle}
 				{props.open ? (
 					<IconButton
+						color='action'
 						aria-label='close'
 						onClick={handleClose}
 						sx={{
 							position: 'absolute',
 							right: 8,
 							top: 8,
-							color: (theme) => theme.palette.grey[500],
 						}}
 					>
 						<CloseIcon />

@@ -46,7 +46,7 @@ const WorkHistory = (props) => {
 						</TimelineDot>
 						<TimelineConnector />
 					</TimelineSeparator>
-					<TimelineContent sx={{ py: 1, px: 2 }}>
+					<TimelineContent sx={{ py: 1, px: 2.65 }}>
 						<Typography variant='h5' component='span'>
 							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 						</Typography>
@@ -76,7 +76,7 @@ const WorkHistory = (props) => {
 					</TimelineDot>
 					<TimelineConnector />
 				</TimelineSeparator>
-				<TimelineContent sx={{ py: 2, px: 2 }}>
+				<TimelineContent sx={{ py: 2, px: 2.65 }}>
 					<Typography variant='h5' component='span'>
 						Want to know more?
 					</Typography>

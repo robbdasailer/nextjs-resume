@@ -35,7 +35,7 @@ const Skills = (props) => {
 				<Box key={skill.id} sx={{ width: '90%', m: 2 }}>
 					<Typography component='span'>
 						{skill.skillName}
-						<InfoIcon
+						<InfoIcon color="action"
 							sx={{ ml: 1, height: '1rem', width: '1rem' }}
 							aria-owns={open ? 'info-click-popper' : undefined}
 							aria-haspopup='true'
