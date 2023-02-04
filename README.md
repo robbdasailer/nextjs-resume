@@ -1,38 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It was modified to use MUIv5 with some minimal theming to allow easy customization.
 
 ## Getting Started
 
-First, run the development server:
+Run the following command to install the required components:
+
+```bash
+npm install
+```
+
+Then run the following command to run in development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+This is designed to be an easy-start resume template with all data hosted locally in data.js file under the api directory. This template is also mobile ready so it should still look great when viewed on a phone. The layout is designed to provide a quick overview of your skills and experience in an easy to consume manner.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Customizations
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The vast majority of all CSS styling and theming is located in the theme.js file under the utils folder. Check out the following links to see how to modify any specific components. The link for the color palette is also included below.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[MUI Theme](https://mui.com/material-ui/customization/theming/)
 
-## Learn More
+[MUI Color Palette](https://mui.com/material-ui/customization/color/)
 
-To learn more about Next.js, take a look at the following resources:
+## Dockerfile - TODO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Upcoming Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In achievements dialog for work history, update to list of acheivements
+Test out timeline and see if it looks better left justified
+Get site to use a dark theme based on user browser settings
