@@ -20,7 +20,7 @@ import WorkHistoryMobile from '../components/workHistoryMobile';
 import data from '../pages/api/data';
 
 export default function Home() {
-	const mediaBreakPoint = 1536;
+	const mediaBreakPoint = 600;
 
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;

@@ -30,6 +30,4 @@ The vast majority of all CSS styling and theming is located in the theme.js file
 
 ## Upcoming Enhancements
 
-In achievements dialog for work history, update to list of acheivements
-Test out timeline and see if it looks better left justified
-Get site to use a dark theme based on user browser settings
+Get site to use a dark theme based on user browser settings, create utility to easily update the data.js file, update Readme to give basic details on updates (i.e. builtin icons for hobbies, typographies already in place, basic color change), refactor theme to see if we can define colors in a more global fashion so they can easily be updated in one spot.

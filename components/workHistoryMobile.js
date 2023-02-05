@@ -86,7 +86,7 @@ const WorkHistoryMobile = (props) => {
 											<Button
 												onClick={() => handleOpen(job.id)}
 											>
-												...Click to see more!
+												View Accomplishments
 											</Button>
 											<WorkAdditionalInfo
 												open={open}

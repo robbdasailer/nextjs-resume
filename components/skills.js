@@ -71,7 +71,7 @@ const Skills = (props) => {
 						)}
 					</Popper>
 					<Slide direction='right' in={true}>
-						<LinearProgress variant='determinate' value={skill.rating} />
+						<LinearProgress color="secondary" variant='determinate' value={skill.rating} />
 					</Slide>
 				</Box>
 			))}

@@ -5,7 +5,9 @@ import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import TimelineOppositeContent, {
+	timelineOppositeContentClasses,
+} from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
@@ -23,7 +25,6 @@ const WorkHistory = (props) => {
 	const { linkedInUrl } = props.contact;
 
 	const handleOpen = (jobId) => {
-		console.log({ jobId });
 		setCurrentJob(
 			jobs.find((job) => {
 				return jobId === job.id;
@@ -33,7 +34,13 @@ const WorkHistory = (props) => {
 	};
 
 	return (
-		<Timeline position='alternate'>
+		<Timeline
+			sx={{
+				[`& .${timelineOppositeContentClasses.root}`]: {
+					flex: 0.2,
+				},
+			}}
+		>
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
 					<TimelineOppositeContent variant='h5' sx={{ margin: 'auto 0' }}>
@@ -41,9 +48,15 @@ const WorkHistory = (props) => {
 					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector />
-						<TimelineDot color='secondary'>
-							{job.endDate ? <WorkHistoryIcon /> : <WorkIcon />}
-						</TimelineDot>
+						{job.endDate ? (
+							<TimelineDot color='primary'>
+								<WorkHistoryIcon />
+							</TimelineDot>
+						) : (
+							<TimelineDot color='secondary'>
+								<WorkIcon color='action' />
+							</TimelineDot>
+						)}
 						<TimelineConnector />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: 1, px: 2.65 }}>
@@ -71,8 +84,8 @@ const WorkHistory = (props) => {
 				<TimelineOppositeContent></TimelineOppositeContent>
 				<TimelineSeparator>
 					<TimelineConnector />
-					<TimelineDot color='primary'>
-						<ReadMoreIcon />
+					<TimelineDot color='secondary'>
+						<ReadMoreIcon color='action' />
 					</TimelineDot>
 					<TimelineConnector />
 				</TimelineSeparator>

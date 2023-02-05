@@ -1,14 +1,14 @@
 import { createTheme } from '@mui/material/styles';
-import { grey, blue } from '@mui/material/colors';
+import { grey, blue, blueGrey } from '@mui/material/colors';
 
 // Create a theme instance.
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: blue[700],
+			main: grey[500],
 		},
 		secondary: {
-			main: grey[500],
+			main: blue[700],
 		},
 		action: {
 			main: grey[900],
@@ -53,8 +53,7 @@ const theme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					background:
-					`linear-gradient(to bottom, transparent, ${grey[50]}) ${grey[500]}`,
+					background: `linear-gradient(to bottom, transparent, ${grey[50]}) ${grey[500]}`,
 				},
 				main: {
 					padding: '1rem',
@@ -78,18 +77,28 @@ const theme = createTheme({
 		},
 		MuiButton: {
 			defaultProps: {
-				variant: 'contained'
+				variant: 'contained',
+				color: 'secondary',
 			},
 			styleOverrides: {
 				root: {
 					marginTop: 2,
-					marginRight: 1
-				}
-			}
+					marginRight: 1,
+				},
+			},
 		},
 		MuiList: {
 			defaultProps: {
 				dense: true,
+			},
+		},
+		MuiListItemText: {
+			styleOverrides: {
+				root: {
+					p: {
+						color: blueGrey[400],
+					},
+				},
 			},
 		},
 		MuiPaper: {
@@ -97,6 +106,13 @@ const theme = createTheme({
 				root: {
 					padding: '.375rem',
 					minHeight: 150,
+				},
+			},
+		},
+		MuiTypography: {
+			styleOverrides: {
+				root: {
+					color: blueGrey[900],
 				},
 			},
 		},

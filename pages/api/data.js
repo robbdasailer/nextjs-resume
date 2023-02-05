@@ -135,7 +135,7 @@ let data = {
 	workHistory: [
 		{
 			id: 1,
-			startDate: '20 Sept 2021',
+			startDate: 'Sept 2021',
 			company: 'Raft Technologies',
 			companyLink: 'UrlHere',
 			jobTitle: 'Principal Engineer',
@@ -144,50 +144,57 @@ let data = {
 		},
 		{
 			id: 2,
-			startDate: '07 July 2019',
-			endDate: '17 Sept 2021',
+			startDate: 'July 2019',
+			endDate: 'Sept 2021',
 			company: 'Concord Technologies',
 			companyLink: 'UrlHere',
 			jobTitle: 'Principal Cloud Operations Engineer',
 			jobDescription:
 				'Works in Azure DevOps to create build and release pipelines to automatically create new builds when development is complete and deploy to Kubernetes, Azure App Service Plans, and virtual machines.  Develops utilities using .Net Core and PowerShell to allow for better monitoring of the environment and create more robust troubleshooting tools.  Deploys external monitoring solutions to Azure Kubernetes Services to allow scaling pods on additional metrics and creates new clusters when needed. Troubleshoots software issues and performs research with 3rd party integrations to ensure it is being used optimally. Works closely with development team to help diagnose performance issues with the environment and to assist in the creation and troubleshooting of dockerfiles.',
-			additionalInfo: 'Led effort to re-architect event capturing system into a polymorphic pattern design in NoSQL.',
+			additionalInfo: [
+				'Led effort to re-architect event capturing system into a polymorphic pattern design in NoSQL.',
+			],
 		},
 		{
 			id: 3,
-			startDate: '01 Jan 2014',
-			endDate: '02 July 2019',
+			startDate: 'Jan 2014',
+			endDate: 'July 2019',
 			company: 'K2',
 			companyLink: 'UrlHere',
 			jobTitle: 'Infrastructure Consultant',
 			jobDescription:
 				'Consults on infrastructure requirements for new environment builds and works with customers to tightly integrate Microsoft Exchange, SharePoint, and Active Directory services into platform. Assists in troubleshooting environmental issues keeping a new build or existing build from working properly. Assists in building solutions on the K2 Platform including building out SQL tables, stored procedures, views, and web services.',
-			additionalInfo:
+			additionalInfo: [
 				'Developed a set of custom PowerShell cmdlets using C# to avoid having to manually modify database and make administration of K2 easier',
+			],
 		},
 		{
 			id: 4,
-			startDate: '01 Jan 2014',
-			endDate: '31 Dec 2014',
+			startDate: 'Jan 2014',
+			endDate: 'Dec 2014',
 			company: 'Geocent',
 			companyLink: 'UrlHere',
 			jobTitle: 'Senior Systems Administrator',
 			jobDescription:
 				'Assists on SharePoint 2010 implementation project to include building new farms, migrating to new farms, and securing the environment to ensure compliance with DoD standards. Troubleshoots issues with Exchange, IronPorts, ArcSight, Active Directory, Hyper-V, SCVMM, and SCOM. Works to ensure Exchange, SharePoint, ArcSight, and SQL servers are compliant with DoD STIG’s.',
-			additionalInfo:
+			additionalInfo: [
 				"Automated process of creating STIG'ed virtual machines to cut provisioning time down from several days to five minutes",
+				'Did Some other thing',
+				'And another thing'
+			],
 		},
 		{
 			id: 5,
-			startDate: '01 September 2011',
-			endDate: '31 July 2013',
+			startDate: 'Sept 2011',
+			endDate: 'July 2013',
 			company: 'Rackspace, the Open Cloud Company',
 			companyLink: 'UrlHere',
 			jobTitle: 'SharePoint Engineer',
 			jobDescription:
 				'Engages new customers on implementation calls to assist in the planning of the SharePoint infrastructure to include Active Directory environment, authentication method, and custom deployments. Builds new SharePoint environments based on customer specifications. Performs migrations between older versions of SharePoint to new versions. Troubleshoots SharePoint environments to determine root cause and resolve issues. Creates PowerShell scripts to help in common farm administration tasks or to get additional information that is not easily obtained via Central Administration. Played a key role in creating and implementing a hosted SharePoint 2013 environment on the Rackspace public cloud using other cloud technologies (such as Vyatta) to ensure security of the infrastructure.',
-			additionalInfo:
-				'Created a secure multi-tenant SharePoint 2013 farm on public cloud infrastructure',
+			additionalInfo: [
+				'Created a seure multi-tenant SharePoint 2013 farm on public cloud infrastructure',
+			],
 		},
 	],
 };
