@@ -30,4 +30,4 @@ The vast majority of all CSS styling and theming is located in the theme.js file
 
 ## Upcoming Enhancements
 
-[Get site to use a dark theme based on user browser settings](https://mui.com/material-ui/customization/dark-mode/), [create utility to easily update the data.js file that only shows up in dev](https://dev.to/tylerlwsmith/development-only-pages-in-nextjs-4fgo), update Readme to give basic details on updates (i.e. builtin icons for hobbies, typographies already in place, basic color change)
+[Get site to use a dark theme based on user browser settings](https://mui.com/material-ui/customization/dark-mode/), Create Form to generate Resume Data, update Readme to give basic details on updates (i.e. builtin icons for hobbies, typographies already in place, basic color change)

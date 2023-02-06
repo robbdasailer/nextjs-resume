@@ -25,7 +25,7 @@ const [
 	primaryColor,
 	secondaryColor,
 	actionColor,
-	gradientEndColor,
+	contrastColor,
 	primaryTextColor,
 	secondaryTextColor,
 	fontFamily,
@@ -44,9 +44,11 @@ const theme = createTheme({
 	palette: {
 		primary: {
 			main: `${primaryColor}`,
+			contrastText: `${contrastColor}`
 		},
 		secondary: {
 			main: `${secondaryColor}`,
+			contrastText: `${contrastColor}`
 		},
 		action: {
 			main: `${actionColor}`,
@@ -91,7 +93,7 @@ const theme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					background: `linear-gradient(to bottom, transparent, ${gradientEndColor}) ${primaryColor}`,
+					background: `linear-gradient(to bottom, transparent, ${contrastColor}) ${primaryColor}`,
 				},
 				main: {
 					padding: '1rem',
