@@ -20,8 +20,13 @@
     "next": "^13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "typeface-inconsolata": "^1.1.13",
+    "typeface-inter": "^3.18.1",
+    "typeface-montserrat": "^1.1.13",
     "typeface-oswald": "^1.1.13",
     "typeface-poppins": "^1.1.13",
-    "typeface-raleway": "^1.1.13"
+    "typeface-raleway": "^1.1.13",
+    "typeface-roboto-slab": "^1.1.13",
+    "typeface-work-sans": "^1.1.13"
   }
 }

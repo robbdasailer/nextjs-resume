@@ -50,7 +50,7 @@ const WorkHistory = (props) => {
 						<TimelineConnector />
 						{job.endDate ? (
 							<TimelineDot color='primary'>
-								<WorkHistoryIcon />
+								<WorkHistoryIcon color='action' />
 							</TimelineDot>
 						) : (
 							<TimelineDot color='secondary'>

@@ -9,6 +9,11 @@ import Slide from '@mui/material/Slide';
 import 'typeface-oswald';
 import 'typeface-raleway';
 import 'typeface-poppins';
+import 'typeface-inconsolata';
+import 'typeface-inter';
+import 'typeface-montserrat';
+import 'typeface-roboto-slab';
+import 'typeface-work-sans';
 
 import Header from '../components/header';
 import Education from '../components/education';

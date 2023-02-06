@@ -1,21 +1,59 @@
 import { createTheme } from '@mui/material/styles';
-import { grey, blue, blueGrey } from '@mui/material/colors';
+import {
+	red,
+	pink,
+	purple,
+	deepPurple,
+	indigo,
+	blue,
+	lightBlue,
+	cyan,
+	teal,
+	green,
+	lightGreen,
+	lime,
+	yellow,
+	amber,
+	orange,
+	deepOrange,
+	brown,
+	grey,
+	blueGrey,
+} from '@mui/material/colors';
+
+const [
+	primaryColor,
+	secondaryColor,
+	actionColor,
+	gradientEndColor,
+	primaryTextColor,
+	secondaryTextColor,
+	fontFamily,
+] = [
+	grey[500],
+	blue[700],
+	grey[900],
+	grey[50],
+	blueGrey[900],
+	blueGrey[500],
+	'Raleway',
+];
 
 // Create a theme instance.
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: grey[500],
+			main: `${primaryColor}`,
 		},
 		secondary: {
-			main: blue[700],
+			main: `${secondaryColor}`,
 		},
 		action: {
-			main: grey[900],
+			main: `${actionColor}`,
 		},
 	},
 	typography: {
-		fontFamily: ['Raleway', 'Serif'].join(','),
+		fontFamily: [`${fontFamily}`, 'Serif'].join(','),
 		h1: {
 			fontSize: '1.5rem',
 			fontWeight: 900,
@@ -53,14 +91,14 @@ const theme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					background: `linear-gradient(to bottom, transparent, ${grey[50]}) ${grey[500]}`,
+					background: `linear-gradient(to bottom, transparent, ${gradientEndColor}) ${primaryColor}`,
 				},
 				main: {
 					padding: '1rem',
 					minHeight: '100vh',
 					display: 'flex',
 					a: {
-						color: grey[900],
+						color: `${actionColor}`,
 					},
 					img: {
 						borderRadius: '50%',
@@ -71,7 +109,7 @@ const theme = createTheme({
 		MuiAvatar: {
 			styleOverrides: {
 				root: {
-					backgroundColor: grey[500],
+					backgroundColor: `${primaryColor}`,
 				},
 			},
 		},
@@ -96,7 +134,7 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					p: {
-						color: blueGrey[400],
+						color: `${secondaryTextColor}`,
 					},
 				},
 			},
@@ -112,7 +150,7 @@ const theme = createTheme({
 		MuiTypography: {
 			styleOverrides: {
 				root: {
-					color: blueGrey[900],
+					color: `${primaryTextColor}`,
 				},
 			},
 		},
