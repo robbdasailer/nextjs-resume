@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useStateCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -24,12 +24,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 const contactItems = [
-	'Name',
-	'Email',
-	'Phone',
-	'GitHub Url',
-	'LinkedIn Url',
-	'Generic Url',
+	'name',
+	'email',
+	'phone',
+	'githubUrl',
+	'linkedInUrl',
+	'genericUrl',
 ];
 
 const educationItems = [
@@ -69,13 +69,23 @@ const workHistoryItems = [
 ];
 
 const Build = () => {
-    const [resumeData, setResumeData] = useState({})
+    const [resumeData, setResumeData] = useState({contact: {}, education: [], certifications: [], hobbies: [], skills: [], workHistory: []})
 	const [skillsOpen, setSkillsOpen] = useState(false);
 	const [icon, setIcon] = useState('');
 
 	const handleChange = (event) => {
 		setIcon(event.target.value);
 	};
+
+    const handleContactUpdate = (event) => {
+        let contactData = {...resumeData.contact, [event.target.id]: event.target.value}
+        setResumeData({...resumeData, "contact": contactData})
+        console.log({resumeData});
+    }
+
+    const handleSubmit = () => {
+        console.log({resumeData});
+    }
 
 	return (
 		<main>
@@ -84,22 +94,23 @@ const Build = () => {
 					Resume Data Builder
 				</Typography>
 				<Grid container>
-					<Grid container xs={6} spacing={1}>
+					<Grid container item xs={6} spacing={1}>
 						<Grid item>
 							<Typography variant='h3' ml={5} mb={1} mt={1}>
 								Basic Info
 							</Typography>
 							<StyledBox>
 								{contactItems.map((contactItem, index) => (
-									<>
+									<div key={index}>
 										<TextField
 											key={index}
-											required={contactItem == 'Name'}
+											required={contactItem == 'name'}
 											id={contactItem}
 											label={contactItem}
-											defaultValue=''
+											defaultValue={resumeData.contact[contactItem]}
+                                            onChange={handleContactUpdate}
 										/>
-									</>
+									</div>
 								))}
 							</StyledBox>
 						</Grid>
@@ -109,7 +120,7 @@ const Build = () => {
 							</Typography>
 							<StyledBox>
 								{educationItems.map((educationItem, index) => (
-									<>
+									<div key={index}>
 										<TextField
 											key={index}
 											required={true}
@@ -117,7 +128,7 @@ const Build = () => {
 											label={educationItem}
 											defaultValue=''
 										/>
-									</>
+									</div>
 								))}
 							</StyledBox>
 							<FormGroup>
@@ -130,7 +141,7 @@ const Build = () => {
 								</Typography>
 								<StyledBox>
 									{certificationItems.map((certificationItem, index) => (
-										<>
+										<div key={index}>
 											<TextField
 												key={index}
 												required={true}
@@ -138,7 +149,7 @@ const Build = () => {
 												label={certificationItem}
 												defaultValue=''
 											/>
-										</>
+										</div>
 									))}
 								</StyledBox>
 							</FormGroup>
@@ -176,14 +187,14 @@ const Build = () => {
 							</StyledBox>
 						</Grid>
 					</Grid>
-					<Grid container xs={6}>
+					<Grid container item xs={6}>
 						<Grid item>
 							<Typography variant='h3' ml={5} mb={1} mt={1}>
 								Work History
 							</Typography>
 						</Grid>
 						<Grid item>
-							<Button mb={1} mt={1}>
+							<Button mb={1} mt={1} onClick={handleSubmit}>
 								Generate Resume Data
 							</Button>
 						</Grid>
