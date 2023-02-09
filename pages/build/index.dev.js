@@ -14,6 +14,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	...theme.typography.body2,
@@ -32,12 +34,7 @@ const contactItems = [
 	'genericUrl',
 ];
 
-const educationItems = [
-	'School Name',
-	'School Url',
-	'Degree',
-	'Graduation Year',
-];
+const educationItems = ['school', 'schoolUrl', 'degree', 'graduationYear'];
 
 const certificationItems = [
 	'Certification Name',
@@ -69,23 +66,123 @@ const workHistoryItems = [
 ];
 
 const Build = () => {
-    const [resumeData, setResumeData] = useState({contact: {}, education: [], certifications: [], hobbies: [], skills: [], workHistory: []})
+	const [resumeData, setResumeData] = useState({
+		contact: {},
+		education: [],
+		certifications: [],
+		hobbies: [],
+		skills: [],
+		workHistory: [],
+	});
+	const [educationCount, setEducationCount] = useState(1);
+	const [educationRow, setEducationRow] = useState({});
+	const [certificationCount, setCertificationCount] = useState(0);
+	const [hobbyCount, setHobbyCount] = useState(1);
+	const [hobbyRow, setHobbyRow] = useState({ icon: 'other' });
+	const [skillCount, setSkillCount] = useState(1);
 	const [skillsOpen, setSkillsOpen] = useState(false);
+	const [workHistoryCount, setWorkHistoryCount] = useState(1);
 	const [icon, setIcon] = useState('');
 
-	const handleChange = (event) => {
+	const handleIconUpdate = (event) => {
 		setIcon(event.target.value);
+		handleHobbyRowUpdate;
 	};
 
-    const handleContactUpdate = (event) => {
-        let contactData = {...resumeData.contact, [event.target.id]: event.target.value}
-        setResumeData({...resumeData, "contact": contactData})
-        console.log({resumeData});
-    }
+	const handleContactUpdate = (event) => {
+		let contactData = {
+			...resumeData.contact,
+			[event.target.id]: event.target.value,
+		};
+		setResumeData({ ...resumeData, contact: contactData });
+		console.log({ resumeData });
+	};
 
-    const handleSubmit = () => {
-        console.log({resumeData});
-    }
+	const handleEducationUpdate = (countDelta) => {
+		setEducationCount(educationCount + countDelta);
+		if (countDelta > 0) {
+			setEducationRow({ ...educationRow, id: educationCount });
+			let updatedArray = resumeData.education.push(educationRow);
+			setResumeData({ ...resumeData, updatedArray });
+		} else if (countDelta < 0 && resumeData.education.length > 1) {
+			let updatedArray = resumeData.education.pop();
+			setResumeData({ ...resumeData, updatedArray });
+		}
+		setEducationRow({});
+		console.log(resumeData);
+	};
+
+	const handleEducationRowUpdate = () => {
+		setEducationRow({ ...educationRow, [event.target.id]: event.target.value });
+		if (!educationRow.id) {
+			setEducationRow({ ...educationRow, id: educationCount });
+		}
+	};
+
+	const renderEducation = () => {
+		const educationEntries = [];
+		for (let i = 0; i < educationCount; i++) {
+			educationEntries.push(
+				educationItems.map((educationItem, index) => (
+					<TextField
+						key={index}
+						required={true}
+						id={educationItem}
+						label={educationItem}
+						defaultValue=''
+						onChange={handleEducationRowUpdate}
+					/>
+				))
+			);
+		}
+		return educationEntries;
+	};
+
+	const handleHobbyRowUpdate = () => {
+		setHobbyRow({ ...hobbyRow, [event.target.id]: event.target.value });
+		if (!hobbyRow.id) {
+			setHobbyRow({ ...hobbyRow, id: hobbyCount });
+		}
+		console.log(hobbyRow);
+	};
+
+	const renderHobbies = () => {
+		const hobbyEntries = [];
+		for (let i = 0; i < hobbyCount; i++) {
+			hobbyEntries.push(
+				<>
+					<TextField
+						required
+						id='title'
+						label='Hobby Name'
+						defaultValue=''
+						onChange={handleHobbyRowUpdate}
+					/>
+					<FormControl>
+						<InputLabel id='hobby-icon-select-label'>Hobby Icon</InputLabel>
+						<Select
+							labelId='hobby-icon-select-label'
+							id='icon'
+							value='other'
+							label='Icon'
+							onChange={handleHobbyRowUpdate}
+						>
+							{hobbyIcons.map((hobbyIcon, index) => (
+								<MenuItem key={index} value={hobbyIcon}>
+									{hobbyIcon}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+				</>
+			);
+		}
+		return hobbyEntries;
+	};
+
+	const handleSubmit = () => {
+		console.log({ resumeData });
+	};
 
 	return (
 		<main>
@@ -108,7 +205,7 @@ const Build = () => {
 											id={contactItem}
 											label={contactItem}
 											defaultValue={resumeData.contact[contactItem]}
-                                            onChange={handleContactUpdate}
+											onChange={handleContactUpdate}
 										/>
 									</div>
 								))}
@@ -117,23 +214,22 @@ const Build = () => {
 						<Grid item>
 							<Typography variant='h3' ml={5} mb={1} mt={1}>
 								Education
+								<AddIcon
+									color='action'
+									onClick={() => handleEducationUpdate(1)}
+								/>
+								{educationCount > 1 && (
+									<RemoveIcon
+										color='action'
+										onClick={() => handleEducationUpdate(-1)}
+									/>
+								)}
 							</Typography>
-							<StyledBox>
-								{educationItems.map((educationItem, index) => (
-									<div key={index}>
-										<TextField
-											key={index}
-											required={true}
-											id={educationItem}
-											label={educationItem}
-											defaultValue=''
-										/>
-									</div>
-								))}
-							</StyledBox>
+
+							<StyledBox>{renderEducation()}</StyledBox>
 							<FormGroup>
 								<FormControlLabel
-									control={<Switch defaultChecked color='secondary' />}
+									control={<Switch defaultChecked={false} color='secondary' />}
 									label='Add Certifications'
 								/>
 								<Typography variant='h3' ml={5} mb={1} mt={1}>
@@ -158,33 +254,15 @@ const Build = () => {
 						<Grid item>
 							<Typography variant='h3' ml={5} mb={1} mt={1}>
 								Hobbies
+								<AddIcon color='action' onClick={() => handleHobbyUpdate(1)} />
+								{educationCount > 1 && (
+									<RemoveIcon
+										color='action'
+										onClick={() => handleHobbyUpdate(-1)}
+									/>
+								)}
 							</Typography>
-							<StyledBox>
-								<TextField
-									required
-									id='HobbyName'
-									label='Hobby Name'
-									defaultValue=''
-								/>
-								<FormControl>
-									<InputLabel id='hobby-icon-select-label'>
-										Hobby Icon
-									</InputLabel>
-									<Select
-										labelId='hobby-icon-select-label'
-										id='hobby-icon-select'
-										value={icon}
-										label='Icon'
-										onChange={handleChange}
-									>
-										{hobbyIcons.map((hobbyIcon, index) => (
-											<MenuItem key={index} value={hobbyIcon}>
-												{hobbyIcon}
-											</MenuItem>
-										))}
-									</Select>
-								</FormControl>
-							</StyledBox>
+							<StyledBox>{renderHobbies()}</StyledBox>
 						</Grid>
 					</Grid>
 					<Grid container item xs={6}>
