@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,13 +6,18 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
 
-import SharedFormHeader from './sharedFormHeader';
 import SharedTableHeader from './sharedTableHeader';
+import WorkHistoryItem from './workHistoryItem';
+import resumeDataHelper, { generateNewItem, removeFromArray } from '../../utils/resumeDataHelper';
 
 const WorkHistoryList = (props) => {
+	const [currentItem, setCurrentItem] = useState();
 
-	const {open, setOpen, transition} = props;
+	const {open, setOpen, transition, workHistory, handleUpdate} = props;
 
 	const header = "Work History"
 
@@ -26,26 +31,52 @@ const WorkHistoryList = (props) => {
 		'Additional Info'
 	];
 
-	const handleOpenEdit = (itemId) => {
-		console.log(itemId)
+	const handleOpen = (item) => {
+		if (item) {
+			setCurrentItem(item)
+		} else {
+			setCurrentItem(generateNewItem(workHistory, header))
+		}
+		setOpen(true)
+	}
+
+	const handleWorkHistoryUpdate = (event) => {
+		setCurrentItem({ ...currentItem, [event.target.id]: event.target.value });
+	};
+
+	const handleSave = () => {
+
+	}
+
+	const handleDelete = () => {
+		const updatedWorkHistory = removeFromArray(workHistory, currentItem.id)
+		handleUpdate(updatedWorkHistory)
+		setOpen(false)
 	}
 
 	return (
 		<>
-			<SharedFormHeader header={header} open={open} setOpen={setOpen} transition={transition} />
+		<Typography variant='h3' ml={5} mb={1} mt={1}>
+			{header}
+			<Button sx={{ ml: 5 }} onClick={() => handleOpen(null)}>
+				<AddIcon></AddIcon>
+				Add Item
+			</Button>
+		</Typography>
+			{open && <WorkHistoryItem open={open} setOpen={setOpen} transition={transition} header={header} item={currentItem} handleDelete={handleDelete} handleUpdate={handleWorkHistoryUpdate} />}
 			<TableContainer sx={{ml: 3, width: '98%'}}>
 				<Table>
 					<SharedTableHeader tableHeaders={tableHeaders} />
 					<TableBody>
-						{props.workHistory.map((item) => {
+						{workHistory.map((item) => {
 							return (
-							<TableRow key={item.id} onClick={() => handleOpenEdit(item.id)}>
+							<TableRow key={item.id} onClick={() => handleOpen(item)}>
 								<TableCell>{item.company}</TableCell>
 								<TableCell>{item.companyLink}</TableCell>
+								<TableCell>{item.startDate}</TableCell>
 								<TableCell>{item.endDate}</TableCell>
 								<TableCell>{item.jobTitle}</TableCell>
 								<TableCell>{item.jobDescription}</TableCell>
-								<TableCell>{item.startDate}</TableCell>
 								<TableCell align='center'>
 									<Checkbox
 										checked={

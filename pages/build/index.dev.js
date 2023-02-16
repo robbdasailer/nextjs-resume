@@ -130,7 +130,7 @@ const Build = () => {
 					</Grid>
 
 					<Grid item xs={12}>
-                        <WorkHistoryList workHistory={resumeData.workHistory} open={itemOpen} setOpen={setItemOpen} transition={dialogTransition} />
+                        <WorkHistoryList workHistory={resumeData.workHistory} open={itemOpen} setOpen={setItemOpen} transition={dialogTransition} handleUpdate={handleWorkHistoryUpdate} />
 					</Grid>
 					<Grid item>
 						<Button sx={{mt: 1, mb: 1, ml: 5}} onClick={handleSubmit}>
