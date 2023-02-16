@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 import SharedTableHeader from './sharedTableHeader';
 import WorkHistoryItem from './workHistoryItem';
-import resumeDataHelper, { generateNewItem, removeFromArray } from '../../utils/resumeDataHelper';
+import resumeDataHelper, { addOrUpdateArray, generateNewItem, removeFromArray } from '../../utils/resumeDataHelper';
 
 const WorkHistoryList = (props) => {
 	const [currentItem, setCurrentItem] = useState();
@@ -37,6 +37,7 @@ const WorkHistoryList = (props) => {
 		} else {
 			setCurrentItem(generateNewItem(workHistory, header))
 		}
+		console.log(workHistory);
 		setOpen(true)
 	}
 
@@ -44,12 +45,16 @@ const WorkHistoryList = (props) => {
 		setCurrentItem({ ...currentItem, [event.target.id]: event.target.value });
 	};
 
-	const handleSave = () => {
-
+	const handleSave = (item) => {
+		const updatedWorkHistory = addOrUpdateArray(workHistory, item)
+		console.log(updatedWorkHistory)
+		handleUpdate(updatedWorkHistory)
+		setOpen(false)
 	}
 
 	const handleDelete = () => {
 		const updatedWorkHistory = removeFromArray(workHistory, currentItem.id)
+		console.log(updatedWorkHistory)
 		handleUpdate(updatedWorkHistory)
 		setOpen(false)
 	}
@@ -63,7 +68,7 @@ const WorkHistoryList = (props) => {
 				Add Item
 			</Button>
 		</Typography>
-			{open && <WorkHistoryItem open={open} setOpen={setOpen} transition={transition} header={header} item={currentItem} handleDelete={handleDelete} handleUpdate={handleWorkHistoryUpdate} />}
+			{open && <WorkHistoryItem open={open} setOpen={setOpen} transition={transition} header={header} item={currentItem} handleDelete={handleDelete} handleUpdate={handleWorkHistoryUpdate} handleSave={handleSave}/>}
 			<TableContainer sx={{ml: 3, width: '98%'}}>
 				<Table>
 					<SharedTableHeader tableHeaders={tableHeaders} />

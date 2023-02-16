@@ -43,7 +43,15 @@ function generateNewItem(array, section) {
 	return newItem;
 }
 
-function addToArray(array, object) {}
+function addOrUpdateArray(array, object) {
+    var index = array.findIndex(item => item.id === object.id)
+	if (index > -1) {
+        array[index] = object
+        return array
+	} else {
+        return [...array, object];
+    }
+}
 
 function removeFromArray(array, itemId) {
 	return array.filter((item) => item.id !== itemId);
@@ -55,7 +63,7 @@ function convertToSimpleArray(string) {}
 
 export {
 	generateNewItem,
-	addToArray,
+	addOrUpdateArray,
 	removeFromArray,
 	convertFromSimpleArray,
 	convertToSimpleArray,

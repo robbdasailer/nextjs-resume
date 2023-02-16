@@ -12,12 +12,11 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 const WorkHistoryItem = (props) => {
-	const { open, setOpen, transition, header, item, handleDelete, handleUpdate} = props;
+	const { open, setOpen, transition, header, item, handleDelete, handleSave} = props;
 
 	const [resumeItem, setResumeItem] = useState(item);
 
-	const handleItemUpdate = (event) => {
-        console.log(resumeItem)
+	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
 	};
 
@@ -53,9 +52,9 @@ const WorkHistoryItem = (props) => {
 			<DialogContent>
 				<TextField
 					required
-					id='companyName'
+					id='company'
 					label='Company Name'
-                    onChange={handleItemUpdate}
+                    onChange={handleItemChange}
 					defaultValue={resumeItem.company}
 					sx={{ ml: 1, mt: 2, width: '25rem' }}
 				/>
@@ -109,7 +108,7 @@ const WorkHistoryItem = (props) => {
 					defaultValue={resumeItem.additionalInfo}
 					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
 				/>
-				<Button sx={{ mt: 1, mb: 1, ml: 1 }}>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={() => handleSave(resumeItem)}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>
