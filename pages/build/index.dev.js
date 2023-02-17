@@ -20,6 +20,7 @@ import WorkHistoryList from '@/components/build/workHistoryList';
 import CertificationList from '@/components/build/certificationList.js';
 import HobbyList from '@/components/build/hobbyList.js';
 import SkillList from '@/components/build/skillList.js';
+import SubmitItem from '@/components/build/submitItem.js';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	...theme.typography.body2,
@@ -44,10 +45,11 @@ const Build = () => {
 		resumeData.certifications.length > 0 ? true : false
 	);
 	const [workItemOpen, setWorkItemOpen] = useState(false);
-    const [educationItemOpen, setEducationItemOpen] = useState(false);
-    const [certItemOpen, setCertItemOpen] = useState(false);
-    const [hobbyItemOpen, setHobbyItemOpen] = useState(false);
-    const [skillItemOpen, setSkillItemOpen] = useState(false);
+	const [educationItemOpen, setEducationItemOpen] = useState(false);
+	const [certItemOpen, setCertItemOpen] = useState(false);
+	const [hobbyItemOpen, setHobbyItemOpen] = useState(false);
+	const [skillItemOpen, setSkillItemOpen] = useState(false);
+	const [submitItemOpen, setSubmitItemOpen] = useState(false);
 
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;
@@ -87,6 +89,7 @@ const Build = () => {
 			setResumeData({ ...resumeData, certifications: [] });
 		}
 		const dataString = 'let data = ' + JSON.stringify(resumeData);
+		setSubmitItemOpen(true);
 		console.log(dataString);
 	};
 
@@ -132,21 +135,32 @@ const Build = () => {
 								onChange={() => setCertsOpen(!certsOpen)}
 							/>
 						</FormGroup>
-						{certsOpen && (
-							<CertificationList certifications={resumeData.certifications} 
-                            open={certItemOpen}
+						<CertificationList
+							certifications={resumeData.certifications}
+							open={certItemOpen}
 							setOpen={setCertItemOpen}
 							transition={dialogTransition}
-							handleUpdate={handleCertificationsUpdate} />
-						)}
+							handleUpdate={handleCertificationsUpdate}
+						/>
 					</Grid>
 					<Grid item xs={12}>
-						<HobbyList hobbies={resumeData.hobbies} />
+						<HobbyList
+							hobbies={resumeData.hobbies}
+							open={hobbyItemOpen}
+							setOpen={setHobbyItemOpen}
+							transition={dialogTransition}
+							handleUpdate={handleHobbiesUpdate}
+						/>
 					</Grid>
 					<Grid item xs={12}>
-						<SkillList skills={resumeData.skills} />
+						<SkillList
+							skills={resumeData.skills}
+							open={skillItemOpen}
+							setOpen={setSkillItemOpen}
+							transition={dialogTransition}
+							handleUpdate={handleSkillsUpdate}
+						/>
 					</Grid>
-
 					<Grid item xs={12}>
 						<WorkHistoryList
 							workHistory={resumeData.workHistory}
@@ -157,6 +171,12 @@ const Build = () => {
 						/>
 					</Grid>
 					<Grid item>
+						<SubmitItem
+							resumeData={resumeData}
+							open={submitItemOpen}
+							setOpen={setSubmitItemOpen}
+							transition={dialogTransition}
+						/>
 						<Button sx={{ mt: 1, mb: 1, ml: 5 }} onClick={handleSubmit}>
 							Generate Resume Data
 						</Button>

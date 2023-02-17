@@ -9,6 +9,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Slider from '@mui/material/Slider';
+import Stack from '@mui/material/Stack';
+import InputLabel from '@mui/material/InputLabel';
 import Tooltip from '@mui/material/Tooltip';
 
 const SkillItem = (props) => {
@@ -18,7 +21,7 @@ const SkillItem = (props) => {
 	const [resumeItem, setResumeItem] = useState(item);
 
 	const handleItemChange = (event) => {
-		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
+		setResumeItem({ ...resumeItem, [event.target.name]: event.target.value });
 	};
 
 	const handleClose = () => {
@@ -30,7 +33,7 @@ const SkillItem = (props) => {
 			onClose={handleClose}
 			open={open}
 			TransitionComponent={transition}
-			fullWidth
+            fullWidth
 			maxWidth='md'
 		>
 			<DialogTitle>
@@ -51,30 +54,40 @@ const SkillItem = (props) => {
 				) : null}
 			</DialogTitle>
 			<DialogContent>
+            <Stack direction='column'>
 				<TextField
 					required
-					id='company'
-					label='Company Name'
+					id='skillName'
+                    name='skillName'
+					label='Skill Name'
 					onChange={handleItemChange}
-					defaultValue={resumeItem.company}
-					sx={{ ml: 1, mt: 2, width: '25rem' }}
+					defaultValue={resumeItem.skillName}
+					sx={{ ml: 1, mt: 2, mr: 1, width: 'auto' }}
 				/>
+                <Tooltip title='Give a brief summary of the skill here' arrow placement='top'>
 				<TextField
 					required
-					id='companyUrl'
-					label='Company URL'
+					id='blurb'
+                    name='blurb'
+					label='Skill Blurb'
 					onChange={handleItemChange}
-					defaultValue={resumeItem.companyLink}
-					sx={{ ml: 1, mt: 2, width: '25rem' }}
+					defaultValue={resumeItem.blurb}
+					sx={{ ml: 1, mt: 2, mr: 1, width: 'auto' }}
 				/>
-				<TextField
-					required
-					id='jobTitle'
-					label='Job Title'
+                </Tooltip>
+                <InputLabel id='rating-label' sx={{mt: 2, textAlign: "center"}}>Skill Rating</InputLabel>
+				<Slider
+					name='rating'
+					color='secondary'
+					variant='determinate'
+					defaultValue={resumeItem.rating}
+					step={5}
+					min={0}
+					max={100}
 					onChange={handleItemChange}
-					defaultValue={resumeItem.jobTitle}
-					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
+                    sx={{my: 1}}
 				/>
+                </Stack>
 				<Button
 					sx={{ mt: 1, mb: 1, ml: 1 }}
 					onClick={() => handleSave(resumeItem)}

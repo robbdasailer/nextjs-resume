@@ -9,7 +9,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Tooltip from '@mui/material/Tooltip';
+import Stack from '@mui/material/Stack';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 const HobbyItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
@@ -17,8 +21,20 @@ const HobbyItem = (props) => {
 
 	const [resumeItem, setResumeItem] = useState(item);
 
+	const hobbyIcons = [
+		'bbq',
+		'beer',
+		'outdoor',
+		'family',
+		'music',
+		'tech',
+		'hiking',
+		'music',
+		'other',
+	];
+
 	const handleItemChange = (event) => {
-		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
+		setResumeItem({ ...resumeItem, [event.target.name]: event.target.value });
 	};
 
 	const handleClose = () => {
@@ -30,8 +46,6 @@ const HobbyItem = (props) => {
 			onClose={handleClose}
 			open={open}
 			TransitionComponent={transition}
-			fullWidth
-			maxWidth='md'
 		>
 			<DialogTitle>
 				Add/Edit {header} Item
@@ -51,30 +65,33 @@ const HobbyItem = (props) => {
 				) : null}
 			</DialogTitle>
 			<DialogContent>
-				<TextField
-					required
-					id='company'
-					label='Company Name'
-					onChange={handleItemChange}
-					defaultValue={resumeItem.company}
-					sx={{ ml: 1, mt: 2, width: '25rem' }}
-				/>
-				<TextField
-					required
-					id='companyUrl'
-					label='Company URL'
-					onChange={handleItemChange}
-					defaultValue={resumeItem.companyLink}
-					sx={{ ml: 1, mt: 2, width: '25rem' }}
-				/>
-				<TextField
-					required
-					id='jobTitle'
-					label='Job Title'
-					onChange={handleItemChange}
-					defaultValue={resumeItem.jobTitle}
-					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
-				/>
+				<Stack direction='column'>
+					<TextField
+						required
+						id='title'
+                        name='title'
+						label='Hobby Name'
+						onChange={handleItemChange}
+						defaultValue={resumeItem.title}
+						sx={{ ml: 1, mt: 2, width: 'auto' }}
+					/>
+					<FormControl variant='standard' sx={{ ml: 1, mt: 2, width: 'auto' }}>
+						<InputLabel id='icon-label'>Hobby Icon</InputLabel>
+						<Select
+                        required
+							id='icon'
+                            name='icon'
+							defaultValue={item.icon || 'other'}
+							onChange={handleItemChange}
+							label='Hobby Icon'
+						>
+							{hobbyIcons.map((hobby, index) => {
+                                return(
+								<MenuItem value={hobby} key={index}>{hobby}</MenuItem>);
+							})}
+						</Select>
+					</FormControl>
+				</Stack>
 				<Button
 					sx={{ mt: 1, mb: 1, ml: 1 }}
 					onClick={() => handleSave(resumeItem)}

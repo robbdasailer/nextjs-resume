@@ -101,7 +101,7 @@ const WorkHistoryItem = (props) => {
 				/>
 				<TextField
 					required
-					id='companyUrl'
+					id='companyLink'
 					label='Company URL'
 					onChange={handleItemChange}
 					defaultValue={resumeItem.companyLink}
