@@ -1,18 +1,3 @@
-const monthArray = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December',
-];
-
 function getSchema(section) {
 	switch (section) {
 		case 'Education':
@@ -85,18 +70,11 @@ function convertToSimpleArray(string) {
 	return array.map((item) => item.trim());
 }
 
-function getMonth(monthIndex) {
-	var index = parseInt(monthIndex, 10) - 1;
-	return monthArray[index];
-}
-
-function getBriefMonth(monthIndex) {
-	var month = getMonth(monthIndex);
-	return month.slice(0, 3);
-}
-
-function getMonthNumber(monthString) {
-	return monthArray.findIndex((element) => element.includes(monthString)) + 1;
+function convertToDatePickerInput(dateInput) {
+	var unixTime = Date.parse(dateInput);
+	var date = new Date(unixTime);
+	var convertedDate = date.toLocaleString('fr-CA');
+	return convertedDate.split(' ')[0];
 }
 
 export {
@@ -105,6 +83,5 @@ export {
 	removeFromArray,
 	convertFromSimpleArray,
 	convertToSimpleArray,
-	getBriefMonth,
-	getMonthNumber,
+	convertToDatePickerInput,
 };

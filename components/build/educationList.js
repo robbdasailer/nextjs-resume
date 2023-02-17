@@ -1,39 +1,96 @@
+import { useState } from 'react';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
-import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
 
-import SharedFormHeader from './sharedFormHeader';
 import SharedTableHeader from './sharedTableHeader';
+import EducationItem from './educationItem';
+import {
+	addOrUpdateArray,
+	generateNewItem,
+	removeFromArray,
+} from '../../utils/resumeDataHelper';
 
 const EducationList = (props) => {
+	const [currentItem, setCurrentItem] = useState();
 
-    const tableHeaders = ['School', 'School URL', 'Degree', 'Graduation Year'];
+	const { open, setOpen, transition, education, handleUpdate } = props;
 
-    return (
+	const header = 'Education';
+
+	const tableHeaders = ['School', 'School URL', 'Degree', 'Graduation Year'];
+
+	const handleOpen = (item) => {
+		if (item) {
+			setCurrentItem(item);
+		} else {
+			setCurrentItem(generateNewItem(education, header));
+		}
+		setOpen(true);
+	};
+
+	const handleEducationUpdate = (event) => {
+		setCurrentItem({ ...currentItem, [event.target.id]: event.target.value });
+	};
+
+	const handleSave = (item) => {
+		const updatedEducation = addOrUpdateArray(education, item);
+		handleUpdate(updatedEducation);
+		setOpen(false);
+	};
+
+	const handleDelete = () => {
+		const updatedEducation = removeFromArray(education, currentItem.id);
+		handleUpdate(updatedEducation);
+		setOpen(false);
+	};
+
+	return (
 		<>
-			<SharedFormHeader header="Education" />
-			<TableContainer sx={{ml: 3, width: '98%'}}>
+			<Typography variant='h3' ml={5} mb={1} mt={1}>
+				{header}
+				<Button sx={{ ml: 5 }} onClick={() => handleOpen(null)}>
+					<AddIcon></AddIcon>
+					Add Item
+				</Button>
+			</Typography>
+			{open && (
+				<EducationItem
+					open={open}
+					setOpen={setOpen}
+					transition={transition}
+					header={header}
+					item={currentItem}
+					handleDelete={handleDelete}
+					handleUpdate={handleEducationUpdate}
+					handleSave={handleSave}
+				/>
+			)}
+			<TableContainer sx={{ ml: 3, width: '98%' }}>
 				<Table>
 					<SharedTableHeader tableHeaders={tableHeaders} />
 					<TableBody>
-                        {props.education.map((item) => {
-                            return (
-                                <TableRow key={item.id}>
-                                    <TableCell>{item.school}</TableCell>
-                                    <TableCell>{item.schoolUrl}</TableCell>
-                                    <TableCell>{item.degree}</TableCell>
-                                    <TableCell>{item.graduationYear}</TableCell>
-                                </TableRow>
-                            )
-                        })}
+						{props.education.map((item) => {
+							return (
+								<TableRow key={item.id} onClick={() => handleOpen(item)}>
+									<TableCell>{item.school}</TableCell>
+									<TableCell>{item.schoolUrl}</TableCell>
+									<TableCell>{item.degree}</TableCell>
+									<TableCell>{item.graduationYear}</TableCell>
+								</TableRow>
+							);
+						})}
 					</TableBody>
 				</Table>
 			</TableContainer>
 		</>
-    )
-}
+	);
+};
 
-export default EducationList
+export default EducationList;

@@ -5,14 +5,13 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
-import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 
 import SharedTableHeader from './sharedTableHeader';
 import WorkHistoryItem from './workHistoryItem';
-import resumeDataHelper, { addOrUpdateArray, generateNewItem, removeFromArray } from '../../utils/resumeDataHelper';
+import { addOrUpdateArray, generateNewItem, removeFromArray } from '../../utils/resumeDataHelper';
 
 const WorkHistoryList = (props) => {
 	const [currentItem, setCurrentItem] = useState();

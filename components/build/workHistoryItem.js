@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-import { DialogContent, Typography } from '@mui/material';
+import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
@@ -16,8 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import {
 	convertFromSimpleArray,
 	convertToSimpleArray,
-	getBriefMonth,
-	getMonthNumber,
+	convertToDatePickerInput,
 } from '../../utils/resumeDataHelper';
 
 const WorkHistoryItem = (props) => {
@@ -25,44 +24,34 @@ const WorkHistoryItem = (props) => {
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
-	const [checked, setChecked] = useState(true);
+	const [checked, setChecked] = useState(!resumeItem.endDate);
+
+	const timeOptions = {
+		year: 'numeric',
+		month: 'short',
+	};
 
 	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
 	};
 
-	const constructDateOutput = (date) => {
-		var dateArray = date.split('-');
-		var month = getBriefMonth(dateArray[1]);
-		var year = String(dateArray[0]);
-		return month + ' ' + year;
-	};
-
-	const constructDateInput = (date) => {
-		var dateArray = date.split(' ');
-		var month = String(getMonthNumber(dateArray[0]));
-		if (month.length < 2) {
-			month = '0' + month;
-		}
-		return dateArray[1] + '-' + month + '-01';
-	};
-
 	const handleDateChange = (event) => {
+		const date = new Date(event.target.value);
 		setResumeItem({
 			...resumeItem,
-			[event.target.id]: constructDateOutput(event.target.value),
+			[event.target.id]: date.toLocaleString('en-GB', timeOptions),
 		});
 	};
 
 	const handleChecked = () => {
-        setChecked(!checked);
+		setChecked(!checked);
 		if (checked === true) {
-			setResumeItem({...resumeItem, endDate: ''});
+			setResumeItem({ ...resumeItem, endDate: '' });
 		} else {
-            var currentDate = new Date().toLocaleDateString('fr-CA')
-            setResumeItem({...resumeItem, endDate: currentDate});
-        }
-		console.log(resumeItem);
+			setResumeItem({ ...resumeItem, endDate: 'Feb 2023' });
+		}
+		console.log(resumeItem.endDate.length);
+		console.log(resumeItem.endDate);
 	};
 
 	const handleAdditionalInfoChange = (event) => {
@@ -132,7 +121,7 @@ const WorkHistoryItem = (props) => {
 						id='startDate'
 						label='Start Date'
 						type='date'
-						defaultValue={constructDateInput(resumeItem.startDate)}
+						defaultValue={convertToDatePickerInput(resumeItem.startDate)}
 						onChange={handleDateChange}
 						sx={{ ml: 1, mt: 2, width: '19rem' }}
 						InputLabelProps={{
@@ -145,11 +134,9 @@ const WorkHistoryItem = (props) => {
 						id='endDate'
 						label='End Date'
 						type='date'
-						defaultValue={
-							resumeItem.endDate.length > 0 && constructDateInput(resumeItem.endDate)
-						}
+						defaultValue={convertToDatePickerInput(resumeItem.endDate)}
 						onChange={handleDateChange}
-						disabled={checked && resumeItem.endDate.length < 1}
+						disabled={checked}
 						sx={{ ml: 1, mt: 2, width: '19rem' }}
 						InputLabelProps={{
 							shrink: true,
@@ -160,7 +147,7 @@ const WorkHistoryItem = (props) => {
 					label='Current Position'
 					control={
 						<Checkbox
-							checked={checked && resumeItem.endDate.length < 1}
+							checked={checked}
 							onChange={handleChecked}
 							color='secondary'
 						/>
