@@ -61,7 +61,7 @@ const WorkHistoryMobile = (props) => {
 								<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 							</Typography>
 							<Typography>
-								{job.startDate} - {job.endDate || 'Present'}
+								{job.startDate} - {job.endDate.length > 0 || 'Present'}
 							</Typography>
 						</StepLabel>
 						<StepContent>

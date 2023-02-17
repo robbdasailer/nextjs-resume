@@ -27,8 +27,7 @@ const WorkHistoryList = (props) => {
 		'Start Date',
 		'End Date',
 		'Job Title',
-		'Job Description',
-		'Additional Info'
+		'Job Description'
 	];
 
 	const handleOpen = (item) => {
@@ -37,7 +36,6 @@ const WorkHistoryList = (props) => {
 		} else {
 			setCurrentItem(generateNewItem(workHistory, header))
 		}
-		console.log(workHistory);
 		setOpen(true)
 	}
 
@@ -47,14 +45,12 @@ const WorkHistoryList = (props) => {
 
 	const handleSave = (item) => {
 		const updatedWorkHistory = addOrUpdateArray(workHistory, item)
-		console.log(updatedWorkHistory)
 		handleUpdate(updatedWorkHistory)
 		setOpen(false)
 	}
 
 	const handleDelete = () => {
 		const updatedWorkHistory = removeFromArray(workHistory, currentItem.id)
-		console.log(updatedWorkHistory)
 		handleUpdate(updatedWorkHistory)
 		setOpen(false)
 	}
@@ -82,14 +78,6 @@ const WorkHistoryList = (props) => {
 								<TableCell>{item.endDate}</TableCell>
 								<TableCell>{item.jobTitle}</TableCell>
 								<TableCell>{item.jobDescription}</TableCell>
-								<TableCell align='center'>
-									<Checkbox
-										checked={
-											item.additionalInfo && item.additionalInfo.length > 0
-										}
-										disabled
-									/>
-								</TableCell>
 							</TableRow>);
 						})}
 					</TableBody>

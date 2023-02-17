@@ -135,7 +135,8 @@ let data = {
 	workHistory: [
 		{
 			id: 1,
-			startDate: 'Sept 2021',
+			startDate: 'Sep 2021',
+			endDate: '',
 			company: 'Raft Technologies',
 			companyLink: 'UrlHere',
 			jobTitle: 'Principal Engineer',
@@ -144,8 +145,8 @@ let data = {
 		},
 		{
 			id: 2,
-			startDate: 'July 2019',
-			endDate: 'Sept 2021',
+			startDate: 'Jul 2019',
+			endDate: 'Sep 2021',
 			company: 'Concord Technologies',
 			companyLink: 'UrlHere',
 			jobTitle: 'Principal Cloud Operations Engineer',
@@ -158,7 +159,7 @@ let data = {
 		{
 			id: 3,
 			startDate: 'Jan 2014',
-			endDate: 'July 2019',
+			endDate: 'Jul 2019',
 			company: 'K2',
 			companyLink: 'UrlHere',
 			jobTitle: 'Infrastructure Consultant',
@@ -185,8 +186,8 @@ let data = {
 		},
 		{
 			id: 5,
-			startDate: 'Sept 2011',
-			endDate: 'July 2013',
+			startDate: 'Sep 2011',
+			endDate: 'Jul 2013',
 			company: 'Rackspace, the Open Cloud Company',
 			companyLink: 'UrlHere',
 			jobTitle: 'SharePoint Engineer',

@@ -44,7 +44,7 @@ const WorkHistory = (props) => {
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
 					<TimelineOppositeContent variant='h5' sx={{ margin: 'auto 0' }}>
-						{job.startDate} - {job.endDate || 'Present'}
+						{job.startDate} - {job.endDate.length > 0 || 'Present'}
 					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector />
