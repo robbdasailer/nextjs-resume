@@ -11,13 +11,17 @@ import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
 
-import { convertToDatePickerInput } from '../../utils/resumeDataHelper';
+import {
+	convertToDatePickerInput,
+	validateItem,
+} from '../../utils/resumeDataHelper';
 
 const CertificationItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
+	const [isValid, setIsValid] = useState(true);
 
 	const timeOptions = {
 		year: 'numeric',
@@ -40,6 +44,18 @@ const CertificationItem = (props) => {
 			...resumeItem,
 			[event.target.id]: date.toLocaleString('en-GB', timeOptions),
 		});
+	};
+
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeItem, [
+			'title',
+			'link',
+			'dateAchieved',
+		]);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSave(resumeItem);
+		}
 	};
 
 	const handleClose = () => {
@@ -69,6 +85,7 @@ const CertificationItem = (props) => {
 				<Stack direction='column'>
 					<TextField
 						required
+						error={!isValid}
 						id='title'
 						label='Title'
 						onChange={handleItemChange}
@@ -77,6 +94,7 @@ const CertificationItem = (props) => {
 					/>
 					<TextField
 						required
+						error={!isValid}
 						id='link'
 						label='Link'
 						onChange={handleItemChange}
@@ -85,6 +103,7 @@ const CertificationItem = (props) => {
 					/>
 					<TextField
 						id='dateAchieved'
+						error={!isValid}
 						label='Date Achieved'
 						type='date'
 						required
@@ -96,10 +115,7 @@ const CertificationItem = (props) => {
 						}}
 					/>
 				</Stack>
-				<Button
-					sx={{ mt: 1, mb: 1, ml: 1 }}
-					onClick={() => handleSave(resumeItem)}
-				>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>

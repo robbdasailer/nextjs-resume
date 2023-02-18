@@ -14,14 +14,25 @@ import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import Tooltip from '@mui/material/Tooltip';
 
+import { validateItem } from '../../utils/resumeDataHelper';
+
 const SkillItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
+	const [isValid, setIsValid] = useState(true);
 
 	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.name]: event.target.value });
+	};
+
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeItem, ['skill', 'blurb']);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSave(resumeItem);
+		}
 	};
 
 	const handleClose = () => {
@@ -57,6 +68,7 @@ const SkillItem = (props) => {
 				<Stack direction='column'>
 					<TextField
 						required
+						error={!isValid}
 						id='skillName'
 						name='skillName'
 						label='Skill Name'
@@ -71,6 +83,7 @@ const SkillItem = (props) => {
 					>
 						<TextField
 							required
+							error={!isValid}
 							id='blurb'
 							name='blurb'
 							label='Skill Blurb'
@@ -94,10 +107,7 @@ const SkillItem = (props) => {
 						sx={{ my: 1 }}
 					/>
 				</Stack>
-				<Button
-					sx={{ mt: 1, mb: 1, ml: 1 }}
-					onClick={() => handleSave(resumeItem)}
-				>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>

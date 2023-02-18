@@ -15,11 +15,14 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+import { validateItem } from '../../utils/resumeDataHelper';
+
 const HobbyItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
+	const [isValid, setIsValid] = useState(true);
 
 	const hobbyIcons = [
 		'bbq',
@@ -35,6 +38,14 @@ const HobbyItem = (props) => {
 
 	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.name]: event.target.value });
+	};
+
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeItem, ['title']);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSave(resumeItem);
+		}
 	};
 
 	const handleClose = () => {
@@ -64,6 +75,7 @@ const HobbyItem = (props) => {
 				<Stack direction='column'>
 					<TextField
 						required
+						error={!isValid}
 						id='title'
 						name='title'
 						label='Hobby Name'
@@ -91,10 +103,7 @@ const HobbyItem = (props) => {
 						</Select>
 					</FormControl>
 				</Stack>
-				<Button
-					sx={{ mt: 1, mb: 1, ml: 1 }}
-					onClick={() => handleSave(resumeItem)}
-				>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>

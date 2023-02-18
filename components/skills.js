@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const Skills = (props) => {
 	const skills = props.skills;
-
+	
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [blurb, setBlurb] = useState(null);

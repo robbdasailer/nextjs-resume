@@ -11,14 +11,30 @@ import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
 
+import { validateItem } from '../../utils/resumeDataHelper';
+
 const EducationItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
+	const [isValid, setIsValid] = useState(true);
 
 	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
+	};
+
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeItem, [
+			'school',
+			'schoolUrl',
+			'degree',
+			'graduationYear',
+		]);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSave(resumeItem);
+		}
 	};
 
 	const handleClose = () => {
@@ -30,7 +46,7 @@ const EducationItem = (props) => {
 			onClose={handleClose}
 			open={open}
 			TransitionComponent={transition}
-            fullWidth
+			fullWidth
 			maxWidth='md'
 		>
 			<DialogTitle>
@@ -54,14 +70,16 @@ const EducationItem = (props) => {
 				<Stack direction='column'>
 					<TextField
 						required
+						error={!isValid}
 						id='school'
 						label='School Name'
 						onChange={handleItemChange}
 						defaultValue={resumeItem.school}
-						sx={{ ml: 1, mt: 2, mr: 1}}
+						sx={{ ml: 1, mt: 2, mr: 1 }}
 					/>
 					<TextField
 						required
+						error={!isValid}
 						id='schoolUrl'
 						label='School URL'
 						onChange={handleItemChange}
@@ -70,6 +88,7 @@ const EducationItem = (props) => {
 					/>
 					<TextField
 						required
+						error={!isValid}
 						id='degree'
 						label='Degree'
 						onChange={handleItemChange}
@@ -78,6 +97,7 @@ const EducationItem = (props) => {
 					/>
 					<TextField
 						required
+						error={!isValid}
 						id='graduationYear'
 						label='Graduation Year'
 						onChange={handleItemChange}
@@ -85,10 +105,7 @@ const EducationItem = (props) => {
 						sx={{ ml: 1, mt: 2, mr: 1 }}
 					/>
 				</Stack>
-				<Button
-					sx={{ mt: 1, mb: 1, ml: 1 }}
-					onClick={() => handleSave(resumeItem)}
-				>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>

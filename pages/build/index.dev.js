@@ -14,6 +14,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Slide from '@mui/material/Slide';
 
 import data from '../../pages/api/data.js';
+import { validateItem } from '../../utils/resumeDataHelper';
 
 import EducationList from '@/components/build/educationList.js';
 import WorkHistoryList from '@/components/build/workHistoryList';
@@ -50,6 +51,8 @@ const Build = () => {
 	const [hobbyItemOpen, setHobbyItemOpen] = useState(false);
 	const [skillItemOpen, setSkillItemOpen] = useState(false);
 	const [submitItemOpen, setSubmitItemOpen] = useState(false);
+	const [isValid, setIsValid] = useState(true);
+	const [isResumeValid, setIsResumeValid] = useState(true);
 
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;
@@ -84,13 +87,19 @@ const Build = () => {
 		setResumeData({ ...resumeData, workHistory: workHistory });
 	};
 
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeData.contact, ['name']);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSubmit();
+		}
+	};
+
 	const handleSubmit = () => {
 		if (certsOpen == false && resumeData.certifications.length > 0) {
 			setResumeData({ ...resumeData, certifications: [] });
 		}
-		const dataString = 'let data = ' + JSON.stringify(resumeData);
 		setSubmitItemOpen(true);
-		console.log(dataString);
 	};
 
 	return (
@@ -110,6 +119,7 @@ const Build = () => {
 									<TextField
 										key={index}
 										required={contactItem == 'name'}
+										error={contactItem == 'name' && !isValid}
 										id={contactItem}
 										label={contactItem}
 										defaultValue={resumeData.contact[contactItem]}
@@ -177,7 +187,7 @@ const Build = () => {
 							setOpen={setSubmitItemOpen}
 							transition={dialogTransition}
 						/>
-						<Button sx={{ mt: 1, mb: 1, ml: 5 }} onClick={handleSubmit}>
+						<Button sx={{ mt: 1, mb: 1, ml: 5 }} onClick={handleValidate}>
 							Generate Resume Data
 						</Button>
 					</Grid>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -17,6 +17,7 @@ import {
 	convertFromSimpleArray,
 	convertToSimpleArray,
 	convertToDatePickerInput,
+	validateItem,
 } from '../../utils/resumeDataHelper';
 
 const WorkHistoryItem = (props) => {
@@ -25,6 +26,7 @@ const WorkHistoryItem = (props) => {
 
 	const [resumeItem, setResumeItem] = useState(item);
 	const [checked, setChecked] = useState(!resumeItem.endDate);
+	const [isValid, setIsValid] = useState(true);
 
 	const timeOptions = {
 		year: 'numeric',
@@ -36,6 +38,7 @@ const WorkHistoryItem = (props) => {
 	};
 
 	const handleDateChange = (event) => {
+		console.log('Date Changed');
 		const date = new Date(event.target.value);
 		setResumeItem({
 			...resumeItem,
@@ -43,22 +46,37 @@ const WorkHistoryItem = (props) => {
 		});
 	};
 
-	const handleChecked = () => {
-		setChecked(!checked);
-		if (checked === true) {
+	const handleChecked = useCallback((event) => {
+		setChecked(event.target.checked);
+		if (event.target.checked) {
 			setResumeItem({ ...resumeItem, endDate: '' });
 		} else {
-			setResumeItem({ ...resumeItem, endDate: 'Feb 2023' });
+			setResumeItem({
+				...resumeItem,
+				endDate: new Date().toLocaleString('en-GB', timeOptions),
+			});
 		}
-		console.log(resumeItem.endDate.length);
-		console.log(resumeItem.endDate);
-	};
+	}, []);
 
 	const handleAdditionalInfoChange = (event) => {
 		setResumeItem({
 			...resumeItem,
 			[event.target.id]: convertToSimpleArray(event.target.value),
 		});
+	};
+
+	const handleValidate = () => {
+		var itemIsValid = validateItem(resumeItem, [
+			'company',
+			'companyLink',
+			'startDate',
+			'jobTitle',
+			'jobDescription',
+		]);
+		setIsValid(itemIsValid);
+		if (itemIsValid) {
+			handleSave(resumeItem);
+		}
 	};
 
 	const handleClose = () => {
@@ -92,14 +110,16 @@ const WorkHistoryItem = (props) => {
 			</DialogTitle>
 			<DialogContent>
 				<TextField
+					error={!isValid}
 					required
 					id='company'
 					label='Company Name'
-					onChange={handleItemChange}
+					onChange={() => console.log(checked)}
 					defaultValue={resumeItem.company}
 					sx={{ ml: 1, mt: 2, width: '25rem' }}
 				/>
 				<TextField
+					error={!isValid}
 					required
 					id='companyLink'
 					label='Company URL'
@@ -108,6 +128,7 @@ const WorkHistoryItem = (props) => {
 					sx={{ ml: 1, mt: 2, width: '25rem' }}
 				/>
 				<TextField
+					error={!isValid}
 					required
 					id='jobTitle'
 					label='Job Title'
@@ -117,6 +138,7 @@ const WorkHistoryItem = (props) => {
 				/>
 				<Tooltip title='Day will not be displayed' arrow placement='top'>
 					<TextField
+						error={!isValid}
 						required
 						id='startDate'
 						label='Start Date'
@@ -155,6 +177,7 @@ const WorkHistoryItem = (props) => {
 					sx={{ ml: 3, mr: 1, mt: 3.5, width: '12rem' }}
 				/>
 				<TextField
+					error={!isValid}
 					required
 					id='jobDescription'
 					label='Job Description'
@@ -179,10 +202,7 @@ const WorkHistoryItem = (props) => {
 						sx={{ ml: 1, mt: 2, width: '50.4rem' }}
 					/>
 				</Tooltip>
-				<Button
-					sx={{ mt: 1, mb: 1, ml: 1 }}
-					onClick={() => handleSave(resumeItem)}
-				>
+				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save
 				</Button>

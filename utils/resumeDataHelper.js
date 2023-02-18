@@ -70,11 +70,26 @@ function convertToSimpleArray(string) {
 	return array.map((item) => item.trim());
 }
 
-function convertToDatePickerInput(dateInput) {
+function convertToDatePickerInput(dateInput = new Date()) {
 	var unixTime = Date.parse(dateInput);
 	var date = new Date(unixTime);
 	var convertedDate = date.toLocaleString('fr-CA');
 	return convertedDate.split(' ')[0];
+}
+
+function validateItem(object, requiredFields) {
+    var isValid = true;
+    for (let i = 0; i < requiredFields.length; i++) {
+        if (!object[requiredFields[i]]) {
+            isValid = false;
+        }
+    }
+    return isValid
+}
+
+function validateResumeStructure(resumeData) {
+    var isValid = false
+    return isValid
 }
 
 export {
@@ -84,4 +99,6 @@ export {
 	convertFromSimpleArray,
 	convertToSimpleArray,
 	convertToDatePickerInput,
+    validateItem,
+    validateResumeStructure
 };
