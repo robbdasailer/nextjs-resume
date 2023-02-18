@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
 
-
 import Header from '../components/header';
 import Education from '../components/education';
 import Skills from '../components/skills';

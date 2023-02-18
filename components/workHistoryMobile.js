@@ -68,24 +68,17 @@ const WorkHistoryMobile = (props) => {
 							<Typography>{job.jobDescription}</Typography>
 							<Box sx={{ mb: 2 }}>
 								<div>
-									<Button
-										onClick={handleNext}
-									>
+									<Button onClick={handleNext}>
 										{index === jobs.length - 1
 											? 'Return to Current Position'
 											: 'View Next'}
 									</Button>
-									<Button
-										disabled={index === 0}
-										onClick={handleBack}
-									>
+									<Button disabled={index === 0} onClick={handleBack}>
 										View Previous
 									</Button>
 									{job.additionalInfo && (
 										<>
-											<Button
-												onClick={() => handleOpen(job.id)}
-											>
+											<Button onClick={() => handleOpen(job.id)}>
 												View Accomplishments
 											</Button>
 											<WorkAdditionalInfo

@@ -42,11 +42,7 @@ const HobbyItem = (props) => {
 	};
 
 	return (
-		<Dialog
-			onClose={handleClose}
-			open={open}
-			TransitionComponent={transition}
-		>
+		<Dialog onClose={handleClose} open={open} TransitionComponent={transition}>
 			<DialogTitle>
 				Add/Edit {header} Item
 				{open ? (
@@ -69,7 +65,7 @@ const HobbyItem = (props) => {
 					<TextField
 						required
 						id='title'
-                        name='title'
+						name='title'
 						label='Hobby Name'
 						onChange={handleItemChange}
 						defaultValue={resumeItem.title}
@@ -78,16 +74,19 @@ const HobbyItem = (props) => {
 					<FormControl variant='standard' sx={{ ml: 1, mt: 2, width: 'auto' }}>
 						<InputLabel id='icon-label'>Hobby Icon</InputLabel>
 						<Select
-                        required
+							required
 							id='icon'
-                            name='icon'
+							name='icon'
 							defaultValue={item.icon || 'other'}
 							onChange={handleItemChange}
 							label='Hobby Icon'
 						>
 							{hobbyIcons.map((hobby, index) => {
-                                return(
-								<MenuItem value={hobby} key={index}>{hobby}</MenuItem>);
+								return (
+									<MenuItem value={hobby} key={index}>
+										{hobby}
+									</MenuItem>
+								);
 							})}
 						</Select>
 					</FormControl>
