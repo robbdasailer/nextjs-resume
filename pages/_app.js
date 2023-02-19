@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import theme from '../utils/theme';
 import createEmotionCache from '../utils/createEmotionCache';
 
@@ -19,6 +20,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 	return (
 		<CacheProvider value={emotionCache}>
 			<Head>

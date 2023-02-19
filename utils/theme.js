@@ -53,6 +53,9 @@ const theme = createTheme({
 		action: {
 			main: `${actionColor}`,
 		},
+		error: {
+			main: red[500]
+		}
 	},
 	typography: {
 		fontFamily: [`${fontFamily}`, 'Serif'].join(','),

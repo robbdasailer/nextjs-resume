@@ -14,7 +14,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Slide from '@mui/material/Slide';
 
 import data from '../../pages/api/data.js';
-import { validateItem } from '../../utils/resumeDataHelper';
+import {
+	validateItem,
+	validateResumeStructure,
+} from '../../utils/resumeDataHelper';
 
 import EducationList from '@/components/build/educationList.js';
 import WorkHistoryList from '@/components/build/workHistoryList';
@@ -22,6 +25,7 @@ import CertificationList from '@/components/build/certificationList.js';
 import HobbyList from '@/components/build/hobbyList.js';
 import SkillList from '@/components/build/skillList.js';
 import SubmitItem from '@/components/build/submitItem.js';
+import ValidationDialog from '@/components/build/validationDialog.js';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	...theme.typography.body2,
@@ -58,6 +62,12 @@ const Build = () => {
 		return <Slide direction='up' ref={ref} {...props} />;
 	});
 
+	const certificationMessage =
+		'You have selected not to include certifications, but there are certifications listed.  Would you like to delete them?';
+
+	const validationFailedMessage =
+		'The following sections require at least one entry: Education, Hobbies, Skills, Work History.  Additionally, the "name" property is required under the Basic Info section.';
+
 	const handleContactUpdate = (event) => {
 		let contactData = {
 			...resumeData.contact,
@@ -91,9 +101,22 @@ const Build = () => {
 		var itemIsValid = validateItem(resumeData.contact, ['name']);
 		setIsValid(itemIsValid);
 		if (itemIsValid) {
+			handleValidateResume();
+		}
+	};
+
+	const handleValidateResume = () => {
+		var resumeIsValid = validateResumeStructure(resumeData);
+		setIsResumeValid(resumeIsValid);
+		if (resumeIsValid) {
 			handleSubmit();
 		}
 	};
+
+    const removeCertifications = () => {
+        setResumeData({ ...resumeData, certifications: [] });
+        setCertsOpen(false);
+    }
 
 	const handleSubmit = () => {
 		if (certsOpen == false && resumeData.certifications.length > 0) {
@@ -145,13 +168,13 @@ const Build = () => {
 								onChange={() => setCertsOpen(!certsOpen)}
 							/>
 						</FormGroup>
-						<CertificationList
+						{certsOpen && <CertificationList
 							certifications={resumeData.certifications}
 							open={certItemOpen}
 							setOpen={setCertItemOpen}
 							transition={dialogTransition}
 							handleUpdate={handleCertificationsUpdate}
-						/>
+						/>}
 					</Grid>
 					<Grid item xs={12}>
 						<HobbyList
@@ -181,11 +204,22 @@ const Build = () => {
 						/>
 					</Grid>
 					<Grid item>
+						<ValidationDialog
+							message={certificationMessage}
+                            open={!certsOpen && resumeData.certifications.length > 0}
+                            setOpen={removeCertifications}
+                            setCertsOpen={setCertsOpen}
+						/>
+                        <ValidationDialog
+							message={validationFailedMessage}
+                            open={!isResumeValid || !isValid}
+                            setOpen={removeCertifications}
+                            setCertsOpen={setCertsOpen}
+						/>
 						<SubmitItem
 							resumeData={resumeData}
 							open={submitItemOpen}
 							setOpen={setSubmitItemOpen}
-							transition={dialogTransition}
 						/>
 						<Button sx={{ mt: 1, mb: 1, ml: 5 }} onClick={handleValidate}>
 							Generate Resume Data

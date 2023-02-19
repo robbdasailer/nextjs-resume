@@ -3,27 +3,21 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
-const SubmitItem = (props) => {
-	const { resumeData, open, setOpen, transition } = props;
-
-	const dataString =
-		'let data = ' + JSON.stringify(resumeData) + ';\n\nexport default data;';
+const ValidationDialog = (props) => {
+	const { message, open, setOpen, transition, setCertsOpen } = props;
 
 	const handleClose = () => {
-		setOpen(false);
+		setCertsOpen(true);
 	};
 
 	return (
-		<Dialog
-			onClose={handleClose}
-			open={open}
-			fullWidth
-			maxWidth='md'
-		>
+		<Dialog onClose={handleClose} open={open} >
 			<DialogTitle>
-				Copy the full content below into the data.js file under the API
-				directory to update:
+				<Typography color='error'>Validation Error</Typography>
 				{open ? (
 					<IconButton
 						color='action'
@@ -39,9 +33,13 @@ const SubmitItem = (props) => {
 					</IconButton>
 				) : null}
 			</DialogTitle>
-			<DialogContent>{dataString}</DialogContent>
+			<DialogContent>
+				<Stack>{message}</Stack>
+				<Button onClick={setOpen}>Yes</Button>
+				<Button sx={{ ml: 1 }} onClick={handleClose}>No</Button>
+			</DialogContent>
 		</Dialog>
 	);
 };
 
-export default SubmitItem;
+export default ValidationDialog;

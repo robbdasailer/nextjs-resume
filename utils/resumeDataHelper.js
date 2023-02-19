@@ -88,7 +88,10 @@ function validateItem(object, requiredFields) {
 }
 
 function validateResumeStructure(resumeData) {
-    var isValid = false
+    var isValid = false;
+    if (resumeData.education.length > 0 && resumeData.hobbies.length > 0 && resumeData.skills.length > 0 && resumeData.workHistory.length > 0) {
+        isValid = true;
+    }
     return isValid
 }
 
