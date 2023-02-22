@@ -44,7 +44,7 @@ const WorkHistory = (props) => {
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
 					<TimelineOppositeContent variant='h5' sx={{ margin: 'auto 0' }}>
-						{job.startDate} - {job.endDate.length > 0 || 'Present'}
+						{job.startDate} - {job.endDate || 'Present'}
 					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector />
@@ -67,7 +67,7 @@ const WorkHistory = (props) => {
 						{job.additionalInfo && (
 							<>
 								<Button onClick={() => handleOpen(job.id)}>
-									View Accomplishments
+									<Typography>View Accomplishments</Typography>
 								</Button>
 								<WorkAdditionalInfo
 									open={open}

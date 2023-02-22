@@ -8,14 +8,14 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 const ValidationDialog = (props) => {
-	const { message, open, setOpen, transition, setCertsOpen } = props;
+	const { message, open, setOpen, setCertsOpen } = props;
 
 	const handleClose = () => {
 		setCertsOpen(true);
 	};
 
 	return (
-		<Dialog onClose={handleClose} open={open} >
+		<Dialog onClose={handleClose} open={open}>
 			<DialogTitle>
 				<Typography color='error'>Validation Error</Typography>
 				{open ? (
@@ -34,9 +34,13 @@ const ValidationDialog = (props) => {
 				) : null}
 			</DialogTitle>
 			<DialogContent>
-				<Stack>{message}</Stack>
+				<Stack>
+					<Typography>{message}</Typography>
+				</Stack>
 				<Button onClick={setOpen}>Yes</Button>
-				<Button sx={{ ml: 1 }} onClick={handleClose}>No</Button>
+				<Button sx={{ ml: 1 }} onClick={handleClose}>
+					No
+				</Button>
 			</DialogContent>
 		</Dialog>
 	);

@@ -19,43 +19,48 @@ import {
 	brown,
 	grey,
 	blueGrey,
+	white,
+	black
 } from '@mui/material/colors';
+
+const darkModePreferred = true;
+
+const themeMode = darkModePreferred ? 'dark' : 'light';
 
 const [
 	primaryColor,
+	paperColor,
 	secondaryColor,
 	actionColor,
 	contrastColor,
-	primaryTextColor,
-	secondaryTextColor,
 	fontFamily,
 ] = [
-	grey[500],
-	blue[700],
-	grey[900],
-	grey[50],
-	blueGrey[900],
-	blueGrey[500],
+	themeMode === 'dark' ? grey[900] : grey[500],
+	themeMode === 'dark' ? grey[800] : white,
+	themeMode === 'dark' ? grey[700] : blue[700],
+	themeMode === 'dark' ? grey[300] : grey[900],
+	themeMode === 'dark' ? grey[900] : grey[50],
 	'Raleway',
 ];
 
 // Create a theme instance.
 const theme = createTheme({
 	palette: {
+		mode: `${themeMode}`,
 		primary: {
 			main: `${primaryColor}`,
-			contrastText: `${contrastColor}`
+			contrastText: `${contrastColor}`,
 		},
 		secondary: {
 			main: `${secondaryColor}`,
-			contrastText: `${contrastColor}`
+			contrastText: `${contrastColor}`,
 		},
 		action: {
 			main: `${actionColor}`,
 		},
 		error: {
-			main: red[500]
-		}
+			main: red[500],
+		},
 	},
 	typography: {
 		fontFamily: [`${fontFamily}`, 'Serif'].join(','),
@@ -135,12 +140,10 @@ const theme = createTheme({
 				dense: true,
 			},
 		},
-		MuiListItemText: {
+		MuiListSubheader: {
 			styleOverrides: {
 				root: {
-					p: {
-						color: `${secondaryTextColor}`,
-					},
+					background: `${paperColor}`,
 				},
 			},
 		},
@@ -149,16 +152,11 @@ const theme = createTheme({
 				root: {
 					padding: '.375rem',
 					minHeight: 150,
+					background: `${paperColor}`,
 				},
 			},
 		},
-		MuiTypography: {
-			styleOverrides: {
-				root: {
-					color: `${primaryTextColor}`,
-				},
-			},
-		},
+
 	},
 	spacing: 6,
 });

@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 import {
 	convertToDatePickerInput,
@@ -27,11 +28,6 @@ const CertificationItem = (props) => {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
-	};
-
-	const convertDate = (date) => {
-		const dateObject = new Date(date);
-		return dateObject.toLocaleString('en-GB', timeOptions);
 	};
 
 	const handleItemChange = (event) => {
@@ -65,7 +61,7 @@ const CertificationItem = (props) => {
 	return (
 		<Dialog onClose={handleClose} open={open} TransitionComponent={transition}>
 			<DialogTitle>
-				Add/Edit {header} Item
+                <Typography>Add/Edit {header} Item</Typography>
 				{open ? (
 					<IconButton
 						color='action'
@@ -90,6 +86,7 @@ const CertificationItem = (props) => {
 						label='Title'
 						onChange={handleItemChange}
 						defaultValue={resumeItem.title}
+                        
 						sx={{ ml: 1, mt: 2, mr: 1, width: '30rem' }}
 					/>
 					<TextField
