@@ -20,33 +20,92 @@ import {
 	grey,
 	blueGrey,
 	white,
-	black
+	black,
 } from '@mui/material/colors';
 
-const darkModePreferred = true;
+//Update this with the typography you would like to use
+const fontFamily = 'Raleway';
 
-const themeMode = darkModePreferred ? 'dark' : 'light';
-
-const [
-	primaryColor,
-	paperColor,
-	secondaryColor,
-	actionColor,
-	contrastColor,
-	fontFamily,
-] = [
-	themeMode === 'dark' ? grey[900] : grey[500],
-	themeMode === 'dark' ? grey[800] : white,
-	themeMode === 'dark' ? grey[700] : blue[700],
-	themeMode === 'dark' ? grey[300] : grey[900],
-	themeMode === 'dark' ? grey[900] : grey[50],
-	'Raleway',
+//Update colors for light theme
+const [primaryColor, paperColor, secondaryColor, actionColor, contrastColor] = [
+	grey[500],
+	white,
+	blue[700],
+	grey[900],
+	grey[50],
 ];
 
-// Create a theme instance.
-const theme = createTheme({
+//Update colors for dark theme
+const [
+	darkPrimaryColor,
+	darkPaperColor,
+	darkSecondaryColor,
+	darkActionColor,
+	darkContrastColor,
+] = [grey[900], grey[800], grey[700], grey[300], grey[200]];
+
+//Typography theme shared for both light and dark themes
+const typographyTheme = {
+	fontFamily: [`${fontFamily}`, 'Serif'].join(','),
+	h1: {
+		fontSize: '1.5rem',
+		fontWeight: 900,
+	},
+	h2: {
+		fontSize: '1.4rem',
+		fontWeight: 800,
+	},
+	h3: {
+		fontSize: '1.3rem',
+		fontWeight: 700,
+	},
+	h4: {
+		fontSize: '1.2rem',
+		fontWeight: 600,
+	},
+	h5: {
+		fontSize: '1.1rem',
+		fontWeight: 600,
+	},
+	h6: {
+		fontSize: '1rem',
+		fontWeight: 500,
+	},
+	body1: {
+		fontSize: '1rem',
+		fontWeight: 400,
+	},
+	body2: {
+		fontSize: '.875rem',
+		fontWeight: 400,
+	},
+};
+
+//Overrides shared between both dark and light themes
+const sharedOverrides = {
+		MuiButton: {
+			defaultProps: {
+				variant: 'contained',
+				color: 'secondary',
+			},
+			styleOverrides: {
+				root: {
+					marginTop: 2,
+					marginRight: 1,
+				},
+			},
+		},
+		MuiList: {
+			defaultProps: {
+				dense: true,
+			},
+		},
+	};
+
+//Values for light theme
+const lightTheme = createTheme({
 	palette: {
-		mode: `${themeMode}`,
+		mode: 'light',
 		primary: {
 			main: `${primaryColor}`,
 			contrastText: `${contrastColor}`,
@@ -58,45 +117,8 @@ const theme = createTheme({
 		action: {
 			main: `${actionColor}`,
 		},
-		error: {
-			main: red[500],
-		},
 	},
-	typography: {
-		fontFamily: [`${fontFamily}`, 'Serif'].join(','),
-		h1: {
-			fontSize: '1.5rem',
-			fontWeight: 900,
-		},
-		h2: {
-			fontSize: '1.4rem',
-			fontWeight: 800,
-		},
-		h3: {
-			fontSize: '1.3rem',
-			fontWeight: 700,
-		},
-		h4: {
-			fontSize: '1.2rem',
-			fontWeight: 600,
-		},
-		h5: {
-			fontSize: '1.1rem',
-			fontWeight: 600,
-		},
-		h6: {
-			fontSize: '1rem',
-			fontWeight: 500,
-		},
-		body1: {
-			fontSize: '1rem',
-			fontWeight: 400,
-		},
-		body2: {
-			fontSize: '.875rem',
-			fontWeight: 400,
-		},
-	},
+	typography: typographyTheme,
 	components: {
 		MuiCssBaseline: {
 			styleOverrides: {
@@ -123,23 +145,7 @@ const theme = createTheme({
 				},
 			},
 		},
-		MuiButton: {
-			defaultProps: {
-				variant: 'contained',
-				color: 'secondary',
-			},
-			styleOverrides: {
-				root: {
-					marginTop: 2,
-					marginRight: 1,
-				},
-			},
-		},
-		MuiList: {
-			defaultProps: {
-				dense: true,
-			},
-		},
+		...sharedOverrides,
 		MuiListSubheader: {
 			styleOverrides: {
 				root: {
@@ -156,8 +162,73 @@ const theme = createTheme({
 				},
 			},
 		},
-
 	},
 	spacing: 6,
 });
-export default theme;
+
+//Values for dark theme
+const darkTheme = createTheme({
+	palette: {
+		mode: 'dark',
+		primary: {
+			main: `${darkPrimaryColor}`,
+			contrastText: `${darkContrastColor}`,
+		},
+		secondary: {
+			main: `${darkSecondaryColor}`,
+			contrastText: `${darkContrastColor}`,
+		},
+		action: {
+			main: `${darkActionColor}`,
+		},
+	},
+	typography: typographyTheme,
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				body: {
+					background: `${darkPrimaryColor}`,
+				},
+				main: {
+					padding: '1rem',
+					minHeight: '100vh',
+					display: 'flex',
+					a: {
+						color: `${darkActionColor}`,
+					},
+					img: {
+						borderRadius: '50%',
+					},
+				},
+			},
+		},
+		...sharedOverrides,
+		MuiAvatar: {
+			styleOverrides: {
+				root: {
+					backgroundColor: `${darkPrimaryColor}`,
+				},
+			},
+		},
+		sharedOverrides,
+		MuiListSubheader: {
+			styleOverrides: {
+				root: {
+					background: `${darkPaperColor}`,
+				},
+			},
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					padding: '.375rem',
+					minHeight: 150,
+					background: `${darkPaperColor}`,
+				},
+			},
+		},
+	},
+	spacing: 6,
+});
+
+export { lightTheme, darkTheme };

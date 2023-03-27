@@ -209,12 +209,14 @@ const Build = () => {
                             open={!certsOpen && resumeData.certifications.length > 0}
                             setOpen={removeCertifications}
                             setCertsOpen={setCertsOpen}
+                            valiation='item'
 						/>
                         <ValidationDialog
 							message={validationFailedMessage}
                             open={!isResumeValid || !isValid}
                             setOpen={removeCertifications}
-                            setCertsOpen={setCertsOpen}
+                            setFormValidation={setIsResumeValid}
+                            validation='form'
 						/>
 						<SubmitItem
 							resumeData={resumeData}
