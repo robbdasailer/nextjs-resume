@@ -47,6 +47,7 @@ const Skills = (props) => {
 						open={open}
 						anchorEl={anchorEl}
 						placement='left'
+						onClick={handlePopperClose}
 						modifiers={[
 							{
 								name: 'preventOverflow',
