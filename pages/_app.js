@@ -25,6 +25,8 @@ export default function MyApp(props) {
 	const [darkMode, setDarkMode] = useState(true);
 
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
+	console.log(process.env.NEXT_PUBLIC_DARKMODE_ENABLE)
 	
 	//Set theme based on value from config
 	useEffect(() => {
@@ -32,8 +34,10 @@ export default function MyApp(props) {
 			setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
 			console.log(window.matchMedia('(prefers-color-scheme: dark)'));
 		} else if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'true') {
+			console.log("Dark mode is enabled")
 			setDarkMode(true)
 		} else {
+			console.log("Dark mode has been disabled")
 			setDarkMode(false)
 		}
 	}, [darkMode]);

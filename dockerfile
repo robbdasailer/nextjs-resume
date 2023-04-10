@@ -12,8 +12,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ENV NEXT_TELEMETRY_DISABLED 1
-
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -22,22 +20,26 @@ WORKDIR /app
 
 ENV NODE_ENV production
 
-RUN addgroup -g 1001 -S web
-RUN adduser -S web_user -u 1001
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.js ./next.config.js
-COPY --from=builder --chown=web_user:web /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --chown=nextjs:nodejs entrypoint.sh .env.production .
 
-USER web_user
+RUN apk add --no-cache --upgrade bash gettext && \
+    chmod +x entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
+
+USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV PORT=3000 \
+    NEXT_TELEMETRY_DISABLED=1
 
 CMD ["node_modules/.bin/next", "start"]
