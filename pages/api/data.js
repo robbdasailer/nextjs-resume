@@ -54,6 +54,12 @@ let data = {
 			link: 'https://ecornell.cornell.edu/certificates/data-science/python-for-data-science/',
 			dateAchieved: '30 November 2022',
 		},
+		{
+			id: 7,
+			title: 'AWS Certified Solutions Architect - Associate',
+			link: 'https://www.credly.com/badges/3869260e-d08c-4e0d-9259-b0215776e36c',
+			dateAchieved: '22 March 2023',
+		},
 	],
 	hobbies: [
 		{
@@ -138,22 +144,28 @@ let data = {
 			startDate: 'Sep 2021',
 			endDate: '',
 			company: 'Raft Technologies',
-			companyLink: 'UrlHere',
+			companyLink: 'https://goraft.tech/',
 			jobTitle: 'Principal Engineer',
 			jobDescription:
-				'Serving as a member of the Critical Applications Team responsible for maintianing all applications critical to CI/CD pipelines and security related tasks. Responsible for deploying applications and upgrading applications on existing Kubernetes clusters using a variety of techniques including CI/CD pipelines, Bash, and Helm.  Troubleshoots issues that arise with applications in Kubernetes and AWS by analyzing log files and tracing to the source.  Uses Terraform to modify or create new infrastructure in AWS that will be used by applications and re-architects application designs as needed to ensure optimal performance.',
+				'Implemented and enhanced critical CI/CD applications within the infrastructure. Leveraged Terraform and Ansible for Infrastructure as Code (IaC) and Configuration as Code (CaC) to create and update infrastructure. Employed bash scripts, Python, Helm charts, and CI/CD pipelines for deploying applications to Kubernetes. Troubleshot Kubernetes issues, ensuring secure and uninterrupted application communication. Streamlined existing CI/CD processes to reduce complexity and lower costs.',
+			additionalInfo: [
+				'Automated a legacy application cluster, enabling dynamic scaling up to 100+ nodes',
+				'Customized Big Bang to fit specific environmental requirements',
+			],
 		},
 		{
 			id: 2,
 			startDate: 'Jul 2019',
 			endDate: 'Sep 2021',
 			company: 'Concord Technologies',
-			companyLink: 'UrlHere',
+			companyLink: 'https://concord.net/',
 			jobTitle: 'Principal Cloud Operations Engineer',
 			jobDescription:
-				'Works in Azure DevOps to create build and release pipelines to automatically create new builds when development is complete and deploy to Kubernetes, Azure App Service Plans, and virtual machines.  Develops utilities using .Net Core and PowerShell to allow for better monitoring of the environment and create more robust troubleshooting tools.  Deploys external monitoring solutions to Azure Kubernetes Services to allow scaling pods on additional metrics and creates new clusters when needed. Troubleshoots software issues and performs research with 3rd party integrations to ensure it is being used optimally. Works closely with development team to help diagnose performance issues with the environment and to assist in the creation and troubleshooting of dockerfiles.',
+				'Utilized Azure DevOps to create build and release pipelines for automated deployment to Kubernetes, Azure App Service Plans, and virtual machines. Developed .Net Core and PowerShell utilities to enhance environment monitoring and troubleshooting capabilities. Implemented external monitoring solutions for Azure Kubernetes Services to scale pods and create new clusters. Collaborated with development teams to diagnose performance issues, optimize third-party integrations, and troubleshoot Dockerfiles.',
 			additionalInfo: [
-				'Led effort to re-architect event capturing system into a polymorphic pattern design in NoSQL.',
+				'Re-engineered event capturing system, transitioning from an inefficient RDBMS schema to a NoSQL-based polymorphic pattern design',
+				'Optimized Tesseract utilization, reducing costs by 75% and improving performance by over 2000%',
+				'Revamped entire CI/CD pipeline structure to better align with microservice architecture',
 			],
 		},
 		{
@@ -161,12 +173,13 @@ let data = {
 			startDate: 'Jan 2014',
 			endDate: 'Jul 2019',
 			company: 'K2',
-			companyLink: 'UrlHere',
+			companyLink: 'https://www.nintex.com/?referrer=k2',
 			jobTitle: 'Infrastructure Consultant',
 			jobDescription:
-				'Consults on infrastructure requirements for new environment builds and works with customers to tightly integrate Microsoft Exchange, SharePoint, and Active Directory services into platform. Assists in troubleshooting environmental issues keeping a new build or existing build from working properly. Assists in building solutions on the K2 Platform including building out SQL tables, stored procedures, views, and web services.',
+				'Consulted on infrastructure requirements for new builds and integrated Microsoft Exchange, SharePoint, and Active Directory services into the platform. Troubleshot issues in new and existing builds. Developed solutions on the K2 Platform, including SQL tables, stored procedures, views, and web services.',
 			additionalInfo: [
-				'Developed a set of custom PowerShell cmdlets using C# to avoid having to manually modify database and make administration of K2 easier',
+				'Created custom PowerShell cmdlets using C# to simplify database administration and enhance K2 management',
+				'Delivered in-person and remote training sessions to users on effective product utilization',
 			],
 		},
 		{
@@ -174,14 +187,13 @@ let data = {
 			startDate: 'Jan 2014',
 			endDate: 'Dec 2014',
 			company: 'Geocent',
-			companyLink: 'UrlHere',
+			companyLink: 'https://sev1tech.com/',
 			jobTitle: 'Senior Systems Administrator',
 			jobDescription:
-				'Assists on SharePoint 2010 implementation project to include building new farms, migrating to new farms, and securing the environment to ensure compliance with DoD standards. Troubleshoots issues with Exchange, IronPorts, ArcSight, Active Directory, Hyper-V, SCVMM, and SCOM. Works to ensure Exchange, SharePoint, ArcSight, and SQL servers are compliant with DoD STIG’s.',
+				'Contributed to a SharePoint 2010 implementation project, including new farm creation, migration, and ensuring DoD compliance. Troubleshot issues with Exchange, IronPorts, ArcSight, Active Directory, Hyper-V, SCVMM, and SCOM. Ensured Exchange, SharePoint, ArcSight, and SQL servers complied with DoD STIGs.',
 			additionalInfo: [
-				"Automated process of creating STIG'ed virtual machines to cut provisioning time down from several days to five minutes",
-				'Did Some other thing',
-				'And another thing'
+				'Automated STIG-compliant virtual machine creation, reducing provisioning time from several days to five minutes',
+				'Led migration from On-premise Exchange to DoD Hosted Exchange',
 			],
 		},
 		{
@@ -189,12 +201,13 @@ let data = {
 			startDate: 'Sep 2011',
 			endDate: 'Jul 2013',
 			company: 'Rackspace, the Open Cloud Company',
-			companyLink: 'UrlHere',
+			companyLink: 'https://www.rackspace.com/',
 			jobTitle: 'SharePoint Engineer',
 			jobDescription:
-				'Engages new customers on implementation calls to assist in the planning of the SharePoint infrastructure to include Active Directory environment, authentication method, and custom deployments. Builds new SharePoint environments based on customer specifications. Performs migrations between older versions of SharePoint to new versions. Troubleshoots SharePoint environments to determine root cause and resolve issues. Creates PowerShell scripts to help in common farm administration tasks or to get additional information that is not easily obtained via Central Administration. Played a key role in creating and implementing a hosted SharePoint 2013 environment on the Rackspace public cloud using other cloud technologies (such as Vyatta) to ensure security of the infrastructure.',
+				'Assisted new customers in planning SharePoint infrastructure, including Active Directory, authentication methods, and custom deployments. Built and tailored SharePoint environments based on client specifications. Performed migrations from older SharePoint versions to newer ones. Diagnosed and resolved issues in SharePoint environments. Developed PowerShell scripts to aid in farm administration and gather information beyond Central Administration capabilities. Played a crucial role in establishing a secure, hosted SharePoint 2013 environment on the Rackspace public cloud, leveraging cloud technologies like Vyatta.',
 			additionalInfo: [
-				'Created a seure multi-tenant SharePoint 2013 farm on public cloud infrastructure',
+				'Established a secure, multi-tenant SharePoint 2013 farm on public cloud infrastructure',
+				'Mentored fellow engineers on SharePoint 2007/2010/2013-related topics and issues',
 			],
 		},
 	],

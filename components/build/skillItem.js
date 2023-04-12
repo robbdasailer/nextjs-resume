@@ -28,7 +28,7 @@ const SkillItem = (props) => {
 	};
 
 	const handleValidate = () => {
-		var itemIsValid = validateItem(resumeItem, ['skill', 'blurb']);
+		var itemIsValid = validateItem(resumeItem, ['skillName', 'blurb']);
 		setIsValid(itemIsValid);
 		if (itemIsValid) {
 			handleSave(resumeItem);

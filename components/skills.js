@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const Skills = (props) => {
 	const skills = props.skills;
-	
+
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [blurb, setBlurb] = useState(null);
@@ -28,14 +28,15 @@ const Skills = (props) => {
 
 	return (
 		<>
-			<Typography variant='h5' sx={{ ml: 1.75 }}>
+			<Typography variant='h5' sx={{ ml: 2.75 }}>
 				Skills & Competencies
 			</Typography>
 			{skills.map((skill) => (
-				<Box key={skill.id} sx={{ width: '90%', m: 2 }}>
+				<Box key={skill.id} sx={{ width: '90%', ml: 3, mt: 2, mb: 2 }}>
 					<Typography component='span'>
 						{skill.skillName}
-						<InfoIcon color="action"
+						<InfoIcon
+							color='action'
 							sx={{ ml: 1, height: '1rem', width: '1rem' }}
 							aria-owns={open ? 'info-click-popper' : undefined}
 							aria-haspopup='true'
@@ -72,7 +73,11 @@ const Skills = (props) => {
 						)}
 					</Popper>
 					<Slide direction='right' in={true}>
-						<LinearProgress color="secondary" variant='determinate' value={skill.rating} />
+						<LinearProgress
+							color='secondary'
+							variant='determinate'
+							value={skill.rating}
+						/>
 					</Slide>
 				</Box>
 			))}

@@ -114,7 +114,7 @@ const WorkHistoryItem = (props) => {
 					required
 					id='company'
 					label='Company Name'
-					onChange={() => console.log(checked)}
+					onChange={handleItemChange}
 					defaultValue={resumeItem.company}
 					sx={{ ml: 1, mt: 2, width: '25rem' }}
 				/>

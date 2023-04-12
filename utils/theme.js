@@ -83,24 +83,24 @@ const typographyTheme = {
 
 //Overrides shared between both dark and light themes
 const sharedOverrides = {
-		MuiButton: {
-			defaultProps: {
-				variant: 'contained',
-				color: 'secondary',
-			},
-			styleOverrides: {
-				root: {
-					marginTop: 2,
-					marginRight: 1,
-				},
+	MuiButton: {
+		defaultProps: {
+			variant: 'contained',
+			color: 'secondary',
+		},
+		styleOverrides: {
+			root: {
+				marginTop: 2,
+				marginRight: 1,
 			},
 		},
-		MuiList: {
-			defaultProps: {
-				dense: true,
-			},
+	},
+	MuiList: {
+		defaultProps: {
+			dense: true,
 		},
-	};
+	},
+};
 
 //Values for light theme
 const lightTheme = createTheme({
@@ -151,6 +151,9 @@ const lightTheme = createTheme({
 				root: {
 					background: `${paperColor}`,
 				},
+			},
+			defaultProps: {
+				disableSticky: true,
 			},
 		},
 		MuiPaper: {
@@ -216,6 +219,9 @@ const darkTheme = createTheme({
 				root: {
 					background: `${darkPaperColor}`,
 				},
+			},
+			defaultProps: {
+				disableSticky: true,
 			},
 		},
 		MuiPaper: {
