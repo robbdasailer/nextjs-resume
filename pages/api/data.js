@@ -86,56 +86,73 @@ let data = {
 	skills: [
 		{
 			id: 1,
-			skillName: 'Kubernetes',
+			skillName: 'Cloud Computing',
 			blurb:
-				"This site you're on is actually hosted on my local Kubernetes cluster.",
-			rating: 90,
+				'Experienced in designing and managing scalable cloud-based infrastructure and services in both AWS and Azure.',
+			rating: 95,
 		},
 		{
 			id: 2,
-			skillName: 'CI/CD',
+			skillName: 'Kubernetes',
 			blurb:
-				'Can easily update existing templates, would need to reference documentation for creation of certain templates.',
-			rating: 85,
+				'Proficient in administering, deploying, managing, and troubleshooting Kubernetes clusters.',
+			rating: 95,
 		},
 		{
 			id: 3,
-			skillName: 'ReactJS/NextJS',
+			skillName: 'Docker',
 			blurb:
-				'Self taught using Udemy and YouTube.  Still learning and improving.',
-			rating: 40,
+				'Skilled in creating and managing Docker containers to streamline application development and deployment.',
+			rating: 90,
 		},
 		{
 			id: 4,
-			skillName: 'Python',
-			blurb: 'Can create new scripts/applications/bots with relative ease.',
+			skillName: 'IaC/CaC',
+			blurb:
+				'Adept at implementing Infrastructure as Code and Configuration as Code solutions for efficient and automated infrastructure management using Terraform and Ansible.',
 			rating: 85,
 		},
 		{
 			id: 5,
-			skillName: 'C#',
+			skillName: 'Bash/PowerShell',
 			blurb:
-				'Can easily create new or debug existing, but may need a little more time when working with more advanced implementations.',
-			rating: 70,
+				'Proficient in using Bash and PowerShell scripting for automation and process enhancement.',
+			rating: 90,
 		},
 		{
 			id: 6,
-			skillName: 'Scripting',
-			blurb: 'Created very robust scripts in each language from scratch.',
-			rating: 95,
+			skillName: 'Relational Databases',
+			blurb:
+				'Experienced in designing, optimizing, and managing relational databases for efficient data storage and retrieval.',
+			rating: 90,
 		},
 		{
 			id: 7,
-			skillName: 'Database (NoSQL & RDBMS)',
+			skillName: 'NoSQL Databases',
 			blurb:
-				'Well versed with data normalization and have architected data layer in many situations in the past.',
-			rating: 95,
+				'Skilled in leveraging NoSQL databases for flexible and scalable data storage solutions and knowledgeable in associated data pattern designs.',
+			rating: 80,
 		},
 		{
 			id: 8,
-			skillName: 'Cloud',
-			blurb: 'Very comfortable in Azure and have certifications to prove it.',
-			rating: 95,
+			skillName: 'Python',
+			blurb:
+				'Competent in Python programming for application development, automation, data analysis/processing, and machine learning.',
+			rating: 75,
+		},
+		{
+			id: 9,
+			skillName: 'C#',
+			blurb:
+				'Proficient in developing intermediate applications and tools using the C# programming language.',
+			rating: 70,
+		},
+		{
+			id: 10,
+			skillName: 'ReactJS/NextJS',
+			blurb:
+				'Familiar with front-end web development using ReactJS and NextJS frameworks for building interactive user interfaces.',
+			rating: 40,
 		},
 	],
 	workHistory: [
@@ -170,7 +187,7 @@ let data = {
 		},
 		{
 			id: 3,
-			startDate: 'Jan 2014',
+			startDate: 'Jan 2015',
 			endDate: 'Jul 2019',
 			company: 'K2',
 			companyLink: 'https://www.nintex.com/?referrer=k2',

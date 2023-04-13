@@ -31,9 +31,7 @@ function getSchema(section) {
 function generateNewItem(array, section) {
 	var nextId;
 	if (array.length > 0) {
-		var highestId = array.reduce(
-			(array, item) => (array = array > item.id ? array : item.id)
-		);
+		var highestId = Math.max(...array.map((item) => item.id));
 		nextId = highestId + 1;
 	} else {
 		nextId = 1;
@@ -77,22 +75,32 @@ function convertToDatePickerInput(dateInput = new Date()) {
 	return convertedDate.split(' ')[0];
 }
 
+function convertToSortableDate(dateInput = new Date()) {
+	var unixTime = Date.parse(dateInput);
+	return unixTime;
+}
+
 function validateItem(object, requiredFields) {
-    var isValid = true;
-    for (let i = 0; i < requiredFields.length; i++) {
-        if (!object[requiredFields[i]]) {
-            isValid = false;
-        }
-    }
-    return isValid
+	var isValid = true;
+	for (let i = 0; i < requiredFields.length; i++) {
+		if (!object[requiredFields[i]]) {
+			isValid = false;
+		}
+	}
+	return isValid;
 }
 
 function validateResumeStructure(resumeData) {
-    var isValid = false;
-    if (resumeData.education.length > 0 && resumeData.hobbies.length > 0 && resumeData.skills.length > 0 && resumeData.workHistory.length > 0) {
-        isValid = true;
-    }
-    return isValid
+	var isValid = false;
+	if (
+		resumeData.education.length > 0 &&
+		resumeData.hobbies.length > 0 &&
+		resumeData.skills.length > 0 &&
+		resumeData.workHistory.length > 0
+	) {
+		isValid = true;
+	}
+	return isValid;
 }
 
 export {
@@ -102,6 +110,7 @@ export {
 	convertFromSimpleArray,
 	convertToSimpleArray,
 	convertToDatePickerInput,
-    validateItem,
-    validateResumeStructure
+	convertToSortableDate,
+	validateItem,
+	validateResumeStructure,
 };

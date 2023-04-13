@@ -15,6 +15,7 @@ import WorkHistory from '../components/workHistory';
 import WorkHistoryMobile from '../components/workHistoryMobile';
 
 import data from '../pages/api/data';
+import { convertToSortableDate } from '../utils/resumeDataHelper';
 
 export default function Home() {
 
@@ -53,6 +54,15 @@ export default function Home() {
 
 	const isBreakpoint = useMediaQuery(mediaBreakPoint);
 
+	let sortedWorkHistory = data.workHistory.sort((a, b) => convertToSortableDate(b.startDate) - convertToSortableDate(a.startDate));
+	let sortedCerts = data.certifications.sort((a, b) => convertToSortableDate(a.dateAchieved) - convertToSortableDate(b.dateAchieved));
+	let sortedEducation = data.education.sort((a, b) => parseInt(a.graduationYear) - parseInt(b.graduationYear));
+
+	if (process.env.NEXT_PUBLIC_SORT_IS_DESC == 'true') {
+		sortedCerts = sortedCerts.reverse()
+		sortedEducation = sortedEducation.reverse()
+	}
+
 	return (
 		<>
 			<Head>
@@ -69,8 +79,8 @@ export default function Home() {
 							<Grid item xs={12}>
 								<Paper>
 									<Education
-										education={data.education}
-										certs={data.certifications}
+										education={sortedEducation}
+										certs={sortedCerts}
 									/>
 								</Paper>
 							</Grid>
@@ -90,12 +100,12 @@ export default function Home() {
 								<Paper>
 									{isBreakpoint ? (
 										<WorkHistoryMobile
-											jobs={data.workHistory}
+											jobs={sortedWorkHistory}
 											transition={dialogTransition}
 										/>
 									) : (
 										<WorkHistory
-											jobs={data.workHistory}
+											jobs={sortedWorkHistory}
 											contact={data.contact}
 											transition={dialogTransition}
 										/>

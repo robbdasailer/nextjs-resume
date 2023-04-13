@@ -26,19 +26,14 @@ export default function MyApp(props) {
 
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-	console.log(process.env.NEXT_PUBLIC_DARKMODE_ENABLE)
-	
 	//Set theme based on value from config
 	useEffect(() => {
 		if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'auto') {
 			setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-			console.log(window.matchMedia('(prefers-color-scheme: dark)'));
 		} else if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'true') {
-			console.log("Dark mode is enabled")
-			setDarkMode(true)
+			setDarkMode(true);
 		} else {
-			console.log("Dark mode has been disabled")
-			setDarkMode(false)
+			setDarkMode(false);
 		}
 	}, [darkMode]);
 
