@@ -21,11 +21,12 @@ export default function Home() {
 	const [workHistoryHeight, setWorkHistoryHeight] = useState(0);
 	const leftContainerRef = useRef(null);
 	const mediaBreakPoint = 600;
+	const workHistoryHeightOffset = 24;
 
 	//The subtraction of 24 pixels is to account for spacing between items on the left side
 	const updateWorkHistoryHeight = () => {
 		if (leftContainerRef.current) {
-			setWorkHistoryHeight(leftContainerRef.current.clientHeight - 24);
+			setWorkHistoryHeight(leftContainerRef.current.clientHeight - workHistoryHeightOffset);
 		}
 	};
 

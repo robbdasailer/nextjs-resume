@@ -30,10 +30,10 @@ export default function MyApp(props) {
 	useEffect(() => {
 		if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'auto') {
 			setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-		} else if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'true') {
-			setDarkMode(true);
-		} else {
+		} else if (process.env.NEXT_PUBLIC_DARKMODE_ENABLE == 'false') {
 			setDarkMode(false);
+		} else {
+			setDarkMode(true);
 		}
 	}, [darkMode]);
 
