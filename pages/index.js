@@ -20,12 +20,33 @@ import { convertToSortableDate } from '../utils/resumeDataHelper';
 export default function Home() {
 	const [workHistoryHeight, setWorkHistoryHeight] = useState(0);
 	const leftContainerRef = useRef(null);
-
 	const mediaBreakPoint = 600;
+
+	//The subtraction of 24 pixels is to account for spacing between items on the left side
+	const updateWorkHistoryHeight = () => {
+		if (leftContainerRef.current) {
+			setWorkHistoryHeight(leftContainerRef.current.clientHeight - 24);
+		}
+	};
 
 	const dialogTransition = React.forwardRef(function Transition(props, ref) {
 		return <Slide direction='up' ref={ref} {...props} />;
 	});
+
+	//Dynamically set work history paper length to match left side account for window resizing
+	useEffect(() => {
+		updateWorkHistoryHeight();
+		const handleResize = () => {
+			updateWorkHistoryHeight();
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		//Remove listener on unmount
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [leftContainerRef]);
 
 	//Function used to determine which Work History module to display based on screen size
 	const useMediaQuery = (width) => {
@@ -53,15 +74,6 @@ export default function Home() {
 
 		return targetReached;
 	};
-
-	//Dynamically set work history paper length to match left side
-	//The subtraction of 24 pixels may need to be adjusted if the spacing between containers is changed
-	useEffect(() => {
-		if (leftContainerRef.current) {
-			setWorkHistoryHeight(leftContainerRef.current.clientHeight - 24);
-			console.log(leftContainerRef.current.clientHeight);
-		}
-	}, [leftContainerRef]);
 
 	const isBreakpoint = useMediaQuery(mediaBreakPoint);
 
