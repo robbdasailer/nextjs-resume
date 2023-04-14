@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 import Box from '@mui/material/Box';
@@ -18,6 +18,8 @@ import data from '../pages/api/data';
 import { convertToSortableDate } from '../utils/resumeDataHelper';
 
 export default function Home() {
+	const [workHistoryHeight, setWorkHistoryHeight] = useState(0);
+	const leftContainerRef = useRef(null);
 
 	const mediaBreakPoint = 600;
 
@@ -52,15 +54,33 @@ export default function Home() {
 		return targetReached;
 	};
 
+	//Dynamically set work history paper length to match left side
+	//The subtraction of 24 pixels may need to be adjusted if the spacing between containers is changed
+	useEffect(() => {
+		if (leftContainerRef.current) {
+			setWorkHistoryHeight(leftContainerRef.current.clientHeight - 24);
+			console.log(leftContainerRef.current.clientHeight);
+		}
+	}, [leftContainerRef]);
+
 	const isBreakpoint = useMediaQuery(mediaBreakPoint);
 
-	let sortedWorkHistory = data.workHistory.sort((a, b) => convertToSortableDate(b.startDate) - convertToSortableDate(a.startDate));
-	let sortedCerts = data.certifications.sort((a, b) => convertToSortableDate(a.dateAchieved) - convertToSortableDate(b.dateAchieved));
-	let sortedEducation = data.education.sort((a, b) => parseInt(a.graduationYear) - parseInt(b.graduationYear));
+	let sortedWorkHistory = data.workHistory.sort(
+		(a, b) =>
+			convertToSortableDate(b.startDate) - convertToSortableDate(a.startDate)
+	);
+	let sortedCerts = data.certifications.sort(
+		(a, b) =>
+			convertToSortableDate(a.dateAchieved) -
+			convertToSortableDate(b.dateAchieved)
+	);
+	let sortedEducation = data.education.sort(
+		(a, b) => parseInt(a.graduationYear) - parseInt(b.graduationYear)
+	);
 
 	if (process.env.NEXT_PUBLIC_SORT_IS_DESC == 'true') {
-		sortedCerts = sortedCerts.reverse()
-		sortedEducation = sortedEducation.reverse()
+		sortedCerts = sortedCerts.reverse();
+		sortedEducation = sortedEducation.reverse();
 	}
 
 	return (
@@ -75,42 +95,46 @@ export default function Home() {
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={2} sx={{ alignItems: 'flex-start' }}>
 						<Header contactInfo={data.contact} />
-						<Grid item container xs={12} md={3} spacing={2}>
-							<Grid item xs={12}>
-								<Paper>
-									<Education
-										education={sortedEducation}
-										certs={sortedCerts}
-									/>
-								</Paper>
+						<Grid item container spacing={2} ref={leftContainerRef}>
+							<Grid item container xs={12} md={3} spacing={2}>
+								<Grid item xs={12}>
+									<Paper>
+										<Education
+											education={sortedEducation}
+											certs={sortedCerts}
+										/>
+									</Paper>
+								</Grid>
+								<Grid item xs={12}>
+									<Paper>
+										<Skills skills={data.skills} />
+									</Paper>
+								</Grid>
+								<Grid item xs={12}>
+									<Paper>
+										<Hobbies hobbies={data.hobbies} />
+									</Paper>
+								</Grid>
 							</Grid>
-							<Grid item xs={12}>
-								<Paper>
-									<Skills skills={data.skills} />
-								</Paper>
-							</Grid>
-							<Grid item xs={12}>
-								<Paper>
-									<Hobbies hobbies={data.hobbies} />
-								</Paper>
-							</Grid>
-						</Grid>
-						<Grid item container xs={12} md={9}>
-							<Grid item xs={12}>
-								<Paper>
+							<Grid item container xs={12} md={9}>
+								<Grid item xs={12}>
 									{isBreakpoint ? (
-										<WorkHistoryMobile
-											jobs={sortedWorkHistory}
-											transition={dialogTransition}
-										/>
+										<Paper>
+											<WorkHistoryMobile
+												jobs={sortedWorkHistory}
+												transition={dialogTransition}
+											/>
+										</Paper>
 									) : (
-										<WorkHistory
-											jobs={sortedWorkHistory}
-											contact={data.contact}
-											transition={dialogTransition}
-										/>
+										<Paper sx={{ minHeight: `${workHistoryHeight}px` }}>
+											<WorkHistory
+												jobs={sortedWorkHistory}
+												contact={data.contact}
+												transition={dialogTransition}
+											/>
+										</Paper>
 									)}
-								</Paper>
+								</Grid>
 							</Grid>
 						</Grid>
 					</Grid>
