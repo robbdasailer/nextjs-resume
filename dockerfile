@@ -18,8 +18,6 @@ RUN npm run build
 FROM node:alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
 
@@ -31,8 +29,10 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --chown=nextjs:nodejs entrypoint.sh .env.production .
 
+# Add utility used to replace environment variables in script
 RUN apk add --no-cache --upgrade bash gettext && \
     chmod +x entrypoint.sh
+
 ENTRYPOINT ["./entrypoint.sh"]
 
 USER nextjs
@@ -40,6 +40,7 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000 \
-    NEXT_TELEMETRY_DISABLED=1
+    NEXT_TELEMETRY_DISABLED=1 \
+    NODE_ENV=production
 
 CMD ["node_modules/.bin/next", "start"]
