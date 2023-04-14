@@ -19,21 +19,23 @@ import {
 	brown,
 	grey,
 	blueGrey,
-	white,
 	black,
 } from '@mui/material/colors';
+
+const white = '#FFFFFF';
 
 //Update this with the typography you would like to use
 const fontFamily = 'Raleway';
 
 //Update colors for light theme
-const [primaryColor, paperColor, secondaryColor, actionColor, contrastColor] = [
-	grey[500],
-	white,
-	blue[700],
-	grey[900],
-	grey[50],
-];
+const [
+	primaryColor,
+	paperColor,
+	secondaryColor,
+	actionColor,
+	contrastColor,
+	subHeaderTextColor,
+] = [grey[500], white, blue[700], grey[900], grey[50], grey[900]];
 
 //Update colors for dark theme
 const [
@@ -42,7 +44,8 @@ const [
 	darkSecondaryColor,
 	darkActionColor,
 	darkContrastColor,
-] = [grey[900], grey[800], grey[700], grey[300], grey[200]];
+	darkSubHeaderTextColor,
+] = [grey[900], grey[800], grey[700], grey[300], grey[200], white];
 
 //Typography theme shared for both light and dark themes
 const typographyTheme = {
@@ -150,6 +153,7 @@ const lightTheme = createTheme({
 			styleOverrides: {
 				root: {
 					background: `${paperColor}`,
+					color: `${subHeaderTextColor}`,
 				},
 			},
 			defaultProps: {
@@ -218,6 +222,7 @@ const darkTheme = createTheme({
 			styleOverrides: {
 				root: {
 					background: `${darkPaperColor}`,
+					color: `${darkSubHeaderTextColor}`,
 				},
 			},
 			defaultProps: {
