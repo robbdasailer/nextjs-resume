@@ -35,7 +35,7 @@ const [
 	actionColor,
 	contrastColor,
 	subHeaderTextColor,
-] = [grey[500], white, blue[700], grey[900], grey[50], grey[900]];
+] = [white, '#f6f6f6', blue[700], red[900], yellow[50], green[900]];
 
 //Update colors for dark theme
 const [
@@ -51,8 +51,8 @@ const [
 const typographyTheme = {
 	fontFamily: [`${fontFamily}`, 'Serif'].join(','),
 	h1: {
-		fontSize: '1.5rem',
-		fontWeight: 900,
+		fontSize: '3rem',
+		fontWeight: 500,
 	},
 	h2: {
 		fontSize: '1.4rem',

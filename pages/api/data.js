@@ -1,11 +1,8 @@
 let data = {
 	contact: {
-		name: 'Jimmy Bourque',
-		email: 'jimmyb@bourquecloud.com',
-		phone: '210-418-0127',
-		linkedInUrl: 'https://www.linkedin.com/in/james-jimmy-bourque-1055b85b/',
-		githubUrl: 'https://github.com/jimmybchopps',
-		genericUrl: '',
+		name: 'Robert Cornelius Schröder',
+		email: 'kontakt@robert-cornelius-schroeder.de',
+		linkedInUrl: 'https://www.linkedin.com/in/robert-cornelius-schröder-657aa9186/',
 	},
 	education: [
 		{
@@ -158,11 +155,11 @@ let data = {
 	workHistory: [
 		{
 			id: 1,
-			startDate: 'Sep 2021',
+			startDate: 'Jan 2023',
 			endDate: '',
-			company: 'Raft Technologies',
-			companyLink: 'https://goraft.tech/',
-			jobTitle: 'Principal Engineer',
+			company: 'Strategy Engineers',
+			companyLink: 'https://strategyengineers.com/',
+			jobTitle: 'Intern',
 			jobDescription:
 				'Implemented and enhanced critical CI/CD applications within the infrastructure. Leveraged Terraform and Ansible for Infrastructure as Code (IaC) and Configuration as Code (CaC) to create and update infrastructure. Employed bash scripts, Python, Helm charts, and CI/CD pipelines for deploying applications to Kubernetes. Troubleshot Kubernetes issues, ensuring secure and uninterrupted application communication. Streamlined existing CI/CD processes to reduce complexity and lower costs.',
 			additionalInfo: [

@@ -14,41 +14,41 @@ const Header = (props) => {
 
 	return (
 		<>
-			<Grid item xs={6} md={2}>
-				<Paper sx={{ textAlign: 'center' }}>
+			<Grid item xs={6} md={12}>
+			<Paper sx={{ textAlign: 'center', height: '80vh'}}>
+				<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
 					<Image
-						src='/assets/resumeProfile.jpeg'
-						height={125}
-						width={125}
-						alt={name}
+					src='/assets/resumeProfile.jpg'
+					height={500}
+					width={500}
+					alt={name}
 					/>
-				</Paper>
-			</Grid>
-			<Grid item xs={6} md={10}>
-				<Paper sx={{ textAlign: 'right' }}>
-					<Typography variant='h1'>{name}</Typography>
-					{phone && <Typography variant='h3'>{phone}</Typography>}
+					<Typography variant='h1' sx={{ padding: '20px' }}>{name}</Typography>
+					<div>
 					{email && (
-						<a href={`mailto:${email}`}>
-							<EmailIcon />
-						</a>
+					<a href={`mailto:${email}`}>
+						<EmailIcon />
+					</a>
 					)}
 					{linkedInUrl && (
-						<a href={linkedInUrl}>
-							<LinkedInIcon />
-						</a>
+					<a href={linkedInUrl}>
+						<LinkedInIcon />
+					</a>
 					)}
 					{githubUrl && (
-						<a href={githubUrl}>
-							<GitHubIcon />
-						</a>
+					<a href={githubUrl}>
+						<GitHubIcon />
+					</a>
 					)}
 					{genericUrl && (
-						<a href={genericUrl}>
-							<LinkIcon />
-						</a>
+					<a href={genericUrl}>
+						<LinkIcon />
+					</a>
 					)}
+						</div>
+				</div>
 				</Paper>
+
 			</Grid>
 		</>
 	);
