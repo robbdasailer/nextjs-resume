@@ -46,7 +46,7 @@ const Hobbies = (props) => {
 			<List
 				subheader={
 					<ListSubheader>
-						<Typography variant='h5'>Hobbies & Interests</Typography>
+						<Typography variant='h2'>Hobbies & Interests</Typography>
 					</ListSubheader>
 				}
 			>

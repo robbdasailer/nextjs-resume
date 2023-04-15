@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
 
 import Header from '../components/header';
+import Certification from '../components/certification'
 import Education from '../components/education';
 import Skills from '../components/skills';
 import Hobbies from '../components/hobbies';
@@ -112,8 +113,7 @@ export default function Home() {
 							<Grid item container xs={12} md={3} spacing={2}>
 								<Grid item xs={12}>
 									<Paper>
-										<Education
-											education={sortedEducation}
+										<Certification
 											certs={sortedCerts}
 										/>
 									</Paper>
@@ -137,6 +137,9 @@ export default function Home() {
 												jobs={sortedWorkHistory}
 												transition={dialogTransition}
 											/>
+										<Education
+											education={sortedEducation}
+											/>
 										</Paper>
 									) : (
 										<Paper sx={{ minHeight: `${workHistoryHeight}px` }}>
@@ -144,6 +147,9 @@ export default function Home() {
 												jobs={sortedWorkHistory}
 												contact={data.contact}
 												transition={dialogTransition}
+											/>
+											<Education
+											education={sortedEducation}
 											/>
 										</Paper>
 									)}

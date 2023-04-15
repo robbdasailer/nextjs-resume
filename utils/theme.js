@@ -56,7 +56,7 @@ const typographyTheme = {
 	},
 	h2: {
 		fontSize: '1.4rem',
-		fontWeight: 800,
+		fontWeight: 500,
 	},
 	h3: {
 		fontSize: '1.3rem',
@@ -126,9 +126,10 @@ const lightTheme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					background: `linear-gradient(to bottom, transparent, ${contrastColor}) ${primaryColor}`,
+					background: `${primaryColor}`,
 				},
 				main: {
+					margin: '0px 5% 0px 5%',
 					padding: '1rem',
 					minHeight: '100vh',
 					display: 'flex',
@@ -152,7 +153,6 @@ const lightTheme = createTheme({
 		MuiListSubheader: {
 			styleOverrides: {
 				root: {
-					background: `${paperColor}`,
 					color: `${subHeaderTextColor}`,
 				},
 			},
@@ -163,9 +163,11 @@ const lightTheme = createTheme({
 		MuiPaper: {
 			styleOverrides: {
 				root: {
-					padding: '.375rem',
+					margin: '0.5rem',
+					padding: '1rem',
 					minHeight: 150,
 					background: `${paperColor}`,
+					borderRadius: '20px',
 				},
 			},
 		},

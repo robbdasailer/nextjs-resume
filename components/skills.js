@@ -28,21 +28,14 @@ const Skills = (props) => {
 
 	return (
 		<>
-			<Typography variant='h5' sx={{ ml: 2.75 }}>
+			<Typography variant='h2' sx={{ ml: 2.75 }}>
 				Skills & Competencies
 			</Typography>
 			{skills.map((skill) => (
 				<Box key={skill.id} sx={{ width: '90%', ml: 3, mt: 2, mb: 2 }}>
 					<Typography component='span'>
 						{skill.skillName}
-						<InfoIcon
-							color='action'
-							sx={{ ml: 1, height: '1rem', width: '1rem' }}
-							aria-owns={open ? 'info-click-popper' : undefined}
-							aria-haspopup='true'
-							onClick={() => handlePopperOpen(event, skill.blurb)}
-						/>
-					</Typography>
+						</Typography>
 					<Popper
 						id={skill.id}
 						open={open}

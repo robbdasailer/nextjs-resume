@@ -15,6 +15,7 @@ import {
 	addOrUpdateArray,
 	generateNewItem,
 	removeFromArray,
+	validateItem,
 } from '../../utils/resumeDataHelper';
 
 const EducationList = (props) => {
@@ -24,7 +25,7 @@ const EducationList = (props) => {
 
 	const header = 'Education';
 
-	const tableHeaders = ['School', 'School URL', 'Degree', 'Graduation Year'];
+	const tableHeaders = ['School', 'School URL', 'Start Date', 'End Date', 'Degree', 'Degree Description'];
 
 	const handleOpen = (item) => {
 		if (item) {
@@ -76,13 +77,15 @@ const EducationList = (props) => {
 				<Table>
 					<SharedTableHeader tableHeaders={tableHeaders} />
 					<TableBody>
-						{props.education.map((item) => {
+						{education.map((item) => {
 							return (
 								<TableRow key={item.id} onClick={() => handleOpen(item)}>
 									<TableCell>{item.school}</TableCell>
 									<TableCell>{item.schoolUrl}</TableCell>
+									<TableCell>{item.startDate}</TableCell>
+									<TableCell>{item.endDate}</TableCell>
 									<TableCell>{item.degree}</TableCell>
-									<TableCell>{item.graduationYear}</TableCell>
+									<TableCell>{item.degreeDescription}</TableCell>
 								</TableRow>
 							);
 						})}

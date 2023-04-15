@@ -1,8 +1,16 @@
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineOppositeContent, {
+	timelineOppositeContentClasses,
+} from '@mui/lab/TimelineOppositeContent';
+import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import GppGoodIcon from '@mui/icons-material/GppGood';
@@ -10,58 +18,52 @@ import SchoolIcon from '@mui/icons-material/School';
 
 const Education = (props) => {
 	const degrees = props.education;
-	const certs = props.certs;
 
 	return (
 		<>
 			<List
 				subheader={
 					<ListSubheader>
-						<Typography variant='h5'>Education</Typography>
+						<Typography variant='h2'>Education</Typography>
 					</ListSubheader>
 				}
 			>
+
+		<Timeline
+			sx={{
+				[`& .${timelineOppositeContentClasses.root}`]: {
+					flex: 0.2,
+				},
+			}}
+		>
 				{degrees.map((degree) => (
-					<ListItem key={degree.id}>
-						<ListItemAvatar>
-							<Avatar>
-								<a href={degree.schoolUrl}>
-									<SchoolIcon />
-								</a>
-							</Avatar>
-						</ListItemAvatar>
-						<ListItemText
-							primary={degree.school}
-							secondary={`${degree.degree}: ${degree.graduationYear}`}
-						/>
-					</ListItem>
+					<TimelineItem key={degree.id}>
+						<TimelineOppositeContent variant='h5' sx={{ margin: '25px 0px 25px 0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '3rem' }}>
+								{degree.startDate} - {degree.endDate || 'Present'}
+							</TimelineOppositeContent>
+							<TimelineSeparator>
+								<TimelineConnector />
+								{degree.endDate ? (
+								<TimelineDot color='primary'>
+									<SchoolIcon color='action' />
+								</TimelineDot>
+							) : (
+								<TimelineDot color='secondary'>
+									<SchoolIcon color='action' />
+								</TimelineDot>
+							)}
+							<TimelineConnector />
+						</TimelineSeparator>
+						<TimelineContent sx={{ margin: '25px 0px 25px 0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '3rem' }}>
+						<Typography variant='h5' component='span'>
+								<a href={degree.schoolUrl}>{degree.school}</a>: {degree.degree}
+						</Typography>
+						<Typography>{degree.degreeDescription}</Typography>
+						</TimelineContent>
+					</TimelineItem>
 				))}
+			</Timeline>
 			</List>
-			{certs && (
-				<List
-					subheader={
-						<ListSubheader>
-							<Typography variant='h5'>Certifications</Typography>
-						</ListSubheader>
-					}
-				>
-					{certs.map((cert) => (
-						<ListItem key={cert.id}>
-							<ListItemAvatar>
-								<Avatar>
-									<a href={cert.link}>
-										<GppGoodIcon />
-									</a>
-								</Avatar>
-							</ListItemAvatar>
-							<ListItemText
-								primary={cert.title}
-								secondary={`Date Achieved: ${cert.dateAchieved}`}
-							/>
-						</ListItem>
-					))}
-				</List>
-			)}
 		</>
 	);
 };

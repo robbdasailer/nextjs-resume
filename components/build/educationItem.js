@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -9,27 +9,69 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Stack from '@mui/material/Stack';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Tooltip from '@mui/material/Tooltip';
 
-import { validateItem } from '../../utils/resumeDataHelper';
+import {
+	convertFromSimpleArray,
+	convertToSimpleArray,
+	convertToDatePickerInput,
+	validateItem,
+} from '../../utils/resumeDataHelper';
 
 const EducationItem = (props) => {
 	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
 		props;
 
 	const [resumeItem, setResumeItem] = useState(item);
+	const [checked, setChecked] = useState(!resumeItem.endDate);
 	const [isValid, setIsValid] = useState(true);
+
+	const timeOptions = {
+		year: 'numeric',
+		month: 'short',
+	};
 
 	const handleItemChange = (event) => {
 		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
 	};
 
+	const handleDateChange = (event) => {
+		console.log('Date Changed');
+		const date = new Date(event.target.value);
+		setResumeItem({
+			...resumeItem,
+			[event.target.id]: date.toLocaleString('en-GB', timeOptions),
+		});
+	};
+
+	const handleChecked = useCallback((event) => {
+		setChecked(event.target.checked);
+		if (event.target.checked) {
+			setResumeItem({ ...resumeItem, endDate: '' });
+		} else {
+			setResumeItem({
+				...resumeItem,
+				endDate: new Date().toLocaleString('en-GB', timeOptions),
+			});
+		}
+	}, []);
+
+	const handleAdditionalInfoChange = (event) => {
+		setResumeItem({
+			...resumeItem,
+			[event.target.id]: convertToSimpleArray(event.target.value),
+		});
+	};
+
 	const handleValidate = () => {
 		var itemIsValid = validateItem(resumeItem, [
 			'school',
-			'schoolUrl',
+			'schoolURL',
+			'startDate',
 			'degree',
-			'graduationYear',
+			'degreeDescription',
 		]);
 		setIsValid(itemIsValid);
 		if (itemIsValid) {
@@ -67,44 +109,84 @@ const EducationItem = (props) => {
 				) : null}
 			</DialogTitle>
 			<DialogContent>
-				<Stack direction='column'>
-					<TextField
-						required
-						error={!isValid}
-						id='school'
-						label='School Name'
-						onChange={handleItemChange}
-						defaultValue={resumeItem.school}
-						sx={{ ml: 1, mt: 2, mr: 1 }}
+				<TextField
+					error={!isValid}
+					required
+					id='school'
+					label='School Name'
+					onChange={handleItemChange}
+					defaultValue={resumeItem.school}
+					sx={{ ml: 1, mt: 2, width: '25rem' }}
+				/>
+				<TextField
+					error={!isValid}
+					required
+					id='schoolUrl'
+					label='School URL'
+					onChange={handleItemChange}
+					defaultValue={resumeItem.schoolUrl}
+					sx={{ ml: 1, mt: 2, width: '25rem' }}
 					/>
-					<TextField
-						required
-						error={!isValid}
-						id='schoolUrl'
-						label='School URL'
-						onChange={handleItemChange}
-						defaultValue={resumeItem.schoolUrl}
-						sx={{ ml: 1, mt: 2, mr: 1 }}
+				<TextField
+					error={!isValid}
+					required
+					id='degree'
+					label='Degree'
+					onChange={handleItemChange}
+					defaultValue={resumeItem.degree}
+					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
 					/>
+				<Tooltip title='Day will not be displayed' arrow placement='top'>
+				<TextField
+					error={!isValid}
+					required
+					id='startDate'
+					label='Start Date'
+					type='date'
+					defaultValue={convertToDatePickerInput(resumeItem.startDate)}
+					onChange={handleDateChange}
+					sx={{ ml: 1, mt: 2, width: '19rem' }}
+					InputLabelProps={{
+						shrink: true,
+					}}
+				/>
+				</Tooltip>
+				<Tooltip title='Day will not be displayed' arrow placement='top'>
 					<TextField
-						required
-						error={!isValid}
-						id='degree'
-						label='Degree'
-						onChange={handleItemChange}
-						defaultValue={resumeItem.degree}
-						sx={{ ml: 1, mt: 2, mr: 1 }}
+						id='endDate'
+						label='End Date'
+						type='date'
+						defaultValue={convertToDatePickerInput(resumeItem.endDate)}
+						onChange={handleDateChange}
+						disabled={checked}
+						sx={{ ml: 1, mt: 2, width: '19rem' }}
+						InputLabelProps={{
+							shrink: true,
+						}}
 					/>
-					<TextField
-						required
-						error={!isValid}
-						id='graduationYear'
-						label='Graduation Year'
-						onChange={handleItemChange}
-						defaultValue={resumeItem.graduationYear}
-						sx={{ ml: 1, mt: 2, mr: 1 }}
-					/>
-				</Stack>
+				</Tooltip>
+				<FormControlLabel
+					label='Current Position'
+					control={
+						<Checkbox
+							checked={checked}
+							onChange={handleChecked}
+							color='secondary'
+						/>
+					}
+					sx={{ ml: 3, mr: 1, mt: 3.5, width: '12rem' }}
+				/>
+				<TextField
+					error={!isValid}
+					required
+					id='degreeDescription'
+					label='Deegree Description'
+					multiline
+					rows={5}
+					onChange={handleItemChange}
+					defaultValue={resumeItem.jobDescription}
+					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
+				/>
 				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
 					<SaveIcon sx={{ mr: 1 }}></SaveIcon>
 					Save

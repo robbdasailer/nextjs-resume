@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import List from '@mui/material/List';
+import ListSubheader from '@mui/material/ListSubheader';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -34,6 +35,14 @@ const WorkHistory = (props) => {
 	};
 
 	return (
+		<List 
+			subheader={
+				<ListSubheader>
+					<Typography variant='h2'>Professional Experience</Typography>
+				</ListSubheader>
+			}
+		>
+			
 		<Timeline
 			sx={{
 				[`& .${timelineOppositeContentClasses.root}`]: {
@@ -43,10 +52,11 @@ const WorkHistory = (props) => {
 		>
 			{jobs.map((job) => (
 				<TimelineItem key={job.id}>
-					<TimelineOppositeContent variant='h5' sx={{ margin: 'auto 0' }}>
-						{job.startDate} - {job.endDate || 'Present'}
-					</TimelineOppositeContent>
-					<TimelineSeparator>
+					<TimelineOppositeContent variant='h5' sx={{ margin: '25px 0px 25px 0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '3rem' }}>
+
+							{job.startDate} - {job.endDate || 'Present'}
+						</TimelineOppositeContent>
+					<TimelineSeparator sx={{verticalAlign: 'bottom'}}>
 						<TimelineConnector />
 						{job.endDate ? (
 							<TimelineDot color='primary'>
@@ -59,14 +69,14 @@ const WorkHistory = (props) => {
 						)}
 						<TimelineConnector />
 					</TimelineSeparator>
-					<TimelineContent sx={{ py: 1, px: 2.65 }}>
+					<TimelineContent sx={{ margin: '25px 0px 25px 0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '3rem' }}>
 						<Typography variant='h5' component='span'>
 							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
 						</Typography>
 						<Typography>{job.jobDescription}</Typography>
 						{job.additionalInfo && (
 							<>
-								<Button onClick={() => handleOpen(job.id)}>
+								<Button  sx={{ width: 'fit-content' }} onClick={() => handleOpen(job.id)}>
 									<Typography>View Accomplishments</Typography>
 								</Button>
 								<WorkAdditionalInfo
@@ -80,25 +90,9 @@ const WorkHistory = (props) => {
 					</TimelineContent>
 				</TimelineItem>
 			))}
-			<TimelineItem>
-				<TimelineOppositeContent></TimelineOppositeContent>
-				<TimelineSeparator>
-					<TimelineConnector />
-					<TimelineDot color='secondary'>
-						<ReadMoreIcon color='action' />
-					</TimelineDot>
-					<TimelineConnector />
-				</TimelineSeparator>
-				<TimelineContent sx={{ py: 2, px: 2.65 }}>
-					<Typography variant='h5' component='span'>
-						Want to know more?
-					</Typography>
-					<Typography>
-						Check out my full history on <a href={linkedInUrl}>LinkedIn!</a>
-					</Typography>
-				</TimelineContent>
-			</TimelineItem>
 		</Timeline>
+
+		</List>
 	);
 };
 

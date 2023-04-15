@@ -7,17 +7,21 @@ let data = {
 	education: [
 		{
 			id: 1,
+			startDate: 'Jan 2020',
+			endDate: 'Mar 2023',
 			school: 'University of Management & Technology',
 			schoolUrl: 'https://www.umtweb.edu/',
 			degree: 'Bachelor of Computer Science',
-			graduationYear: '2014',
+			degreeDescription: 'overall grade: 1.4'
 		},
 		{
 			id: 2,
+			startDate: 'Jan 2023',
+			endDate: 'Mar 2024',
 			school: 'University of Management & Technology',
 			schoolUrl: 'https://www.umtweb.edu/',
 			degree: 'Master of Computer Science',
-			graduationYear: '2019',
+			degreeDescription: 'overall grade: 1.4'
 		},
 	],
 	certifications: [
@@ -188,12 +192,13 @@ let data = {
 			endDate: 'Jul 2019',
 			company: 'K2',
 			companyLink: 'https://www.nintex.com/?referrer=k2',
-			jobTitle: 'Infrastructure Consultant',
+			jobTitle: 'Principal Cloud Operations Engineer',
 			jobDescription:
-				'Consulted on infrastructure requirements for new builds and integrated Microsoft Exchange, SharePoint, and Active Directory services into the platform. Troubleshot issues in new and existing builds. Developed solutions on the K2 Platform, including SQL tables, stored procedures, views, and web services.',
+				'Utilized Azure DevOps ',
 			additionalInfo: [
-				'Created custom PowerShell cmdlets using C# to simplify database administration and enhance K2 management',
-				'Delivered in-person and remote training sessions to users on effective product utilization',
+				'Re-engineered event capturing system, transitioning from an inefficient RDBMS schema to a NoSQL-based polymorphic pattern design',
+				'Optimized Tesseract utilization, reducing costs by 75% and improving performance by over 2000%',
+				'Revamped entire CI/CD pipeline structure to better align with microservice architecture',
 			],
 		},
 		{
