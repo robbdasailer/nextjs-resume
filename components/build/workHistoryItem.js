@@ -56,7 +56,7 @@ const WorkHistoryItem = (props) => {
 				endDate: new Date().toLocaleString('en-GB', timeOptions),
 			});
 		}
-	}, []);
+	}, [resumeItem, timeOptions]);
 
 	const handleAdditionalInfoChange = (event) => {
 		setResumeItem({
