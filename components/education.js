@@ -64,7 +64,10 @@ const Education = (props) => {
 						<Typography variant='h5' component='span'>
 								<a href={degree.schoolUrl}>{degree.school}</a>: {degree.degree}
 						</Typography>
-						{degree.degreeDescription && Array.isArray(degree.degreeDescription) && degree.degreeDescription.map((info, index) => (
+						<Typography>
+							{degree.degreeDescription}
+						</Typography>
+						{/* {degree.degreeDescription && Array.isArray(degree.degreeDescription) && degree.degreeDescription.map((info, index) => (
 							<ListItem key={index} sx={{marginLeft: '0px'}} disableGutters>
 								<ListItemIcon sx={{marginRight: '-30px'}}>
 									<Icon sx={{fontSize:'0.3rem'}}>
@@ -73,7 +76,7 @@ const Education = (props) => {
 								</ListItemIcon>
 								<ListItemText primary={info} />
 							</ListItem>
-						))}
+						))} */}
 						</TimelineContent>
 					</TimelineItem>
 				))}
