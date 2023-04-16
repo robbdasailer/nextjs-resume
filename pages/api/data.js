@@ -96,7 +96,7 @@ let data = {
 			school: 'University of Queensland',
 			schoolUrl: 'https://www.uq.edu.au/',
 			degree: 'Semester abroad',
-			degreeDescription: 'overall grade: 1.4'
+			degreeDescription: ['overall grade: 1.4']
 		},
 		{
 			id: 3,
