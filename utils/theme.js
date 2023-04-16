@@ -35,7 +35,7 @@ const [
 	actionColor,
 	contrastColor,
 	subHeaderTextColor,
-] = [white, '#f6f6f6', blue[700], red[900], yellow[50], green[900]];
+] = [white, '#f6f6f6', orange[700], blueGrey[500], yellow[50], blueGrey[500]];
 
 //Update colors for dark theme
 const [
@@ -55,7 +55,7 @@ const typographyTheme = {
 		fontWeight: 500,
 	},
 	h2: {
-		fontSize: '1.4rem',
+		fontSize: '1.72rem',
 		fontWeight: 500,
 	},
 	h3: {
@@ -79,7 +79,7 @@ const typographyTheme = {
 		fontWeight: 400,
 	},
 	body2: {
-		fontSize: '.875rem',
+		fontSize: '1rem',
 		fontWeight: 400,
 	},
 };
@@ -88,8 +88,9 @@ const typographyTheme = {
 const sharedOverrides = {
 	MuiButton: {
 		defaultProps: {
-			variant: 'contained',
-			color: 'secondary',
+			variant: 'outlined',
+			color: 'action',
+
 		},
 		styleOverrides: {
 			root: {
@@ -135,6 +136,7 @@ const lightTheme = createTheme({
 					display: 'flex',
 					a: {
 						color: `${actionColor}`,
+						textDecoration: 'none'
 					},
 					img: {
 						borderRadius: '50%',
