@@ -71,13 +71,14 @@ const WorkHistory = (props) => {
 					</TimelineSeparator>
 					<TimelineContent sx={{ margin: '25px 0px 25px 0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '3rem' }}>
 						<Typography variant='h5' component='span'>
-							<a href={job.companyLink}>{job.company}</a>: {job.jobTitle}
+							<a href={job.companyLink}>
+								{job.company}</a>: {job.jobTitle}
 						</Typography>
 						<Typography>{job.jobDescription}</Typography>
 						{job.additionalInfo && (
 							<>
-								<Button  sx={{ width: 'fit-content' }} onClick={() => handleOpen(job.id)}>
-									<Typography>View Accomplishments</Typography>
+								<Button  sx={{ margin: '5px 0px 0px 10px', width: 'fit-content' }} onClick={() => handleOpen(job.id)}>
+									<Typography>More Information</Typography>
 								</Button>
 								<WorkAdditionalInfo
 									open={open}

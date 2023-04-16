@@ -1,3 +1,5 @@
+import List from '@mui/material/List';
+import ListSubheader from '@mui/material/ListSubheader';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Slide from '@mui/material/Slide';
@@ -28,9 +30,14 @@ const Skills = (props) => {
 
 	return (
 		<>
-			<Typography variant='h2' sx={{ ml: 2.75 }}>
-				Skills & Competencies
-			</Typography>
+			<List
+				subheader={
+					<ListSubheader>
+						<Typography variant='h2'>Skills & Competencies</Typography>
+					</ListSubheader>
+					
+				}
+			>
 			{skills.map((skill) => (
 				<Box key={skill.id} sx={{ width: '90%', ml: 3, mt: 2, mb: 2 }}>
 					<Typography component='span'>
@@ -67,13 +74,14 @@ const Skills = (props) => {
 					</Popper>
 					<Slide direction='right' in={true}>
 						<LinearProgress
-							color='secondary'
+							color='action'
 							variant='determinate'
 							value={skill.rating}
 						/>
 					</Slide>
 				</Box>
 			))}
+			</List>
 		</>
 	);
 };
