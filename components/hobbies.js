@@ -5,7 +5,11 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import SportsBarIcon from '@mui/icons-material/SportsBar';
+import KitesurfingIcon from '@mui/icons-material/Kitesurfing';
+import SailingIcon from '@mui/icons-material/Sailing';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+import BuildIcon from '@mui/icons-material/Build';
+
 import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import Diversity1Icon from '@mui/icons-material/Diversity1';
@@ -22,20 +26,20 @@ const Hobbies = (props) => {
 		switch (icon) {
 			case 'bbq':
 				return <OutdoorGrillIcon color='action' />;
-			case 'beer':
-				return <SportsBarIcon color='action' />;
-			case 'outdoor':
-				return <NaturePeopleIcon color='action' />;
+			case 'kitesurf':
+				return <KitesurfingIcon color='action' />;
+			case 'sailing':
+				return <SailingIcon color='action' />;
 			case 'family':
 				return <Diversity1Icon color='action' />;
 			case 'music':
 				return <MusicNoteIcon color='action' />;
 			case 'tech':
 				return <ComputerIcon color='action' />;
-			case 'hiking':
-				return <HikingIcon color='action' />;
-			case 'movie':
-				return <TheatersIcon color='action' />;
+			case 'audiotrack':
+				return <AudiotrackIcon color='action' />;
+			case 'build':
+				return <BuildIcon color='action' />;
 			default:
 				return <InterestsIcon color='action' />;
 		}
