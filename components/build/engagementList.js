@@ -17,7 +17,7 @@ import {
 	removeFromArray,
 } from '../../utils/resumeDataHelper';
 
-const EngagementItem = (props) => {
+const EngagemenList = (props) => {
 
     const [currentItem, setCurrentItem] = useState();
 
@@ -93,4 +93,4 @@ const EngagementItem = (props) => {
     )
 }
 
-export default EngagementItem
+export default EngagementList
