@@ -1,4 +1,5 @@
 import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
@@ -58,7 +59,15 @@ const Education = (props) => {
 						<Typography variant='h5' component='span'>
 								<a href={degree.schoolUrl}>{degree.school}</a>: {degree.degree}
 						</Typography>
-						<Typography>{degree.degreeDescription}</Typography>
+						{degree.degreeDescription && Array.isArray(degree.degreeDescription) && degree.degreeDescription.map((info, index) => (
+							<ListItem key={index} disableGutters>
+								<ListItemText primary={info} />
+							</ListItem>
+						))}
+
+				
+						
+
 						</TimelineContent>
 					</TimelineItem>
 				))}
