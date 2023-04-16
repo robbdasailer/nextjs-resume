@@ -65,17 +65,16 @@ export default function Home() {
 
 		useEffect(() => {
 			const media = window.matchMedia(`(max-width: ${width}px)`);
+			const updateTarget = () => setTargetReached(media.matches);
 			media.addEventListener('change', updateTarget);
-
+		  
 			// Check on mount (callback is not called until a change occurs)
 			if (media.matches) {
-				setTargetReached(true);
+			  setTargetReached(true);
 			}
-
+		  
 			return () => media.removeEventListener('change', updateTarget);
-		}, []);
-
-		return targetReached;
+		  }, [width, updateTarget]);
 	};
 
 	const isBreakpoint = useMediaQuery(mediaBreakPoint);
