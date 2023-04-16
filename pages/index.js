@@ -11,6 +11,7 @@ import Header from '../components/header';
 import Certification from '../components/certification'
 import Education from '../components/education';
 import Skills from '../components/skills';
+import Languages from '../components/languages'
 import Hobbies from '../components/hobbies';
 import WorkHistory from '../components/workHistory';
 import WorkHistoryMobile from '../components/workHistoryMobile';
@@ -121,6 +122,11 @@ export default function Home() {
 								<Grid item xs={12}>
 									<Paper>
 										<Skills skills={data.skills} />
+									</Paper>
+								</Grid>
+								<Grid item xs={12}>
+									<Paper>
+										<Languages languages={data.languages} />
 									</Paper>
 								</Grid>
 								<Grid item xs={12}>
