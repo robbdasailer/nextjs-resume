@@ -5,7 +5,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import GppGoodIcon from '@mui/icons-material/GppGood';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import SchoolIcon from '@mui/icons-material/School';
 
 const Certification = (props) => {
@@ -26,7 +26,7 @@ const Certification = (props) => {
 							<ListItemAvatar>
 								<Avatar>
 									<a href={cert.link}>
-										<GppGoodIcon />
+										<WorkspacePremiumIcon />
 									</a>
 								</Avatar>
 							</ListItemAvatar>
