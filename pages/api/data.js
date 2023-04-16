@@ -16,12 +16,21 @@ let data = {
 		},
 		{
 			id: 2,
-			startDate: 'Jan 2023',
-			endDate: 'Mar 2024',
-			school: 'University of Management & Technology',
-			schoolUrl: 'https://www.umtweb.edu/',
-			degree: 'Master of Computer Science',
+			startDate: 'Jul 2022',
+			endDate: 'Dec 2022',
+			school: 'University of Queensland',
+			schoolUrl: 'https://www.uq.edu.au/',
+			degree: 'Semester abroad',
 			degreeDescription: 'overall grade: 1.4'
+		},
+		{
+			id: 3,
+			startDate: 'Oct 2021',
+			endDate: 'Mar 2024',
+			school: 'RWTH Aachen University',
+			schoolUrl: 'https://www.rwth-aachen.de/',
+			degree: 'Master\'s program in Mechanical Engineering and Business Administration',
+			degreeDescription: ['specialization in Mechanical Engineering: Process Engineering','specialization in Business Administration: General Business & Economics','current overall grade: 1.4']
 		},
 	],
 	certifications: [
@@ -97,72 +106,71 @@ let data = {
 	skills: [
 		{
 			id: 1,
-			skillName: 'Cloud Computing',
+			skillName: 'Python',
 			blurb:
-				'Experienced in designing and managing scalable cloud-based infrastructure and services in both AWS and Azure.',
+				'',
 			rating: 95,
 		},
 		{
 			id: 2,
-			skillName: 'Kubernetes',
+			skillName: 'JavaScript & HTML (Web Development)',
 			blurb:
-				'Proficient in administering, deploying, managing, and troubleshooting Kubernetes clusters.',
-			rating: 95,
-		},
-		{
-			id: 3,
-			skillName: 'Docker',
-			blurb:
-				'Skilled in creating and managing Docker containers to streamline application development and deployment.',
-			rating: 90,
-		},
-		{
-			id: 4,
-			skillName: 'IaC/CaC',
-			blurb:
-				'Adept at implementing Infrastructure as Code and Configuration as Code solutions for efficient and automated infrastructure management using Terraform and Ansible.',
+				'',
 			rating: 85,
 		},
 		{
-			id: 5,
-			skillName: 'Bash/PowerShell',
+			id: 3,
+			skillName: 'RStudio',
 			blurb:
-				'Proficient in using Bash and PowerShell scripting for automation and process enhancement.',
+				'',
+			rating: 80,
+		},
+		{
+			id: 4,
+			skillName: 'Matlab',
+			blurb:
+				'',
+			rating: 75,
+		},
+		{
+			id: 5,
+			skillName: 'MS Office',
+			blurb:
+				'',
 			rating: 90,
 		},
 		{
 			id: 6,
-			skillName: 'Relational Databases',
+			skillName: 'Adobe Photoshop',
 			blurb:
-				'Experienced in designing, optimizing, and managing relational databases for efficient data storage and retrieval.',
+				'',
 			rating: 90,
-		},
-		{
-			id: 7,
-			skillName: 'NoSQL Databases',
-			blurb:
-				'Skilled in leveraging NoSQL databases for flexible and scalable data storage solutions and knowledgeable in associated data pattern designs.',
-			rating: 80,
 		},
 	],
 	languages: [
 		{
 			id: 1,
-			languageName: 'Python',
+			languageName: 'German',
 			blurb:'',
-			rating: 75,
+			rating: 100,
 		},
 		{
 			id: 2,
-			languageName: 'C#',
+			languageName: 'English',
 			blurb:'',
-			rating: 70,
+			rating: 90,
 		},
 		{
 			id: 3,
-			languageName: 'ReactJS/NextJS',
+			languageName: 'French',
 			blurb:'',
 			rating: 40,
+		},
+		{
+			id: 4,
+			languageName: 'Spanish',
+			blurb:'',
+			rating: 25,
 		},
 	],
 	workHistory: [
@@ -173,8 +181,8 @@ let data = {
 			company: 'Strategy Engineers',
 			companyLink: 'https://strategyengineers.com/',
 			jobTitle: 'Intern',
-			jobDescription:
-				'Implemented and enhanced critical CI/CD applications within the infrastructure. Leveraged Terraform and Ansible for Infrastructure as Code (IaC) and Configuration as Code (CaC) to create and update infrastructure. Employed bash scripts, Python, Helm charts, and CI/CD pipelines for deploying applications to Kubernetes. Troubleshot Kubernetes issues, ensuring secure and uninterrupted application communication. Streamlined existing CI/CD processes to reduce complexity and lower costs.',
+			jobDescription: [
+				'As intern in management consulting, I conducted a comprehensive market benchmark to identify trends in battery technology','Performed a due diligence to evaluate business plans and derive improved strategies'],
 			additionalInfo: [
 				'Automated a legacy application cluster, enabling dynamic scaling up to 100+ nodes',
 				'Customized Big Bang to fit specific environmental requirements',
@@ -187,55 +195,11 @@ let data = {
 			company: 'Concord Technologies',
 			companyLink: 'https://concord.net/',
 			jobTitle: 'Principal Cloud Operations Engineer',
-			jobDescription:
-				'Utilized Azure DevOps to create build and release pipelines for automated deployment to Kubernetes, Azure App Service Plans, and virtual machines. Developed .Net Core and PowerShell utilities to enhance environment monitoring and troubleshooting capabilities. Implemented external monitoring solutions for Azure Kubernetes Services to scale pods and create new clusters. Collaborated with development teams to diagnose performance issues, optimize third-party integrations, and troubleshoot Dockerfiles.',
+			jobDescription: ['specialization in mechanical engineering: process engineering','overall grade: 1.6'],
 			additionalInfo: [
 				'Re-engineered event capturing system, transitioning from an inefficient RDBMS schema to a NoSQL-based polymorphic pattern design',
 				'Optimized Tesseract utilization, reducing costs by 75% and improving performance by over 2000%',
 				'Revamped entire CI/CD pipeline structure to better align with microservice architecture',
-			],
-		},
-		{
-			id: 3,
-			startDate: 'Jan 2015',
-			endDate: 'Jul 2019',
-			company: 'K2',
-			companyLink: 'https://www.nintex.com/?referrer=k2',
-			jobTitle: 'Principal Cloud Operations Engineer',
-			jobDescription:
-				'Utilized Azure DevOps ',
-			additionalInfo: [
-				'Re-engineered event capturing system, transitioning from an inefficient RDBMS schema to a NoSQL-based polymorphic pattern design',
-				'Optimized Tesseract utilization, reducing costs by 75% and improving performance by over 2000%',
-				'Revamped entire CI/CD pipeline structure to better align with microservice architecture',
-			],
-		},
-		{
-			id: 4,
-			startDate: 'Jan 2014',
-			endDate: 'Dec 2014',
-			company: 'Geocent',
-			companyLink: 'https://sev1tech.com/',
-			jobTitle: 'Senior Systems Administrator',
-			jobDescription:
-				'Contributed to a SharePoint 2010 implementation project, including new farm creation, migration, and ensuring DoD compliance. Troubleshot issues with Exchange, IronPorts, ArcSight, Active Directory, Hyper-V, SCVMM, and SCOM. Ensured Exchange, SharePoint, ArcSight, and SQL servers complied with DoD STIGs.',
-			additionalInfo: [
-				'Automated STIG-compliant virtual machine creation, reducing provisioning time from several days to five minutes',
-				'Led migration from On-premise Exchange to DoD Hosted Exchange',
-			],
-		},
-		{
-			id: 5,
-			startDate: 'Sep 2011',
-			endDate: 'Jul 2013',
-			company: 'Rackspace, the Open Cloud Company',
-			companyLink: 'https://www.rackspace.com/',
-			jobTitle: 'SharePoint Engineer',
-			jobDescription:
-				'Assisted new customers in planning SharePoint infrastructure, including Active Directory, authentication methods, and custom deployments. Built and tailored SharePoint environments based on client specifications. Performed migrations from older SharePoint versions to newer ones. Diagnosed and resolved issues in SharePoint environments. Developed PowerShell scripts to aid in farm administration and gather information beyond Central Administration capabilities. Played a crucial role in establishing a secure, hosted SharePoint 2013 environment on the Rackspace public cloud, leveraging cloud technologies like Vyatta.',
-			additionalInfo: [
-				'Established a secure, multi-tenant SharePoint 2013 farm on public cloud infrastructure',
-				'Mentored fellow engineers on SharePoint 2007/2010/2013-related topics and issues',
 			],
 		},
 	],

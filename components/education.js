@@ -1,6 +1,7 @@
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Timeline from '@mui/lab/Timeline';
@@ -14,8 +15,12 @@ import TimelineOppositeContent, {
 import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
+import Icon from '@mui/material/Icon';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import SchoolIcon from '@mui/icons-material/School';
+import { FiberManualRecord } from '@mui/icons-material';
+import { Square } from '@mui/icons-material';
+
 
 const Education = (props) => {
 	const degrees = props.education;
@@ -60,14 +65,15 @@ const Education = (props) => {
 								<a href={degree.schoolUrl}>{degree.school}</a>: {degree.degree}
 						</Typography>
 						{degree.degreeDescription && Array.isArray(degree.degreeDescription) && degree.degreeDescription.map((info, index) => (
-							<ListItem key={index} disableGutters>
+							<ListItem key={index} sx={{marginLeft: '0px'}} disableGutters>
+								<ListItemIcon sx={{marginRight: '-30px'}}>
+									<Icon sx={{fontSize:'0.3rem'}}>
+										<Square color='action' />
+									</Icon>
+								</ListItemIcon>
 								<ListItemText primary={info} />
 							</ListItem>
 						))}
-
-				
-						
-
 						</TimelineContent>
 					</TimelineItem>
 				))}

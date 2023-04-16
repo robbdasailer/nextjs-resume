@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListSubheader from '@mui/material/ListSubheader';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -13,8 +16,11 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import WorkIcon from '@mui/icons-material/Work';
+import Icon from '@mui/material/Icon';
+
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import Button from '@mui/material/Button';
+import Square from '@mui/icons-material';
 
 import WorkAdditionalInfo from './workAdditional';
 
@@ -75,6 +81,16 @@ const WorkHistory = (props) => {
 								{job.company}</a>: {job.jobTitle}
 						</Typography>
 						<Typography>{job.jobDescription}</Typography>
+						{job.jobDescription && Array.isArray(job.jobDescription) && job.jobDescription.map((info, index) => (
+							<ListItem key={index} sx={{marginLeft: '0px'}} disableGutters>
+								<ListItemIcon sx={{marginRight: '-30px'}}>
+									<Icon sx={{fontSize:'0.3rem'}}>
+										<Square color='action' />
+									</Icon>
+								</ListItemIcon>
+								<ListItemText primary={info} />
+							</ListItem>
+						))}
 						{job.additionalInfo && (
 							<>
 								<Button  sx={{ margin: '5px 0px 0px 10px', width: 'fit-content' }} onClick={() => handleOpen(job.id)}>
