@@ -20,7 +20,7 @@ import Icon from '@mui/material/Icon';
 
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import Button from '@mui/material/Button';
-import Square from '@mui/icons-material';
+import Square from '@mui/icons-material/Square';
 
 import WorkAdditionalInfo from './workAdditional';
 
@@ -80,7 +80,6 @@ const WorkHistory = (props) => {
 							<a href={job.companyLink}>
 								{job.company}</a>: {job.jobTitle}
 						</Typography>
-						<Typography>{job.jobDescription}</Typography>
 						{job.jobDescription && Array.isArray(job.jobDescription) && job.jobDescription.map((info, index) => (
 							<ListItem key={index} sx={{marginLeft: '0px'}} disableGutters>
 								<ListItemIcon sx={{marginRight: '-30px'}}>
@@ -108,7 +107,6 @@ const WorkHistory = (props) => {
 				</TimelineItem>
 			))}
 		</Timeline>
-
 		</List>
 	);
 };
