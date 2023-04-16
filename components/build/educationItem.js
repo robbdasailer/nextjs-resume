@@ -14,37 +14,37 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Tooltip from '@mui/material/Tooltip';
 
 import {
-	convertFromSimpleArray,
-	convertToSimpleArray,
-	convertToDatePickerInput,
-	validateItem,
+    convertFromSimpleArray,
+    convertToSimpleArray,
+    convertToDatePickerInput,
+    validateItem,
 } from '../../utils/resumeDataHelper';
 
 const EducationItem = (props) => {
-	const { open, setOpen, transition, header, item, handleDelete, handleSave } =
-		props;
+    const { open, setOpen, transition, header, item, handleDelete, handleSave } =
+        props;
 
-	const [resumeItem, setResumeItem] = useState(item);
-	const [checked, setChecked] = useState(!resumeItem.endDate);
-	const [isValid, setIsValid] = useState(true);
+    const [resumeItem, setResumeItem] = useState(item);
+    const [checked, setChecked] = useState(!resumeItem.endDate);
+    const [isValid, setIsValid] = useState(true);
 
-	const timeOptions = {
-		year: 'numeric',
-		month: 'short',
-	};
+    const timeOptions = {
+        year: 'numeric',
+        month: 'short',
+    };
 
-	const handleItemChange = (event) => {
-		setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
-	};
+    const handleItemChange = (event) => {
+        setResumeItem({ ...resumeItem, [event.target.id]: event.target.value });
+    };
 
-	const handleDateChange = (event) => {
-		console.log('Date Changed');
-		const date = new Date(event.target.value);
-		setResumeItem({
-			...resumeItem,
-			[event.target.id]: date.toLocaleString('en-GB', timeOptions),
-		});
-	};
+    const handleDateChange = (event) => {
+        console.log('Date Changed');
+        const date = new Date(event.target.value);
+        setResumeItem({
+            ...resumeItem,
+            [event.target.id]: date.toLocaleString('en-GB', timeOptions),
+        });
+    };
 
 	const handleChecked = useCallback((event) => {
 		setChecked(event.target.checked);
@@ -56,28 +56,28 @@ const EducationItem = (props) => {
 				endDate: new Date().toLocaleString('en-GB', timeOptions),
 			});
 		}
-	}, []);
+	}, [resumeItem, timeOptions]);
 
-	const handleAdditionalInfoChange = (event) => {
-		setResumeItem({
-			...resumeItem,
-			[event.target.id]: convertToSimpleArray(event.target.value),
-		});
-	};
+	const handledegreeDescriptionChange = (event) => {
+        setResumeItem({
+            ...resumeItem,
+            [event.target.id]: convertToSimpleArray(event.target.value),
+        });
+    };
 
 	const handleValidate = () => {
-		var itemIsValid = validateItem(resumeItem, [
-			'school',
-			'schoolURL',
-			'startDate',
-			'degree',
-			'degreeDescription',
-		]);
-		setIsValid(itemIsValid);
-		if (itemIsValid) {
-			handleSave(resumeItem);
-		}
-	};
+        var itemIsValid = validateItem(resumeItem, [
+            'school',
+            'schoolURL',
+            'startDate',
+            'degree',
+            'degreeDescription',
+        ]);
+        setIsValid(itemIsValid);
+        if (itemIsValid) {
+            handleSave(resumeItem);
+        }
+    };
 
 	const handleClose = () => {
 		setOpen(false);
@@ -183,8 +183,8 @@ const EducationItem = (props) => {
 					label='Deegree Description'
 					multiline
 					rows={5}
-					onChange={handleItemChange}
-					defaultValue={resumeItem.jobDescription}
+					onChange={handledegreeDescriptionChange}
+					defaultValue={convertFromSimpleArray(resumeItem.degreeDescription)}
 					sx={{ ml: 1, mt: 2, width: '50.4rem' }}
 				/>
 				<Button sx={{ mt: 1, mb: 1, ml: 1 }} onClick={handleValidate}>
