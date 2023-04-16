@@ -27,12 +27,12 @@ const Header = (props) => {
 					<div>
 					{email && (
 					<a href={`mailto:${email}`}>
-						<EmailIcon />
+						<EmailIcon fontSize='large' />
 					</a>
 					)}
 					{linkedInUrl && (
 					<a href={linkedInUrl}>
-						<LinkedInIcon />
+						<LinkedInIcon fontSize="large" />
 					</a>
 					)}
 					{githubUrl && (
