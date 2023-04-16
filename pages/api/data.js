@@ -4,6 +4,81 @@ let data = {
 		email: 'kontakt@robert-cornelius-schroeder.de',
 		linkedInUrl: 'https://www.linkedin.com/in/robert-cornelius-schröder-657aa9186/',
 	},
+	workHistory: [
+		{
+			id: 1,
+			startDate: 'Jan 2023',
+			endDate: 'Mar 2023',
+			company: 'Strategy Engineers',
+			companyLink: 'https://strategyengineers.com/',
+			jobTitle: 'Intern',
+			jobDescription: [
+				'As intern in management consulting, I conducted a comprehensive market benchmark to identify trends in battery technology','Performed a due diligence to evaluate business plans and derive improved strategies'],
+			additionalInfo: [
+				'',
+			],
+		},
+		{
+			id: 2,
+			startDate: 'Jul 2021',
+			endDate: 'Jan 2022',
+			company: 'PEM-Motion',
+			companyLink: 'https://pem-motion.com',
+			jobTitle: 'Working Student',
+			jobDescription: ['As working student in consulting, I optimised business models in battery manufacturing and revised operations by improving processes in logistics'],
+			additionalInfo: [
+				'',
+			],
+		},
+		{
+			id: 3,
+			startDate: 'Jan 2021',
+			endDate: 'Jun 2021',
+			company: 'Porsche',
+			companyLink: 'https://porsche.com',
+			jobTitle: 'Intern',
+			jobDescription: ['As intern, I devised various projects in the context of strategic product and process development as well as the future of production','Planned further expansion of the production network and -system'],
+			additionalInfo: [
+				'',
+			],
+		},
+		{
+			id: 4,
+			startDate: 'Jun 2020',
+			endDate: 'Dec 2020',
+			company: 'Research Institute for Rationalisation',
+			companyLink: 'https://fir.rwth-aachen.de',
+			jobTitle: 'Research Assistant',
+			jobDescription: ['Conducted research in the field of energy information systems on the Internet of Production','Subsequently composed my bachelor thesis'],
+			additionalInfo: [
+				'',
+			],
+		},
+		{
+			id: 5,
+			startDate: 'Jul 2019',
+			endDate: 'Nov 2019',
+			company: 'Chair for Fluid Process Engineering',
+			companyLink: 'https://www.avt.rwth-aachen.de/cms/AVT/Forschung/~inzz/Fluidverfahrenstechnik/',
+			jobTitle: 'Research Assistant',
+			jobDescription: ['Derived a process analysis for the down streaming of itaconic acid, a platform chemical'],
+			additionalInfo: [
+				'',
+			],
+		},
+		{
+			id: 6,
+			startDate: 'Oct 2018',
+			endDate: 'Sep 2019',
+			company: 'Chair for Structural Mechanics and Lightweight Construction',
+			companyLink: 'https://www.sla.rwth-aachen.de/cms/~fald/Institut-fuer-Strukturmechanik-und-Leichtbau/',
+			jobTitle: 'Tutor',
+			jobDescription: ['Held tutorials and assisted students as a tutor for Mechanics I and Mechanics II'],
+			additionalInfo: [
+				'',
+			],
+		},
+	],
 	education: [
 		{
 			id: 1,
@@ -35,74 +110,51 @@ let data = {
 	],
 	certifications: [
 		{
-			id: 2,
-			title: 'Architecting Microsoft Azure Solutions',
+			id: 1,
+			title: 'Dean\'s List (top 5% of the year)',
 			link: 'https://www.credly.com/badges/e6e474b4-cdc0-451e-8805-ded4a1536ea5',
 			dateAchieved: '29 December 2015',
 		},
 		{
 			id: 3,
-			title: 'CKAD: Certificate Kubernetes Application Developer',
-			link: 'https://www.credly.com/badges/0836049e-e150-4321-9d97-ebb537cf96f1',
+			title: 'TechLabs Digital Shapers',
+			link: '',
 			dateAchieved: '25 September 2021',
 		},
 		{
 			id: 4,
-			title: 'CompTIA Security+ CE',
+			title: 'Best Paper Award',
 			link: 'https://www.credly.com/badges/44be2b36-0ba3-4427-b960-6be43e31924b',
 			dateAchieved: '15 October 2021',
 		},
 		{
-			id: 5,
-			title: 'CKA: Certified Kubernetes Administrator',
+			id: 4,
+			title: 'e-fellows.net Scholarship',
 			link: 'https://www.credly.com/badges/564a32af-932d-42e6-b642-d24a003574c4',
 			dateAchieved: '15 July 2022',
 		},
-		{
-			id: 6,
-			title: 'Cornell: Python for Data Science',
-			link: 'https://ecornell.cornell.edu/certificates/data-science/python-for-data-science/',
-			dateAchieved: '30 November 2022',
-		},
-		{
-			id: 7,
-			title: 'AWS Certified Solutions Architect - Associate',
-			link: 'https://www.credly.com/badges/3869260e-d08c-4e0d-9259-b0215776e36c',
-			dateAchieved: '22 March 2023',
-		},
 	],
-	hobbies: [
+	engagements: [
 		{
 			id: 1,
-			title: 'Kitesurfing',
-			icon: 'kitesurf',
+			title: 'aixsolution',
+			link: 'https://www.aixsolution.com',
+			date: 'Oct 2019 - today',
 		},
 		{
 			id: 2,
-			title: 'Sailing',
-			icon: 'sailing',
+			title: 'TechLabs',
+			link: 'https://techlabs.org/location/aachen',
+			date: 'Oct 2022 - today',
 		},
 		{
 			id: 3,
-			title: 'Music',
-			icon: 'audiotrack',
-		},
-		{
-			id: 4,
-			title: 'Crafting & Woodworking',
-			icon: 'build',
-		},
-		{
-			id: 5,
-			title: 'Technology & Programming',
-			icon: 'tech',
-		},
-		{
-			id: 6,
-			title: 'Spending Time with Family',
-			icon: 'family',
+			title: '180 Degrees Consulting',
+			link: 'https://180dc.org/branch/uq/',
+			date: 'Jul 2022 - Dec 2022',
 		},
 	],
+	
 	skills: [
 		{
 			id: 1,
@@ -173,34 +225,36 @@ let data = {
 			rating: 25,
 		},
 	],
-	workHistory: [
+	hobbies: [
 		{
 			id: 1,
-			startDate: 'Jan 2023',
-			endDate: 'Mar 2023',
-			company: 'Strategy Engineers',
-			companyLink: 'https://strategyengineers.com/',
-			jobTitle: 'Intern',
-			jobDescription: [
-				'As intern in management consulting, I conducted a comprehensive market benchmark to identify trends in battery technology','Performed a due diligence to evaluate business plans and derive improved strategies'],
-			additionalInfo: [
-				'Automated a legacy application cluster, enabling dynamic scaling up to 100+ nodes',
-				'Customized Big Bang to fit specific environmental requirements',
-			],
+			title: 'Kitesurfing',
+			icon: 'kitesurf',
 		},
 		{
 			id: 2,
-			startDate: 'Jul 2019',
-			endDate: 'Sep 2021',
-			company: 'Concord Technologies',
-			companyLink: 'https://concord.net/',
-			jobTitle: 'Principal Cloud Operations Engineer',
-			jobDescription: ['specialization in mechanical engineering: process engineering','overall grade: 1.6'],
-			additionalInfo: [
-				'Re-engineered event capturing system, transitioning from an inefficient RDBMS schema to a NoSQL-based polymorphic pattern design',
-				'Optimized Tesseract utilization, reducing costs by 75% and improving performance by over 2000%',
-				'Revamped entire CI/CD pipeline structure to better align with microservice architecture',
-			],
+			title: 'Sailing',
+			icon: 'sailing',
+		},
+		{
+			id: 3,
+			title: 'Music',
+			icon: 'audiotrack',
+		},
+		{
+			id: 4,
+			title: 'Crafting & Woodworking',
+			icon: 'build',
+		},
+		{
+			id: 5,
+			title: 'Technology & Programming',
+			icon: 'tech',
+		},
+		{
+			id: 6,
+			title: 'Spending Time with Family',
+			icon: 'family',
 		},
 	],
 };

@@ -8,7 +8,8 @@ import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
 
 import Header from '../components/header';
-import Certification from '../components/certification'
+import Certification from '../components/certification';
+import Engagement from '../components/engagement';
 import Education from '../components/education';
 import Skills from '../components/skills';
 import Languages from '../components/languages'
@@ -116,6 +117,11 @@ export default function Home() {
 										<Certification
 											certs={sortedCerts}
 										/>
+									</Paper>
+								</Grid>
+								<Grid item xs={12}>
+									<Paper>
+										<Engagement engagements={data.engagements} />
 									</Paper>
 								</Grid>
 								<Grid item xs={12}>
