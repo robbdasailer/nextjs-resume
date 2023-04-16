@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 
 const WorkAdditionalInfo = (props) => {
-	const { additionalInfo, jobTitle } = props.job;
+	const { additionalInfo, jobTitle, company } = props.job;
 
 	const handleClose = () => {
 		props.setOpen(false);
@@ -24,10 +24,9 @@ const WorkAdditionalInfo = (props) => {
 			TransitionComponent={props.transition}
 		>
 			<DialogTitle>
-				{jobTitle}
+				{`More information on my role as ${jobTitle} at ${company}`}
 				{props.open ? (
 					<IconButton
-						color='action'
 						aria-label='close'
 						onClick={handleClose}
 						sx={{
