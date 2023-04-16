@@ -7,12 +7,12 @@ let data = {
 	education: [
 		{
 			id: 1,
-			startDate: 'Jan 2020',
-			endDate: 'Mar 2023',
-			school: 'University of Management & Technology',
-			schoolUrl: 'https://www.umtweb.edu/',
-			degree: 'Bachelor of Computer Science',
-			degreeDescription: 'overall grade: 1.4'
+			startDate: 'Oct 2017',
+			endDate: 'Oct 2021',
+			school: 'RWTH Aachen University',
+			schoolUrl: 'https://www.rwth-aachen.de/',
+			degree: 'Bachelor\'s program in Mechanical Engineering and Business Administration',
+			degreeDescription: ['specialization in mechanical engineering: process engineering','overall grade: 1.6']
 		},
 		{
 			id: 2,
@@ -65,21 +65,31 @@ let data = {
 	hobbies: [
 		{
 			id: 1,
-			title: 'BBQ',
-			icon: 'bbq',
+			title: 'Kitesurfing',
+			icon: 'kitesurf',
 		},
 		{
 			id: 2,
-			title: 'Craft Beer',
-			icon: 'beer',
+			title: 'Sailing',
+			icon: 'sailing',
 		},
 		{
 			id: 3,
-			title: 'Camping & Outdoors',
-			icon: 'outdoor',
+			title: 'Music',
+			icon: 'audiotrack',
 		},
 		{
 			id: 4,
+			title: 'Crafting & Woodworking',
+			icon: 'build',
+		},
+		{
+			id: 5,
+			title: 'Technology & Programming',
+			icon: 'tech',
+		},
+		{
+			id: 6,
 			title: 'Spending Time with Family',
 			icon: 'family',
 		},
@@ -134,25 +144,24 @@ let data = {
 				'Skilled in leveraging NoSQL databases for flexible and scalable data storage solutions and knowledgeable in associated data pattern designs.',
 			rating: 80,
 		},
+	],
+	languages: [
 		{
-			id: 8,
-			skillName: 'Python',
-			blurb:
-				'Competent in Python programming for application development, automation, data analysis/processing, and machine learning.',
+			id: 1,
+			languageName: 'Python',
+			blurb:'',
 			rating: 75,
 		},
 		{
-			id: 9,
-			skillName: 'C#',
-			blurb:
-				'Proficient in developing intermediate applications and tools using the C# programming language.',
+			id: 2,
+			languageName: 'C#',
+			blurb:'',
 			rating: 70,
 		},
 		{
-			id: 10,
-			skillName: 'ReactJS/NextJS',
-			blurb:
-				'Familiar with front-end web development using ReactJS and NextJS frameworks for building interactive user interfaces.',
+			id: 3,
+			languageName: 'ReactJS/NextJS',
+			blurb:'',
 			rating: 40,
 		},
 	],
@@ -160,7 +169,7 @@ let data = {
 		{
 			id: 1,
 			startDate: 'Jan 2023',
-			endDate: '',
+			endDate: 'Mar 2023',
 			company: 'Strategy Engineers',
 			companyLink: 'https://strategyengineers.com/',
 			jobTitle: 'Intern',
