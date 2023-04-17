@@ -103,7 +103,7 @@ const Education = (props) => {
 				{degreeDescriptions[degree.id] && degreeDescriptions[degree.id].map((description, index) => (
 					<ListItem key={index} sx={{ marginLeft: '0px' }} disableGutters>
 						<ListItemIcon sx={{ marginRight: '-30px' }}>
-							<Icon sx={{ fontSize: '0.6rem' }}>
+							<Icon sx={{ fontSize: '0.5rem' }}>
 								<Square color='action' />
 							</Icon>
 						</ListItemIcon>

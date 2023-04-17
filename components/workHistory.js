@@ -83,7 +83,7 @@ const WorkHistory = (props) => {
 						{job.jobDescription && Array.isArray(job.jobDescription) && job.jobDescription.map((info, index) => (
 							<ListItem key={index} sx={{marginLeft: '0px'}} disableGutters>
 								<ListItemIcon sx={{marginRight: '-30px'}}>
-									<Icon sx={{fontSize:'0.3rem'}}>
+									<Icon sx={{fontSize:'0.5rem'}}>
 										<Square color='action' />
 									</Icon>
 								</ListItemIcon>
