@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -67,10 +67,9 @@ const EducationItem = (props) => {
 
 	const handleValidate = () => {
         var itemIsValid = validateItem(resumeItem, [
-			'startDate',
-			'endDate',
             'school',
             'schoolURL',
+			'startDate',
             'degree',
             'degreeDescription',
         ]);
@@ -166,6 +165,17 @@ const EducationItem = (props) => {
 						}}
 					/>
 				</Tooltip>
+				<FormControlLabel
+					label='Current Position'
+					control={
+						<Checkbox
+							checked={checked}
+							onChange={handleChecked}
+							color='secondary'
+						/>
+					}
+					sx={{ ml: 3, mr: 1, mt: 3.5, width: '12rem' }}
+				/>
 				<TextField
 					error={!isValid}
 					required

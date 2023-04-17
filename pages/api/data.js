@@ -91,8 +91,8 @@ let data = {
 			school: 'RWTH Aachen University',
 			schoolUrl: 'https://www.rwth-aachen.de/',
 			degree: 'Master\'s program in Mechanical Engineering and Business Administration',
-			degreeDescription: ['specialization in Mechanical Engineering: Process Engineering — ','specialization in Business Administration: General Business & Economics — ','current overall grade: 1.4']
-			},
+			degreeDescription: ['specialization in Mechanical Engineering: Process Engineering',' specialization in Business Administration: General Business & Economics','current overall grade: 1.4']
+		},
 		{
 			id: 2,
 			startDate: 'Jul 2022',
@@ -100,7 +100,7 @@ let data = {
 			school: 'University of Queensland',
 			schoolUrl: 'https://www.uq.edu.au/',
 			degree: 'Semester abroad',
-			degreeDescription: ['overall grade: 6.67 (scale: 0 - 7) — ','Financed with PROMOS scholarship']
+			degreeDescription: ['overall grade: 6.67 (scale: 0 - 7)','Financed with PROMOS scholarship']
 		},
 		{
 			id: 3,
@@ -109,7 +109,7 @@ let data = {
 			school: 'RWTH Aachen University',
 			schoolUrl: 'https://www.rwth-aachen.de/',
 			degree: 'Bachelor\'s program in Mechanical Engineering and Business Administration',
-			degreeDescription: ['specialization in mechanical engineering: process engineering — ','overall grade: 1.6']
+			degreeDescription: ['specialization in mechanical engineering: process engineering','overall grade: 1.6']
 			},
 	],
 	certifications: [
