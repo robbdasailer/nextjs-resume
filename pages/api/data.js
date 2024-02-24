@@ -7,6 +7,19 @@ let data = {
 	workHistory: [
 		{
 			id: 1,
+			startDate: 'Oct 2023',
+			endDate: 'Dec 2023',
+			company: 'Kearney',
+			companyLink: 'https://www.kearney.com',
+			jobTitle: 'Intern',
+			jobDescription: [
+				'Created of organizational charts and accountabilities', 'Collated key activities in a RACI matrix for various functions in the client´s operations department',
+				'Structured and harmonizing data for client reviews'],
+			additionalInfo: [
+			],
+		},
+		{
+			id: 2,
 			startDate: 'Jan 2023',
 			endDate: 'Mar 2023',
 			company: 'Strategy Engineers',
@@ -18,7 +31,7 @@ let data = {
 			],
 		},
 		{
-			id: 2,
+			id: 3,
 			startDate: 'Jul 2021',
 			endDate: 'Jan 2022',
 			company: 'PEM-Motion',
@@ -35,7 +48,7 @@ let data = {
 			],
 		},
 		{
-			id: 3,
+			id: 4,
 			startDate: 'Jan 2021',
 			endDate: 'Jun 2021',
 			company: 'Porsche',
@@ -47,7 +60,7 @@ let data = {
 			],
 		},
 		{
-			id: 4,
+			id: 5,
 			startDate: 'Jun 2020',
 			endDate: 'Dec 2020',
 			company: 'Research Institute for Rationalisation',
@@ -59,7 +72,7 @@ let data = {
 			],
 		},
 		{
-			id: 5,
+			id: 6,
 			startDate: 'Jul 2019',
 			endDate: 'Nov 2019',
 			company: 'Chair for Fluid Process Engineering',
@@ -71,7 +84,7 @@ let data = {
 			],
 		},
 		{
-			id: 6,
+			id: 7,
 			startDate: 'Oct 2018',
 			endDate: 'Sep 2019',
 			company: 'Chair for Structural Mechanics and Lightweight Construction',
